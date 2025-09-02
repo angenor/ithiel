@@ -22,7 +22,7 @@
   "header": {
     "searchPlaceholder": "Rechercher un cours",
     "categories": "Catégories",
-    "teachOnUdemy": "Enseigner sur Udemy",
+    "teachOnUdemy": "Enseigner sur Ithiel",
     "myLearning": "Mon apprentissage",
     "login": "Se connecter",
     "signup": "S'inscrire"
@@ -89,7 +89,7 @@
     "trustedBy": "Faites confiance aux entreprises du monde entier"
   },
   "udemyBusiness": {
-    "title": "Udemy Business",
+    "title": "Ithiel Business",
     "subtitle": "Formez vos équipes avec des cours de qualité professionnelle",
     "description": "Donnez à vos équipes les compétences dont elles ont besoin pour rester compétitives dans un monde en constante évolution grâce à notre collection de cours créés par des experts du secteur.",
     "features": {
@@ -107,7 +107,7 @@
       }
     },
     "cta": {
-      "tryFree": "Essayez Udemy Business",
+      "tryFree": "Essayez Ithiel Business",
       "learnMore": "En savoir plus"
     },
     "stats": {
@@ -118,9 +118,9 @@
   },
   "footer": {
     "business": {
-      "title": "Udemy Business",
+      "title": "Ithiel Business",
       "solutions": "Solutions pour entreprises",
-      "teach": "Enseigner sur Udemy",
+      "teach": "Enseigner sur Ithiel",
       "getApp": "Obtenir l'application",
       "about": "À propos de nous"
     },
@@ -146,7 +146,7 @@
       "accessibility": "Déclaration d'accessibilité"
     },
     "bottom": {
-      "copyright": "© {year} Udemy, Inc.",
+      "copyright": "© {year} Ithiel, Inc.",
       "language": "Français"
     }
   }

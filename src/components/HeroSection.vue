@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-section relative h-96 md:h-400 bg-gradient-to-r from-gray-800 to-gray-600 overflow-hidden">
+  <section class="hero-section relative h-screen bg-gradient-to-r from-gray-800 to-gray-600 overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30" 
          style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')">

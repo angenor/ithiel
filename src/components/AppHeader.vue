@@ -5,7 +5,7 @@
         <!-- Logo -->
         <div class="flex-shrink-0">
           <div class="text-2xl font-bold text-udemy-purple">
-            Udemy
+            Ithiel
           </div>
         </div>
 
@@ -45,6 +45,9 @@
 
         <!-- Right side - Auth & Cart -->
         <div class="hidden lg:flex items-center space-x-4">
+          <!-- Language Switcher -->
+          <LanguageSwitcher />
+          
           <!-- Theme Toggle -->
           <ThemeToggle />
           
@@ -110,8 +113,9 @@
 
         <!-- Mobile Auth Buttons -->
         <div class="space-y-3 pt-4 border-t">
-          <!-- Theme Toggle for Mobile -->
-          <div class="flex justify-center mb-3">
+          <!-- Language Switcher and Theme Toggle for Mobile -->
+          <div class="flex justify-center gap-4 mb-3">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
           <button class="w-full px-4 py-2 text-gray-700 dark:text-gray-200 hover:text-udemy-purple font-medium border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 rounded">
@@ -129,6 +133,7 @@
 <script setup>
 import { ref } from 'vue'
 import ThemeToggle from './ThemeToggle.vue'
+import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const mobileMenuOpen = ref(false)
 </script>

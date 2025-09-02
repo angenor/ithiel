@@ -128,10 +128,10 @@
           <!-- Left Side - Logo and Copyright -->
           <div class="flex items-center space-x-4">
             <div class="text-2xl font-bold text-udemy-purple">
-              Udemy
+              Ithiel
             </div>
             <span class="text-gray-400 dark:text-gray-300 text-sm">
-              {{ $t('footer.bottom.copyright', { year: new Date().getFullYear() }) }}
+              {{ "2025 Ithiel, Inc." }}
             </span>
           </div>
 
