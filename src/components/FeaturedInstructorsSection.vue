@@ -11,10 +11,11 @@
       <!-- Instructors Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div 
-          v-for="instructor in instructors" 
+          v-for="(instructor, index) in instructors" 
           :key="instructor.id"
-          class="bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-        
+          class="instructor-card bg-white dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+          :style="{ 'animation-delay': `${index * 0.2}s` }"
+        >
           <!-- Instructor Photo -->
           <div class="relative mb-4">
             <img 
@@ -94,17 +95,210 @@
   </section>
 </template>
 
+<style scoped>
+/* Animation des cartes d'instructeurs */
+.instructor-card {
+  opacity: 0;
+  transform: translateY(50px) rotateX(15deg);
+  animation: flipInUp 0.8s ease-out forwards;
+  transform-origin: center bottom;
+  perspective: 1000px;
+}
+
+@keyframes flipInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg);
+  }
+}
+
+/* Animation au hover pour les cartes d'instructeurs */
+.instructor-card:hover {
+  transform: translateY(-10px) rotateY(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation pour les photos d'instructeurs */
+.instructor-card img {
+  transition: all 0.4s ease;
+  border: 3px solid transparent;
+}
+
+.instructor-card:hover img {
+  transform: scale(1.1) rotateZ(-3deg);
+  border: 3px solid #A435F0;
+  box-shadow: 0 10px 20px rgba(164, 53, 240, 0.3);
+}
+
+/* Animation pour les badges */
+.instructor-card .absolute span {
+  transform: scale(0);
+  animation: bounceIn 0.5s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Animation des statistiques */
+.instructor-card .space-y-2 > div {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.instructor-card .space-y-2 > div:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.instructor-card .space-y-2 > div:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.instructor-card .space-y-2 > div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes slideInLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation du bouton */
+.instructor-card button {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUpFade 0.6s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.instructor-card button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.instructor-card button:hover::before {
+  left: 0;
+}
+
+.instructor-card button:hover {
+  color: white;
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Optimisations responsives */
+@media (max-width: 768px) {
+  .instructor-card {
+    animation-duration: 0.6s;
+    transform: translateY(30px) rotateX(10deg);
+  }
+  
+  .instructor-card:hover {
+    transform: translateY(-5px) rotateY(2deg);
+    transition-duration: 0.3s;
+  }
+  
+  .instructor-card:hover img {
+    transform: scale(1.05) rotateZ(-2deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .instructor-card {
+    animation-duration: 0.5s;
+    transform: translateY(20px) rotateX(5deg);
+  }
+  
+  .instructor-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .instructor-card:hover img {
+    transform: scale(1.03);
+    border: 2px solid #A435F0;
+  }
+  
+  .instructor-card .space-y-2 > div {
+    animation-duration: 0.4s;
+  }
+  
+  .instructor-card button {
+    animation-duration: 0.4s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .instructor-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .instructor-card:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .instructor-card:hover img {
+    transform: none;
+    border: 2px solid #A435F0;
+  }
+  
+  .instructor-card .absolute span,
+  .instructor-card .space-y-2 > div,
+  .instructor-card button {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+
 <script setup>
 const instructors = [
   {
     id: 1,
-    name: "Dr. Angela Yu",
-    specialization: "iOS & Web Development",
-    students: 875000,
-    courses: 5,
-    rating: 4.7,
-    photo: "https://images.unsplash.com/photo-1494790108755-2616b36a59b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-    badge: "topInstructor"
+    name: "Colt Steele",
+    specialization: "Full Stack Development",
+    students: 750000,
+    courses: 15,
+    rating: 4.6,
+    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
   },
   {
     id: 2,

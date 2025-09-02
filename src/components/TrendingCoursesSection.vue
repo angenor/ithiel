@@ -61,9 +61,10 @@
             :style="{ transform: `translateX(-${currentSlide * slideWidth}%)` }"
           >
             <div 
-              v-for="course in filteredCourses" 
+              v-for="(course, index) in filteredCourses" 
               :key="course.id"
-              class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-3"
+              class="trending-card flex-shrink-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-3"
+              :style="{ 'animation-delay': `${index * 0.15}s` }"
             >
               <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
                 <!-- Course Image -->
@@ -288,5 +289,137 @@ onMounted(() => {
 
 .bg-udemy-purple {
   background-color: #A435F0;
+}
+
+/* Animation pour les cartes trending */
+.trending-card {
+  opacity: 0;
+  transform: translateX(-50px) rotateY(-15deg);
+  animation: slideInRotate 0.8s ease-out forwards;
+}
+
+@keyframes slideInRotate {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) rotateY(-15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+  }
+}
+
+/* Animation des boutons de filtre */
+.trending-courses button {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.trending-courses button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.trending-courses button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.trending-courses button:hover::before {
+  left: 100%;
+}
+
+/* Animation des boutons de navigation */
+.trending-courses .absolute.w-12.h-12 {
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.trending-courses .absolute.w-12.h-12:hover {
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Animation des points de pagination */
+.trending-courses .w-3.h-3 {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
+}
+
+.trending-courses .w-3.h-3:hover {
+  transform: scale(1.3);
+}
+
+/* Effet parallax subtil pour les images */
+.trending-card img {
+  transition: transform 0.4s ease;
+}
+
+.trending-card:hover img {
+  transform: scale(1.05) rotateZ(1deg);
+}
+
+/* Optimisations responsives */
+@media (max-width: 768px) {
+  .trending-card {
+    animation-duration: 0.6s;
+  }
+  
+  .trending-card:hover img {
+    transform: scale(1.03) rotateZ(0.5deg);
+  }
+  
+  .trending-courses .absolute.w-12.h-12:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+@media (max-width: 480px) {
+  .trending-card {
+    animation-duration: 0.5s;
+    transform: translateX(-30px) rotateY(-10deg);
+  }
+  
+  .trending-card:hover img {
+    transform: scale(1.02);
+  }
+  
+  .trending-courses .absolute.w-12.h-12:hover {
+    transform: translateY(-50%) scale(1.02);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .trending-courses button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trending-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .trending-card:hover img {
+    transform: none;
+  }
+  
+  .trending-courses button:hover {
+    transform: none;
+  }
+  
+  .trending-courses .absolute.w-12.h-12:hover {
+    transform: translateY(-50%);
+  }
 }
 </style>

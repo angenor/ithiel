@@ -14,9 +14,10 @@
       <!-- Courses Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <div 
-          v-for="course in courses" 
+          v-for="(course, index) in courses" 
           :key="course.id"
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+          class="course-card bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+          :style="{ 'animation-delay': `${index * 0.1}s` }"
         >
           <!-- Course Image -->
           <div class="relative aspect-video overflow-hidden">
@@ -190,5 +191,92 @@ const courses = [
 
 .aspect-video {
   aspect-ratio: 16 / 9;
+}
+
+/* Animation des cartes de cours */
+.course-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation au hover avec effet moderne */
+.course-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation pour l'image au hover */
+.course-card:hover img {
+  transform: scale(1.1);
+  transition: transform 0.4s ease;
+}
+
+.course-card img {
+  transition: transform 0.4s ease;
+}
+
+/* Animation du bouton "View More" */
+.course-card button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.3s ease;
+}
+
+/* Optimisations responsives */
+@media (max-width: 768px) {
+  .course-card {
+    animation-duration: 0.5s;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    transition-duration: 0.3s;
+  }
+  
+  .course-card:hover img {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 480px) {
+  .course-card {
+    animation-duration: 0.4s;
+  }
+  
+  .course-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .course-card:hover img {
+    transform: scale(1.02);
+  }
+}
+
+/* Optimisation pour les appareils à mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+  .course-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .course-card:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .course-card:hover img {
+    transform: none;
+  }
 }
 </style>

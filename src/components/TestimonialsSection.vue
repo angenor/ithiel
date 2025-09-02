@@ -36,9 +36,10 @@
             :style="{ transform: `translateX(-${currentTestimonial * 100}%)` }"
           >
             <div 
-              v-for="testimonial in testimonials" 
+              v-for="(testimonial, index) in testimonials" 
               :key="testimonial.id"
-              class="w-full flex-shrink-0"
+              class="testimonial-slide w-full flex-shrink-0"
+              :style="{ 'animation-delay': `${index * 0.3}s` }"
             >
               <div class="max-w-4xl mx-auto">
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 md:p-12">
@@ -131,7 +132,7 @@ const testimonials = [
     name: "Sarah Chen",
     title: "Full Stack Developer",
     company: "Google",
-    photo: "https://images.unsplash.com/photo-1494790108755-2616b36a59b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
+    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
     companyLogo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
   },
   {
@@ -186,5 +187,270 @@ onMounted(() => {
 
 .bg-udemy-purple {
   background-color: #A435F0;
+}
+
+/* Animation des témoignages */
+.testimonial-slide {
+  opacity: 0;
+  transform: translateY(60px) scale(0.9);
+  animation: floatInUp 1s ease-out forwards;
+}
+
+@keyframes floatInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation de la carte de témoignage */
+.testimonial-slide .bg-white {
+  position: relative;
+  transform: rotateX(5deg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.testimonial-slide .bg-white:hover {
+  transform: rotateX(0deg) translateY(-5px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* Animation de l'icône quote */
+.testimonial-slide svg {
+  opacity: 0;
+  transform: scale(0) rotate(45deg);
+  animation: rotateIn 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Animation du texte */
+.testimonial-slide blockquote {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+  position: relative;
+}
+
+.testimonial-slide blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #A435F0, #667eea);
+  animation: expandWidth 1.2s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes expandWidth {
+  to {
+    width: 100%;
+  }
+}
+
+/* Animation de la photo et infos étudiant */
+.testimonial-slide .flex.items-center img {
+  opacity: 0;
+  transform: scale(0) rotate(-180deg);
+  animation: spinIn 0.8s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+@keyframes spinIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.testimonial-slide .text-center {
+  opacity: 0;
+  transform: translateX(30px);
+  animation: slideInRight 0.6s ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+@keyframes slideInRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animation des logos d'entreprises */
+.grid.grid-cols-2 img {
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  animation: bounceInUp 0.6s ease-out forwards;
+}
+
+.grid.grid-cols-2 img:nth-child(1) { animation-delay: 0.1s; }
+.grid.grid-cols-2 img:nth-child(2) { animation-delay: 0.2s; }
+.grid.grid-cols-2 img:nth-child(3) { animation-delay: 0.3s; }
+.grid.grid-cols-2 img:nth-child(4) { animation-delay: 0.4s; }
+.grid.grid-cols-2 img:nth-child(5) { animation-delay: 0.5s; }
+.grid.grid-cols-2 img:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Animation des boutons de navigation */
+.absolute button {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.absolute button:hover {
+  transform: translateY(-50%) scale(1.15);
+  background: rgba(164, 53, 240, 0.9);
+  color: white;
+  box-shadow: 0 15px 30px rgba(164, 53, 240, 0.4);
+}
+
+/* Animation des points de pagination */
+.space-x-2 button {
+  transform: scale(1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.space-x-2 button:hover {
+  transform: scale(1.4);
+  box-shadow: 0 5px 15px rgba(164, 53, 240, 0.4);
+}
+
+/* Optimisations responsives */
+@media (max-width: 768px) {
+  .testimonial-slide {
+    animation-duration: 0.8s;
+    transform: translateY(40px) scale(0.95);
+  }
+  
+  .testimonial-slide .bg-white:hover {
+    transform: rotateX(0deg) translateY(-3px);
+  }
+  
+  .testimonial-slide svg {
+    animation-duration: 0.6s;
+  }
+  
+  .testimonial-slide blockquote {
+    animation-duration: 0.6s;
+  }
+  
+  .grid.grid-cols-2 img {
+    animation-duration: 0.4s;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-slide {
+    animation-duration: 0.6s;
+    transform: translateY(30px) scale(0.97);
+  }
+  
+  .testimonial-slide .bg-white {
+    transform: rotateX(2deg);
+    padding: 1.5rem;
+  }
+  
+  .testimonial-slide .bg-white:hover {
+    transform: rotateX(0deg) translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-slide svg {
+    animation-duration: 0.5s;
+  }
+  
+  .testimonial-slide blockquote {
+    animation-duration: 0.5s;
+    font-size: 1rem;
+  }
+  
+  .testimonial-slide .flex.items-center img {
+    animation-duration: 0.6s;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .absolute button:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+  
+  .space-x-2 button:hover {
+    transform: scale(1.2);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .testimonial-slide .bg-white {
+    transform: none;
+  }
+  
+  .testimonial-slide .bg-white:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .testimonial-slide svg,
+  .testimonial-slide blockquote,
+  .testimonial-slide .flex.items-center img,
+  .testimonial-slide .text-center,
+  .grid.grid-cols-2 img {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .testimonial-slide blockquote::before {
+    animation: none;
+    width: 100%;
+  }
+  
+  .absolute button:hover,
+  .space-x-2 button:hover {
+    transform: none;
+  }
 }
 </style>
