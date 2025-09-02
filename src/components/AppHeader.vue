@@ -11,34 +11,6 @@
 
         <!-- Desktop Navigation -->
         <nav class="hidden lg:flex items-center space-x-8 flex-1 max-w-4xl mx-8 animate-fade-in-delayed">
-          <!-- Search Bar with Enhanced Animation -->
-          <div class="flex-1 max-w-2xl">
-            <div class="relative group">
-              <input
-                ref="searchInput"
-                v-model="searchQuery"
-                type="text"
-                :placeholder="$t('header.searchPlaceholder')"
-                class="w-3/4 group-hover:w-full px-4 py-3 pl-12 border-2 border-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-full focus:outline-none focus:ring-2 focus:ring-udemy-purple focus:border-transparent transition-all duration-500 ease-in-out hover:shadow-lg focus:shadow-xl focus:-translate-y-1 transform focus:w-full focus:scale-105"
-                @focus="handleSearchFocus"
-                @blur="handleSearchBlur"
-              />
-              <div class="absolute inset-y-0 left-0 pl-4 flex items-center transition-all duration-500 ease-in-out"
-                   :class="{ 
-                     'text-udemy-purple scale-110 rotate-12': isSearchFocused, 
-                     'text-gray-400 dark:text-gray-300 scale-100 rotate-0': !isSearchFocused 
-                   }">
-                <svg class="w-5 h-5 transition-all duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <!-- Search glow effect -->
-              <div class="absolute inset-0 rounded-full bg-gradient-to-r from-udemy-purple/20 to-purple-600/20 opacity-0 blur-md transition-all duration-500 ease-in-out scale-95"
-                   :class="{ 'opacity-100 scale-110': isSearchFocused }"></div>
-              <!-- Ripple effect on focus -->
-              <div v-if="isSearchFocused" class="absolute inset-0 rounded-full border-2 border-udemy-purple/30 animate-ping"></div>
-            </div>
-          </div>
 
           <!-- Navigation Links with Enhanced Hover -->
           <div class="flex items-center space-x-6">
@@ -56,6 +28,70 @@
               {{ $t('header.myLearning') }}
               <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-udemy-purple transition-all duration-300 group-hover:w-full"></span>
             </a>
+          </div>
+
+          <!-- Search Bar with Modern Animation -->
+          <div class="flex-1 max-w-lg mx-6">
+            <div class="relative group search-container">
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-300 group-focus-within:text-udemy-purple">
+                <svg class="w-5 h-5 text-gray-400 dark:text-gray-500 group-focus-within:text-udemy-purple transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              
+              <input
+                type="text"
+                v-model="searchQuery"
+                @focus="isSearchFocused = true"
+                @blur="isSearchFocused = false"
+                @input="onSearchInput"
+                class="w-full pl-10 pr-12 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-udemy-purple focus:border-transparent transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-750 focus:bg-white dark:focus:bg-gray-800 focus:shadow-lg hover:shadow-md search-input"
+                :class="{ 'ring-2 ring-udemy-purple border-transparent shadow-lg': isSearchFocused }"
+                :placeholder="$t('header.searchPlaceholder')"
+              />
+              
+              <!-- Clear button with animation -->
+              <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                <button
+                  v-show="searchQuery"
+                  @click="clearSearch"
+                  class="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200 hover:scale-110 active:scale-95 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+                >
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              
+              <!-- Animated search suggestions dropdown -->
+              <transition
+                enter-active-class="transition-all duration-200 ease-out"
+                enter-from-class="opacity-0 transform -translate-y-2 scale-95"
+                enter-to-class="opacity-100 transform translate-y-0 scale-100"
+                leave-active-class="transition-all duration-150 ease-in"
+                leave-from-class="opacity-100 transform translate-y-0 scale-100"
+                leave-to-class="opacity-0 transform -translate-y-2 scale-95"
+              >
+                <div
+                  v-show="isSearchFocused && searchQuery"
+                  class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 backdrop-blur-md bg-white/95 dark:bg-gray-800/95 z-50"
+                >
+                  <div class="p-4">
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">Suggestions de recherche</div>
+                    <div class="space-y-2">
+                      <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:translate-x-1">
+                        <div class="font-medium text-gray-900 dark:text-gray-100">Vue.js</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Développement web</div>
+                      </a>
+                      <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:translate-x-1">
+                        <div class="font-medium text-gray-900 dark:text-gray-100">JavaScript</div>
+                        <div class="text-sm text-gray-500 dark:text-gray-400">Programmation</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </transition>
+            </div>
           </div>
         </nav>
 
@@ -116,20 +152,6 @@
     >
       <div v-show="mobileMenuOpen" class="lg:hidden bg-white/95 dark:bg-gray-900/95 border-t dark:border-gray-700 backdrop-blur-md">
         <div class="px-4 py-4 space-y-4">
-          <!-- Mobile Search with Animation -->
-          <div class="relative animate-slide-in-mobile">
-            <input
-              v-model="searchQuery"
-              type="text"
-              :placeholder="$t('header.searchPlaceholder')"
-              class="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-udemy-purple transition-all duration-300 hover:shadow-md focus:shadow-lg"
-            />
-            <div class="absolute inset-y-0 left-0 pl-4 flex items-center">
-              <svg class="w-5 h-5 text-gray-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
 
           <!-- Mobile Navigation Links with Staggered Animation -->
           <div class="space-y-3">
@@ -175,20 +197,19 @@ import ThemeToggle from './ThemeToggle.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const mobileMenuOpen = ref(false)
-const isSearchFocused = ref(false)
-const searchInput = ref(null)
 const searchQuery = ref('')
-
-const handleSearchFocus = () => {
-  isSearchFocused.value = true
-}
-
-const handleSearchBlur = () => {
-  isSearchFocused.value = false
-}
+const isSearchFocused = ref(false)
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+const clearSearch = () => {
+  searchQuery.value = ''
+}
+
+const onSearchInput = (event) => {
+  searchQuery.value = event.target.value
 }
 </script>
 
@@ -350,6 +371,99 @@ input[type="text"] {
   * {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+/* Search Bar Animations */
+.search-container {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-container:hover {
+  transform: translateY(-1px);
+}
+
+.search-input {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-input:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(164, 53, 240, 0.15);
+}
+
+.search-input:hover:not(:focus) {
+  transform: translateY(-0.5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Search input glow effect */
+@keyframes search-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(164, 53, 240, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 4px rgba(164, 53, 240, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(164, 53, 240, 0);
+  }
+}
+
+.search-input:focus {
+  animation: search-glow 0.6s ease-out;
+}
+
+/* Enhanced search suggestions animation */
+.search-suggestions-enter-active {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.search-suggestions-enter-from {
+  opacity: 0;
+  transform: translateY(-10px) scale(0.95);
+}
+
+/* Ripple effect for search focus */
+.search-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(164, 53, 240, 0.1) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.search-container:focus-within::before {
+  width: 200%;
+  height: 200%;
+}
+
+/* Smooth transitions for dropdown items */
+.dropdown-item {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 8px;
+}
+
+.dropdown-item:hover {
+  transform: translateX(4px);
+  background: linear-gradient(90deg, rgba(164, 53, 240, 0.05) 0%, transparent 100%);
+}
+
+/* Mobile search bar (if needed later) */
+@media (max-width: 1024px) {
+  .search-container {
+    max-width: 100%;
+  }
+  
+  .search-input {
+    font-size: 16px; /* Prevents zoom on iOS */
   }
 }
 

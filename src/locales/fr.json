@@ -22,7 +22,7 @@
   "header": {
     "searchPlaceholder": "Rechercher un cours",
     "categories": "Catégories",
-    "teachOnUdemy": "Enseigner sur Ithiel",
+    "teachOnUdemy": "Enseigner sur Tombooktou",
     "myLearning": "Mon apprentissage",
     "login": "Se connecter",
     "signup": "S'inscrire"
@@ -90,7 +90,7 @@
     "trustedBy": "Faites confiance aux entreprises du monde entier"
   },
   "udemyBusiness": {
-    "title": "Ithiel Business",
+    "title": "Tombooktou Business",
     "subtitle": "Formez vos équipes avec des cours de qualité professionnelle",
     "description": "Donnez à vos équipes les compétences dont elles ont besoin pour rester compétitives dans un monde en constante évolution grâce à notre collection de cours créés par des experts du secteur.",
     "features": {
@@ -108,7 +108,7 @@
       }
     },
     "cta": {
-      "tryFree": "Essayez Ithiel Business",
+      "tryFree": "Essayez Tombooktou Business",
       "learnMore": "En savoir plus"
     },
     "stats": {
@@ -119,9 +119,9 @@
   },
   "footer": {
     "business": {
-      "title": "Ithiel Business",
+      "title": "Tombooktou Business",
       "solutions": "Solutions pour entreprises",
-      "teach": "Enseigner sur Ithiel",
+      "teach": "Enseigner sur Tombooktou",
       "getApp": "Obtenir l'application",
       "about": "À propos de nous"
     },
@@ -147,7 +147,7 @@
       "accessibility": "Déclaration d'accessibilité"
     },
     "bottom": {
-      "copyright": "© {year} Ithiel, Inc.",
+      "copyright": "© {year} Tombooktou, Inc.",
       "language": "Français"
     }
   }
