@@ -16,6 +16,7 @@
             <div class="relative group">
               <input
                 ref="searchInput"
+                v-model="searchQuery"
                 type="text"
                 :placeholder="$t('header.searchPlaceholder')"
                 class="w-3/4 group-hover:w-full px-4 py-3 pl-12 border-2 border-gray-900 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-full focus:outline-none focus:ring-2 focus:ring-udemy-purple focus:border-transparent transition-all duration-500 ease-in-out hover:shadow-lg focus:shadow-xl focus:-translate-y-1 transform focus:w-full focus:scale-105"
@@ -118,6 +119,7 @@
           <!-- Mobile Search with Animation -->
           <div class="relative animate-slide-in-mobile">
             <input
+              v-model="searchQuery"
               type="text"
               :placeholder="$t('header.searchPlaceholder')"
               class="w-full px-4 py-3 pl-12 border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-udemy-purple transition-all duration-300 hover:shadow-md focus:shadow-lg"
@@ -175,6 +177,7 @@ import LanguageSwitcher from './LanguageSwitcher.vue'
 const mobileMenuOpen = ref(false)
 const isSearchFocused = ref(false)
 const searchInput = ref(null)
+const searchQuery = ref('')
 
 const handleSearchFocus = () => {
   isSearchFocused.value = true

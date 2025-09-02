@@ -74,7 +74,7 @@
       </div>
     </div>
     
-    <!-- Scroll Indicator -->
+    
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow cursor-pointer group" @click="scrollToNextSection">
       <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center transition-all duration-300 group-hover:border-white/80 group-hover:scale-110 group-active:scale-95">
         <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-scroll-indicator transition-all duration-300 group-hover:bg-white/90"></div>

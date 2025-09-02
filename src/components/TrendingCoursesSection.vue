@@ -32,7 +32,7 @@
           @click="prevSlide"
           :disabled="currentSlide === 0"
           :class="[
-            'absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
+            'absolute -left-6 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
             currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105'
           ]"
         >
@@ -45,7 +45,7 @@
           @click="nextSlide"
           :disabled="currentSlide >= maxSlides"
           :class="[
-            'absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
+            'absolute -right-6 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
             currentSlide >= maxSlides ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105'
           ]"
         >
@@ -58,7 +58,7 @@
         <div class="overflow-hidden">
           <div 
             class="flex transition-transform duration-500 ease-in-out"
-            :style="{ transform: `translateX(-${currentSlide * slideWidth}%)` }"
+            :style="{ transform: `translateX(-${currentSlide * (100 / slidesPerView)}%)` }"
           >
             <div 
               v-for="(course, index) in filteredCourses" 
@@ -240,8 +240,12 @@ const filteredCourses = computed(() => {
 })
 
 const slidesPerView = ref(4)
-const slideWidth = computed(() => 100 / slidesPerView.value)
-const maxSlides = computed(() => Math.max(0, filteredCourses.value.length - slidesPerView.value))
+const slideWidth = computed(() => {
+  return 100 / slidesPerView.value
+})
+const maxSlides = computed(() => {
+  return Math.max(0, filteredCourses.value.length - slidesPerView.value)
+})
 const totalDots = computed(() => maxSlides.value + 1)
 
 const nextSlide = () => {
@@ -257,6 +261,7 @@ const prevSlide = () => {
 }
 
 const updateSlidesPerView = () => {
+  const oldSlidesPerView = slidesPerView.value
   if (window.innerWidth >= 1280) {
     slidesPerView.value = 4
   } else if (window.innerWidth >= 1024) {
@@ -266,7 +271,10 @@ const updateSlidesPerView = () => {
   } else {
     slidesPerView.value = 1
   }
-  currentSlide.value = 0
+  // Réajuster currentSlide si nécessaire
+  if (currentSlide.value > maxSlides.value) {
+    currentSlide.value = Math.max(0, maxSlides.value)
+  }
 }
 
 onMounted(() => {
