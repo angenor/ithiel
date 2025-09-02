@@ -17,7 +17,7 @@ import AppFooter from '../components/AppFooter.vue'
     <main>
       <HeroSection />
       <FeaturedCoursesSection />
-      <PopularCategoriesSection />
+      <!-- <PopularCategoriesSection /> -->
       <TrendingCoursesSection />
       <FeaturedInstructorsSection />
       <TestimonialsSection />

@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-section relative h-screen bg-gradient-to-r from-gray-800 to-gray-600 overflow-hidden">
+  <section class="hero-section relative bg-gradient-to-r from-gray-800 to-gray-600 overflow-hidden" style="height: calc(100vh - 5rem)">
     <!-- Background Image with Parallax -->
     <div ref="backgroundRef" class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 transform scale-110 transition-transform duration-700 ease-out" 
          style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80')">
@@ -75,9 +75,9 @@
     </div>
     
     <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow">
-      <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-        <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-scroll-indicator"></div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce-slow cursor-pointer group" @click="scrollToNextSection">
+      <div class="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center transition-all duration-300 group-hover:border-white/80 group-hover:scale-110 group-active:scale-95">
+        <div class="w-1 h-3 bg-white/70 rounded-full mt-2 animate-scroll-indicator transition-all duration-300 group-hover:bg-white/90"></div>
       </div>
     </div>
   </section>
@@ -120,6 +120,14 @@ const handleScroll = () => {
     const rate = scrolled * -0.5
     backgroundRef.value.style.transform = `scale(1.1) translateY(${rate}px)`
   }
+}
+
+const scrollToNextSection = () => {
+  const heroHeight = window.innerHeight - 80 // 5rem = 80px (header height)
+  window.scrollTo({
+    top: heroHeight,
+    behavior: 'smooth'
+  })
 }
 
 onMounted(() => {

@@ -65,6 +65,7 @@
   "trendingCourses": {
     "title": "Students are viewing",
     "filters": {
+      "all": "All",
       "popular": "Most popular",
       "topRated": "Highest rated",
       "new": "Newest"

@@ -149,10 +149,11 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 
-const activeFilter = ref('popular')
+const activeFilter = ref('all')
 const currentSlide = ref(0)
 
 const filters = [
+  { key: 'all' },
   { key: 'popular' },
   { key: 'topRated' },
   { key: 'new' }
@@ -231,6 +232,9 @@ const courses = [
 ]
 
 const filteredCourses = computed(() => {
+  if (activeFilter.value === 'all') {
+    return courses
+  }
   return courses.filter(course => course.category === activeFilter.value)
 })
 

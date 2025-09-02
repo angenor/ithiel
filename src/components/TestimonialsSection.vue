@@ -127,7 +127,7 @@ const currentTestimonial = ref(0)
 const testimonials = [
   {
     id: 1,
-    quote: "Udemy has completely transformed my career. The courses are comprehensive, well-structured, and taught by industry experts. I was able to transition from a complete beginner to landing my dream job as a full-stack developer.",
+    quote: "Ithiel has completely transformed my career. The courses are comprehensive, well-structured, and taught by industry experts. I was able to transition from a complete beginner to landing my dream job as a full-stack developer.",
     name: "Sarah Chen",
     title: "Full Stack Developer",
     company: "Google",
@@ -136,7 +136,7 @@ const testimonials = [
   },
   {
     id: 2,
-    quote: "The quality of instruction on Udemy is outstanding. I've taken multiple courses to upskill in data science and machine learning. The practical projects and real-world examples made all the difference in my learning journey.",
+    quote: "The quality of instruction on Ithiel is outstanding. I've taken multiple courses to upskill in data science and machine learning. The practical projects and real-world examples made all the difference in my learning journey.",
     name: "Michael Rodriguez",
     title: "Data Scientist",
     company: "Microsoft",
@@ -145,7 +145,7 @@ const testimonials = [
   },
   {
     id: 3,
-    quote: "As a busy professional, I love that I can learn at my own pace. The mobile app allows me to continue learning during my commute. Udemy has helped me stay current with the latest technologies and advance in my career.",
+    quote: "As a busy professional, I love that I can learn at my own pace. The mobile app allows me to continue learning during my commute. Ithiel has helped me stay current with the latest technologies and advance in my career.",
     name: "Emma Thompson",
     title: "Product Manager",
     company: "Amazon",

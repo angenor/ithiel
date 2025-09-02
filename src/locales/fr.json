@@ -65,6 +65,7 @@
   "trendingCourses": {
     "title": "Les étudiants consultent ces cours",
     "filters": {
+      "all": "Tout",
       "popular": "Les plus populaires",
       "topRated": "Les mieux notés",
       "new": "Nouveaux"
