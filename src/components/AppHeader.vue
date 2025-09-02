@@ -42,55 +42,13 @@
               <input
                 type="text"
                 v-model="searchQuery"
-                @focus="isSearchFocused = true"
-                @blur="isSearchFocused = false"
-                @input="onSearchInput"
-                class="w-full pl-10 pr-12 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-udemy-purple focus:border-transparent transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-750 focus:bg-white dark:focus:bg-gray-800 focus:shadow-lg hover:shadow-md search-input"
-                :class="{ 'ring-2 ring-udemy-purple border-transparent shadow-lg': isSearchFocused }"
+                @click="openSearchModal"
+                @focus="openSearchModal"
+                readonly
+                class="w-full pl-10 pr-12 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-udemy-purple focus:border-transparent transition-all duration-300 hover:bg-gray-100 dark:hover:bg-gray-750 focus:bg-white dark:focus:bg-gray-800 focus:shadow-lg hover:shadow-md search-input cursor-pointer"
                 :placeholder="$t('header.searchPlaceholder')"
               />
               
-              <!-- Clear button with animation -->
-              <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
-                <button
-                  v-show="searchQuery"
-                  @click="clearSearch"
-                  class="p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200 hover:scale-110 active:scale-95 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-                >
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              
-              <!-- Animated search suggestions dropdown -->
-              <transition
-                enter-active-class="transition-all duration-200 ease-out"
-                enter-from-class="opacity-0 transform -translate-y-2 scale-95"
-                enter-to-class="opacity-100 transform translate-y-0 scale-100"
-                leave-active-class="transition-all duration-150 ease-in"
-                leave-from-class="opacity-100 transform translate-y-0 scale-100"
-                leave-to-class="opacity-0 transform -translate-y-2 scale-95"
-              >
-                <div
-                  v-show="isSearchFocused && searchQuery"
-                  class="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 backdrop-blur-md bg-white/95 dark:bg-gray-800/95 z-50"
-                >
-                  <div class="p-4">
-                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">Suggestions de recherche</div>
-                    <div class="space-y-2">
-                      <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:translate-x-1">
-                        <div class="font-medium text-gray-900 dark:text-gray-100">Vue.js</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400">Développement web</div>
-                      </a>
-                      <a href="#" class="block px-3 py-2 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 hover:translate-x-1">
-                        <div class="font-medium text-gray-900 dark:text-gray-100">JavaScript</div>
-                        <div class="text-sm text-gray-500 dark:text-gray-400">Programmation</div>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </transition>
             </div>
           </div>
         </nav>
@@ -188,6 +146,13 @@
         </div>
       </div>
     </transition>
+
+    <!-- Search Modal -->
+    <SearchModal
+      :isVisible="isSearchModalOpen"
+      @close="closeSearchModal"
+      @select="handleSearchResult"
+    />
   </header>
 </template>
 
@@ -195,21 +160,28 @@
 import { ref } from 'vue'
 import ThemeToggle from './ThemeToggle.vue'
 import LanguageSwitcher from './LanguageSwitcher.vue'
+import SearchModal from './SearchModal.vue'
 
 const mobileMenuOpen = ref(false)
 const searchQuery = ref('')
-const isSearchFocused = ref(false)
+const isSearchModalOpen = ref(false)
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value
 }
 
-const clearSearch = () => {
-  searchQuery.value = ''
+const openSearchModal = () => {
+  isSearchModalOpen.value = true
 }
 
-const onSearchInput = (event) => {
-  searchQuery.value = event.target.value
+const closeSearchModal = () => {
+  isSearchModalOpen.value = false
+}
+
+const handleSearchResult = (result) => {
+  console.log('Selected result:', result)
+  // Handle the selected search result here
+  // You could navigate to a course page, add to cart, etc.
 }
 </script>
 

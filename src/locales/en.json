@@ -25,7 +25,46 @@
     "teachOnUdemy": "Teach on Tombooktou",
     "myLearning": "My learning",
     "login": "Log in",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "search": "Search"
+  },
+  "search": {
+    "placeholder": "Search for courses, instructors, topics...",
+    "searching": "Searching...",
+    "suggestions": "Popular searches",
+    "resultsFor": "Results for \"{query}\"",
+    "noResults": "No results found",
+    "noResultsDescription": "Try different keywords or browse our categories.",
+    "students": "students",
+    "popularSearches": "Popular searches",
+    "resultsCount": "{count} results for \"{query}\"",
+    "sortBy": "Sort by",
+    "emptyState": {
+      "title": "What do you want to learn?",
+      "subtitle": "Start typing to search for courses, instructors, and topics."
+    },
+    "noResults": {
+      "title": "No results found",
+      "subtitle": "No results for \"{query}\". Try different search terms."
+    },
+    "sort": {
+      "relevance": "Relevance",
+      "newest": "Newest",
+      "rating": "Highest rated",
+      "price": "Price"
+    },
+    "filters": {
+      "all": "All",
+      "development": "Development",
+      "business": "Business",
+      "design": "Design",
+      "marketing": "Marketing"
+    },
+    "badges": {
+      "bestseller": "Bestseller",
+      "hot": "Hot",
+      "new": "New"
+    }
   },
   "hero": {
     "title": "Skills that drive you forward",
