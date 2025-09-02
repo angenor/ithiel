@@ -61,14 +61,14 @@
           </div>
 
           <!-- Stats -->
-          <div class="mt-12 grid grid-cols-3 gap-6">
+          <div class="mt-12 grid grid-cols-3 gap-6" ref="statsSection">
             <div 
               v-for="stat in stats" 
               :key="stat.key"
               class="text-center"
             >
               <div class="text-2xl md:text-3xl font-bold text-udemy-purple mb-1">
-                {{ stat.value }}
+                {{ animatedValues[stat.key] }}
               </div>
               <div class="text-sm text-gray-600 dark:text-gray-300">
                 {{ $t(`udemyBusiness.stats.${stat.key}`) }}
@@ -82,6 +82,8 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from 'vue'
+
 const features = [
   { key: 'teamTraining' },
   { key: 'analytics' },
@@ -89,10 +91,70 @@ const features = [
 ]
 
 const stats = [
-  { key: 'companies', value: '25,000+' },
-  { key: 'learners', value: '57M+' },
-  { key: 'languages', value: '75+' }
+  { key: 'companies', value: 25000, finalValue: '25,000+' },
+  { key: 'learners', value: 57000000, finalValue: '57M+' },
+  { key: 'languages', value: 75, finalValue: '75+' }
 ]
+
+const animatedValues = ref({
+  companies: '0+',
+  learners: '0M+',
+  languages: '0+'
+})
+
+const animateNumber = (key, targetValue, finalDisplay) => {
+  const duration = 2000
+  const startTime = Date.now()
+  
+  const animate = () => {
+    const elapsed = Date.now() - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    
+    const easeOutQuart = 1 - Math.pow(1 - progress, 4)
+    const currentValue = Math.floor(targetValue * easeOutQuart)
+    
+    if (key === 'companies') {
+      animatedValues.value[key] = `${currentValue.toLocaleString()}+`
+    } else if (key === 'learners') {
+      const millions = (currentValue / 1000000).toFixed(0)
+      animatedValues.value[key] = `${millions}M+`
+    } else if (key === 'languages') {
+      animatedValues.value[key] = `${currentValue}+`
+    }
+    
+    if (progress < 1) {
+      requestAnimationFrame(animate)
+    } else {
+      animatedValues.value[key] = finalDisplay
+    }
+  }
+  
+  animate()
+}
+
+const startAnimation = () => {
+  setTimeout(() => {
+    stats.forEach(stat => {
+      animateNumber(stat.key, stat.value, stat.finalValue)
+    })
+  }, 500)
+}
+
+onMounted(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        startAnimation()
+        observer.disconnect()
+      }
+    })
+  }, { threshold: 0.5 })
+  
+  const section = document.querySelector('.udemy-business')
+  if (section) {
+    observer.observe(section)
+  }
+})
 </script>
 
 <style scoped>
