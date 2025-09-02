@@ -30,28 +30,108 @@
             {{ $t('hero.subtitle') }}
           </p>
           
-          <!-- Search Bar with Floating Animation -->
+          <!-- Modern Search Bar with Advanced Animation -->
           <div class="mb-8 animate-slide-up-fade-in-delayed-2">
-            <div class="relative max-w-xl group">
-              <input
-                ref="searchInput"
-                type="text"
-                :placeholder="$t('hero.searchPlaceholder')"
-                class="w-full px-6 py-4 pl-14 text-lg border-0 rounded-lg focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg dark:bg-gray-800 dark:text-white dark:placeholder-gray-300 bg-gray-100 text-gray-900 placeholder-gray-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 focus:shadow-2xl focus:-translate-y-2 transform"
-                @focus="isSearchFocused = true"
-                @blur="isSearchFocused = false"
-              />
-              <div class="absolute inset-y-0 left-0 pl-5 flex items-center transition-all duration-300"
-                   :class="{ 'text-blue-500 scale-110': isSearchFocused, 'text-gray-400': !isSearchFocused }">
-                <svg class="w-6 h-6 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="relative max-w-xl group hero-search-container">
+              <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-all duration-300 group-focus-within:text-udemy-purple">
+                <svg class="w-6 h-6 text-gray-400 group-focus-within:text-udemy-purple transition-all duration-300 group-focus-within:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <!-- Floating label effect -->
-              <div class="absolute -top-2 left-4 bg-gray-100 dark:bg-gray-800 px-2 text-xs text-gray-500 opacity-0 transform scale-95 transition-all duration-200"
-                   :class="{ 'opacity-100 scale-100': isSearchFocused }">
-                {{ $t('hero.searchLabel') }}
+              
+              <input
+                ref="searchInput"
+                type="text"
+                v-model="heroSearchQuery"
+                @focus="isHeroSearchFocused = true"
+                @blur="isHeroSearchFocused = false"
+                @input="onHeroSearchInput"
+                :placeholder="$t('hero.searchPlaceholder')"
+                class="w-full px-6 py-4 pl-14 pr-12 text-lg border-0 rounded-2xl focus:outline-none focus:ring-4 focus:ring-udemy-purple/30 shadow-lg dark:bg-gray-800/90 dark:text-white dark:placeholder-gray-300 bg-white/95 text-gray-900 placeholder-gray-500 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 focus:shadow-2xl focus:-translate-y-2 transform backdrop-blur-md hero-search-input"
+                :class="{ 'ring-4 ring-udemy-purple/30 shadow-2xl': isHeroSearchFocused }"
+              />
+              
+              <!-- Clear button with animation -->
+              <div class="absolute inset-y-0 right-0 pr-5 flex items-center">
+                <button
+                  v-show="heroSearchQuery"
+                  @click="clearHeroSearch"
+                  class="p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-all duration-200 hover:scale-110 active:scale-95 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700/50 backdrop-blur-sm"
+                >
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
+              
+              <!-- Enhanced search suggestions dropdown with glassmorphism -->
+              <transition
+                enter-active-class="transition-all duration-300 ease-out"
+                enter-from-class="opacity-0 transform -translate-y-4 scale-95"
+                enter-to-class="opacity-100 transform translate-y-0 scale-100"
+                leave-active-class="transition-all duration-200 ease-in"
+                leave-from-class="opacity-100 transform translate-y-0 scale-100"
+                leave-to-class="opacity-0 transform -translate-y-4 scale-95"
+              >
+                <div
+                  v-show="isHeroSearchFocused && heroSearchQuery"
+                  class="absolute top-full left-0 right-0 mt-4 bg-white/95 dark:bg-gray-800/95 rounded-2xl shadow-2xl border border-white/20 dark:border-gray-700/50 backdrop-blur-md z-50 overflow-hidden"
+                >
+                  <div class="p-6">
+                    <div class="text-sm text-gray-500 dark:text-gray-400 mb-3 font-medium">{{ $t('common.search') }} suggestions</div>
+                    <div class="space-y-3">
+                      <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50/80 dark:hover:bg-gray-700/50 transition-all duration-200 hover:translate-x-2 group backdrop-blur-sm">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-udemy-purple to-purple-600 rounded-full flex items-center justify-center mr-4">
+                          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                          </svg>
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-udemy-purple transition-colors">Vue.js Masterclass</div>
+                          <div class="text-sm text-gray-500 dark:text-gray-400">Développement web • 127 cours</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                          <svg class="w-5 h-5 text-gray-400 group-hover:text-udemy-purple transition-all duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50/80 dark:hover:bg-gray-700/50 transition-all duration-200 hover:translate-x-2 group backdrop-blur-sm">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
+                          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                          </svg>
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-udemy-purple transition-colors">JavaScript Moderne</div>
+                          <div class="text-sm text-gray-500 dark:text-gray-400">Programmation • 89 cours</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                          <svg class="w-5 h-5 text-gray-400 group-hover:text-udemy-purple transition-all duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                      <a href="#" class="flex items-center px-4 py-3 rounded-xl hover:bg-gray-50/80 dark:hover:bg-gray-700/50 transition-all duration-200 hover:translate-x-2 group backdrop-blur-sm">
+                        <div class="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
+                          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                          </svg>
+                        </div>
+                        <div class="flex-grow">
+                          <div class="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-udemy-purple transition-colors">Design UI/UX</div>
+                          <div class="text-sm text-gray-500 dark:text-gray-400">Design • 156 cours</div>
+                        </div>
+                        <div class="flex-shrink-0">
+                          <svg class="w-5 h-5 text-gray-400 group-hover:text-udemy-purple transition-all duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </transition>
             </div>
           </div>
           
@@ -95,11 +175,21 @@ const popularCategories = [
 ]
 
 const isSearchFocused = ref(false)
+const isHeroSearchFocused = ref(false)
+const heroSearchQuery = ref('')
 const backgroundRef = ref(null)
 const searchInput = ref(null)
 
 const handleCategoryHover = () => {
   // Subtle haptic feedback or sound effect could be added here
+}
+
+const clearHeroSearch = () => {
+  heroSearchQuery.value = ''
+}
+
+const onHeroSearchInput = (event) => {
+  heroSearchQuery.value = event.target.value
 }
 
 const getParticleStyle = (index) => {
@@ -312,6 +402,113 @@ onUnmounted(() => {
   }
 }
 
+/* Hero Search Bar Advanced Styling */
+.hero-search-container {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-search-container:hover {
+  transform: translateY(-2px);
+}
+
+.hero-search-input {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-search-input:focus {
+  transform: translateY(-3px);
+  box-shadow: 0 25px 50px rgba(164, 53, 240, 0.25), 0 0 0 1px rgba(164, 53, 240, 0.1);
+}
+
+.hero-search-input:hover:not(:focus) {
+  transform: translateY(-1px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Hero search glow effect - more prominent */
+@keyframes hero-search-glow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(164, 53, 240, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(164, 53, 240, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(164, 53, 240, 0);
+  }
+}
+
+.hero-search-input:focus {
+  animation: hero-search-glow 0.8s ease-out;
+}
+
+/* Enhanced ripple effect for hero search */
+.hero-search-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(164, 53, 240, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  transition: all 0.8s ease-out;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-search-container:focus-within::before {
+  width: 300%;
+  height: 300%;
+}
+
+/* Glassmorphism enhancement for dropdown */
+.hero-search-container .backdrop-blur-md {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Purple accent for suggestions */
+.text-udemy-purple {
+  color: #A435F0;
+}
+
+.from-udemy-purple {
+  --tw-gradient-from: #A435F0;
+}
+
+/* Enhanced hover effects for suggestion items */
+.group:hover .group-hover\\:text-udemy-purple {
+  color: #A435F0;
+}
+
+.group:hover .group-hover\\:translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+/* Advanced glassmorphism for search suggestions */
+@supports (backdrop-filter: blur(20px)) {
+  .hero-search-container .backdrop-blur-md {
+    background: rgba(255, 255, 255, 0.85);
+  }
+  
+  .dark .hero-search-container .backdrop-blur-md {
+    background: rgba(31, 41, 55, 0.85);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(20px)) {
+  .hero-search-container .backdrop-blur-md {
+    background: rgba(255, 255, 255, 0.98);
+  }
+  
+  .dark .hero-search-container .backdrop-blur-md {
+    background: rgba(31, 41, 55, 0.98);
+  }
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   .animate-float {
@@ -323,6 +520,16 @@ onUnmounted(() => {
   .animate-slide-up-fade-in-delayed-2,
   .animate-slide-up-fade-in-delayed-3 {
     animation-duration: 0.8s;
+  }
+  
+  .hero-search-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .hero-search-container:hover,
+  .hero-search-input:hover:not(:focus),
+  .hero-search-input:focus {
+    transform: none; /* Disable transform on mobile for better performance */
   }
 }
 </style>
