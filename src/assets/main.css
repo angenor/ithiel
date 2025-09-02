@@ -1,0 +1,11 @@
+/* Import Tailwind CSS */
+@import "tailwindcss";
+
+/* Configuration du dark mode pour TailwindCSS 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Custom theme colors */
+:root {
+  --color-udemy-purple: #A435F0;
+  --color-udemy-dark-purple: #8710D8;
+}

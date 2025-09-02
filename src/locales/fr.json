@@ -1,0 +1,153 @@
+{
+  "welcome": {
+    "title": "Bienvenue",
+    "message": "Bienvenue dans votre application Vue.js"
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "À propos"
+  },
+  "common": {
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "add": "Ajouter",
+    "search": "Rechercher",
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Succès",
+    "confirm": "Confirmer"
+  },
+  "header": {
+    "searchPlaceholder": "Rechercher un cours",
+    "categories": "Catégories",
+    "teachOnUdemy": "Enseigner sur Udemy",
+    "myLearning": "Mon apprentissage",
+    "login": "Se connecter",
+    "signup": "S'inscrire"
+  },
+  "hero": {
+    "title": "Développez vos compétences avec les experts",
+    "subtitle": "Choisissez parmi plus de 250 000 cours vidéo en ligne avec de nouveaux ajouts publiés chaque mois",
+    "searchPlaceholder": "Que voulez-vous apprendre ?",
+    "popularTopics": "Sujets populaires",
+    "categories": {
+      "technology": "Technologie",
+      "business": "Business",
+      "design": "Design",
+      "marketing": "Marketing",
+      "personalDevelopment": "Développement personnel"
+    }
+  },
+  "featuredCourses": {
+    "title": "Un large choix de cours",
+    "subtitle": "Choisissez parmi plus de 250 000 cours vidéo en ligne avec de nouveaux ajouts publiés chaque mois",
+    "viewMore": "Voir plus",
+    "badges": {
+      "bestseller": "Bestseller",
+      "new": "Nouveau"
+    }
+  },
+  "popularCategories": {
+    "title": "Catégories les plus populaires",
+    "categories": {
+      "webDevelopment": "Développement web",
+      "dataScience": "Data Science",
+      "design": "Design",
+      "marketing": "Marketing",
+      "business": "Business",
+      "photography": "Photographie",
+      "music": "Musique",
+      "healthFitness": "Santé et fitness"
+    }
+  },
+  "trendingCourses": {
+    "title": "Les étudiants consultent ces cours",
+    "filters": {
+      "popular": "Les plus populaires",
+      "topRated": "Les mieux notés",
+      "new": "Nouveaux"
+    },
+    "badges": {
+      "bestseller": "Bestseller",
+      "new": "Nouveau"
+    }
+  },
+  "featuredInstructors": {
+    "title": "Instructeurs vedettes",
+    "students": "étudiants",
+    "courses": "cours",
+    "instructorRating": "Note instructeur",
+    "viewProfile": "Voir le profil",
+    "badges": {
+      "topInstructor": "Top instructeur"
+    }
+  },
+  "testimonials": {
+    "title": "Voyez ce que disent nos apprenants",
+    "trustedBy": "Faites confiance aux entreprises du monde entier"
+  },
+  "udemyBusiness": {
+    "title": "Udemy Business",
+    "subtitle": "Formez vos équipes avec des cours de qualité professionnelle",
+    "description": "Donnez à vos équipes les compétences dont elles ont besoin pour rester compétitives dans un monde en constante évolution grâce à notre collection de cours créés par des experts du secteur.",
+    "features": {
+      "teamTraining": {
+        "title": "Formation d'équipe",
+        "description": "Formez vos équipes entières avec des cours de qualité professionnelle"
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Suivez les progrès de votre équipe avec des analyses détaillées"
+      },
+      "dedicatedSupport": {
+        "title": "Support dédié",
+        "description": "Bénéficiez d'un support client dédié pour votre organisation"
+      }
+    },
+    "cta": {
+      "tryFree": "Essayez Udemy Business",
+      "learnMore": "En savoir plus"
+    },
+    "stats": {
+      "companies": "entreprises",
+      "learners": "apprenants",
+      "languages": "langues"
+    }
+  },
+  "footer": {
+    "business": {
+      "title": "Udemy Business",
+      "solutions": "Solutions pour entreprises",
+      "teach": "Enseigner sur Udemy",
+      "getApp": "Obtenir l'application",
+      "about": "À propos de nous"
+    },
+    "teaching": {
+      "title": "Enseignement",
+      "becomeInstructor": "Devenir instructeur",
+      "instructorRules": "Règles des instructeurs",
+      "helpCenter": "Centre d'aide des instructeurs"
+    },
+    "support": {
+      "title": "Support",
+      "about": "À propos",
+      "careers": "Carrières",
+      "blog": "Blog",
+      "help": "Aide et support",
+      "affiliates": "Partenaires affiliés"
+    },
+    "legal": {
+      "title": "Légal",
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité",
+      "sitemap": "Plan du site",
+      "accessibility": "Déclaration d'accessibilité"
+    },
+    "bottom": {
+      "copyright": "© {year} Udemy, Inc.",
+      "language": "Français"
+    }
+  }
+}

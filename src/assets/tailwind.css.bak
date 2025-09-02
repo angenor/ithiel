@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Enable dark mode variants in Tailwind CSS 4 */
+@variant dark (&:where(.dark, .dark *));
+
+/* Dark mode configuration for Tailwind 4 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+}
+
+:root {
+  --udemy-purple: #A435F0;
+  --udemy-dark-purple: #8710D8;
+  --text-primary-light: #1C1D1F;
+  --text-secondary-light: #6A6F73;
+  --background-light: #FFFFFF;
+  --background-section-light: #F8F9FA;
+  --border-light: #D1D7DC;
+  
+  --text-primary-dark: #FFFFFF;
+  --text-secondary-dark: #C0C4C7;
+  --background-dark: #121212;
+  --background-section-dark: #1E1E1E;
+  --border-dark: #333333;
+}
+
+/* Apply dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --background: var(--background-dark);
+    --background-section: var(--background-section-dark);
+    --border: var(--border-dark);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --background: var(--background-light);
+    --background-section: var(--background-section-light);
+    --border: var(--border-light);
+  }
+}
+
+/* Manual dark mode override */
+.dark {
+  --text-primary: var(--text-primary-dark);
+  --text-secondary: var(--text-secondary-dark);
+  --background: var(--background-dark);
+  --background-section: var(--background-section-dark);
+  --border: var(--border-dark);
+  color-scheme: dark;
+}
+
+.light {
+  --text-primary: var(--text-primary-light);
+  --text-secondary: var(--text-secondary-light);
+  --background: var(--background-light);
+  --background-section: var(--background-section-light);
+  --border: var(--border-light);
+  color-scheme: light;
+}
