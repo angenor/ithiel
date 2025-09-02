@@ -5,7 +5,7 @@
         <!-- Logo with Animation -->
         <div class="flex-shrink-0 animate-fade-in-scale">
           <div class="text-2xl font-bold text-udemy-purple hover:scale-105 transition-all duration-300 cursor-pointer">
-            Ithiel
+            Tombooktou
           </div>
         </div>
 

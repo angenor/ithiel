@@ -128,10 +128,10 @@
           <!-- Left Side - Logo and Copyright -->
           <div class="flex items-center space-x-4">
             <div class="text-2xl font-bold text-udemy-purple">
-              Ithiel
+              Tombooktou
             </div>
             <span class="text-gray-400 dark:text-gray-300 text-sm">
-              {{ "2025 Ithiel, Inc." }}
+              {{ "2025 Tombooktou, Inc." }}
             </span>
           </div>
 

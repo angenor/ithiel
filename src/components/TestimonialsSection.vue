@@ -128,7 +128,7 @@
 const testimonials = [
   {
     id: 1,
-    quote: "Ithiel a complètement transformé ma carrière. Les cours sont complets, bien structurés et enseignés par des experts. J'ai pu passer de débutant complet à décrocher mon poste de rêve en tant que développeur full-stack.",
+    quote: "Tombooktou a complètement transformé ma carrière. Les cours sont complets, bien structurés et enseignés par des experts. J'ai pu passer de débutant complet à décrocher mon poste de rêve en tant que développeur full-stack.",
     name: "Sarah Chen",
     title: "Développeuse Full Stack",
     company: "Google",
@@ -137,7 +137,7 @@ const testimonials = [
   },
   {
     id: 2,
-    quote: "La qualité des cours sur Ithiel est exceptionnelle. J'ai suivi plusieurs formations pour me perfectionner en data science. Les projets pratiques ont fait toute la différence dans mon apprentissage.",
+    quote: "La qualité des cours sur Tombooktou est exceptionnelle. J'ai suivi plusieurs formations pour me perfectionner en data science. Les projets pratiques ont fait toute la différence dans mon apprentissage.",
     name: "Michael Rodriguez",
     title: "Data Scientist",
     company: "Microsoft",
@@ -146,7 +146,7 @@ const testimonials = [
   },
   {
     id: 3,
-    quote: "En tant que professionnelle occupée, j'adore pouvoir apprendre à mon rythme. L'app mobile me permet de continuer à apprendre pendant mes trajets. Ithiel m'aide à rester à jour avec les dernières technologies.",
+    quote: "En tant que professionnelle occupée, j'adore pouvoir apprendre à mon rythme. L'app mobile me permet de continuer à apprendre pendant mes trajets. Tombooktou m'aide à rester à jour avec les dernières technologies.",
     name: "Emma Thompson",
     title: "Product Manager",
     company: "Amazon",

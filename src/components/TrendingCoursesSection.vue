@@ -26,39 +26,26 @@
       </div>
 
       <!-- Carousel Container -->
-      <div class="relative">
+      <div class="flex relative items-center">
         <!-- Navigation Buttons -->
         <button 
           @click="prevSlide"
           :disabled="currentSlide === 0"
           :class="[
-            'absolute -left-6 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
-            currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105'
+            'absolute left-0 transform -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 min-w-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
+            currentSlide === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105 cursor-pointer'
           ]"
         >
           <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        
-        <button 
-          @click="nextSlide"
-          :disabled="currentSlide >= maxSlides"
-          :class="[
-            'absolute -right-6 top-1/2 transform -translate-y-1/2 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
-            currentSlide >= maxSlides ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105'
-          ]"
-        >
-          <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
 
         <!-- Courses Carousel -->
-        <div class="overflow-hidden">
+        <div class="overflow-hidden pb-5">
           <div 
             class="flex transition-transform duration-500 ease-in-out"
-            :style="{ transform: `translateX(-${currentSlide * (100 / slidesPerView)}%)` }"
+            :style="{ transform: `translateX(-${currentSlide * slideWidth}%)` }"
           >
             <div 
               v-for="(course, index) in filteredCourses" 
@@ -130,7 +117,20 @@
           </div>
         </div>
 
-        <!-- Pagination Dots -->
+        <button 
+          @click="nextSlide"
+          :disabled="currentSlide >= maxSlides"
+          :class="[
+            'absolute right-0 min-w-12 transform -translate-y-1/2 translate-x-4 z-10 w-12 h-12 bg-white dark:bg-gray-800 shadow-lg rounded-full flex items-center justify-center transition-all duration-300',
+            currentSlide >= maxSlides ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-xl hover:scale-105 cursor-pointer'
+            ]"
+          >
+          <svg class="w-6 h-6 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+      <!-- Pagination Dots -->
         <div class="flex justify-center mt-8 space-x-2">
           <button 
             v-for="dot in totalDots" 
@@ -142,7 +142,6 @@
             ]"
           ></button>
         </div>
-      </div>
     </div>
   </section>
 </template>
@@ -240,12 +239,8 @@ const filteredCourses = computed(() => {
 })
 
 const slidesPerView = ref(4)
-const slideWidth = computed(() => {
-  return 100 / slidesPerView.value
-})
-const maxSlides = computed(() => {
-  return Math.max(0, filteredCourses.value.length - slidesPerView.value)
-})
+const slideWidth = computed(() => 100 / slidesPerView.value)
+const maxSlides = computed(() => Math.max(0, filteredCourses.value.length - slidesPerView.value))
 const totalDots = computed(() => maxSlides.value + 1)
 
 const nextSlide = () => {
@@ -261,7 +256,6 @@ const prevSlide = () => {
 }
 
 const updateSlidesPerView = () => {
-  const oldSlidesPerView = slidesPerView.value
   if (window.innerWidth >= 1280) {
     slidesPerView.value = 4
   } else if (window.innerWidth >= 1024) {
@@ -271,10 +265,7 @@ const updateSlidesPerView = () => {
   } else {
     slidesPerView.value = 1
   }
-  // Réajuster currentSlide si nécessaire
-  if (currentSlide.value > maxSlides.value) {
-    currentSlide.value = Math.max(0, maxSlides.value)
-  }
+  currentSlide.value = 0
 }
 
 onMounted(() => {
