@@ -28,7 +28,7 @@
               <input
                 type="text"
                 :placeholder="$t('hero.searchPlaceholder')"
-                class="w-full px-6 py-4 pl-14 text-lg border-0 rounded-lg focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg dark:bg-gray-800 dark:text-white dark:placeholder-gray-300"
+                class="w-full px-6 py-4 pl-14 text-lg border-0 rounded-lg focus:outline-none focus:ring-4 focus:ring-white/30 shadow-lg dark:bg-gray-800 dark:text-white dark:placeholder-gray-300 bg-gray-100 text-gray-900 placeholder-gray-500"
               />
               <div class="absolute inset-y-0 left-0 pl-5 flex items-center">
                 <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -39,7 +39,7 @@
           </div>
           
           <!-- Popular Categories -->
-          <div class="flex flex-wrap gap-3">
+          <div class="flex flex-wrap gap-3 items-center">
             <span class="text-white/90 text-sm font-medium">{{ $t('hero.popularTopics') }}:</span>
             <button 
               v-for="category in popularCategories" 
