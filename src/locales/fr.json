@@ -22,9 +22,9 @@
   "header": {
     "searchPlaceholder": "Rechercher un cours",
     "categories": "Catégories",
-    "teachOnUdemy": "Enseigner sur Tombooktou",
-    "myLearning": "Mon apprentissage",
-    "login": "Se connecter",
+    "teachOnUdemy": "Enseigner",
+    "myLearning": "Mes cours",
+    "login": "Connexion",
     "signup": "S'inscrire",
     "search": "Recherche"
   },
