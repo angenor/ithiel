@@ -11,6 +11,7 @@ This is a Vue 3 application built with Vite, using:
 - Tailwind CSS for styling
 - Vitest for unit testing
 - Playwright for E2E testing
+- Animate.css for CSS animations
 
 ## Common Commands
 
@@ -73,3 +74,30 @@ This application supports French and English languages using Vue i18n.
 2. Use the `$t()` function for all user-facing text
 3. Never hardcode text strings in French or English directly in components
 4. Follow the existing translation key structure in the locale files
+
+## Animations
+
+This project uses [Animate.css](https://animate.style/) for CSS animations.
+
+### Usage
+Add animation classes directly to elements:
+```html
+<div class="animate__animated animate__fadeIn">Animated element</div>
+```
+
+### Common Animation Classes
+- `animate__fadeIn`, `animate__fadeOut` - Fade effects
+- `animate__slideInLeft`, `animate__slideInRight` - Slide effects
+- `animate__bounce`, `animate__pulse` - Attention seekers
+- `animate__zoomIn`, `animate__zoomOut` - Zoom effects
+
+### With Vue Transitions
+```html
+<Transition enter-active-class="animate__animated animate__fadeIn" leave-active-class="animate__animated animate__fadeOut">
+  <div v-if="show">Content</div>
+</Transition>
+```
+
+### Animation Utilities
+- `animate__delay-1s` to `animate__delay-5s` - Add delays
+- `animate__faster`, `animate__fast`, `animate__slow`, `animate__slower` - Speed modifiers
