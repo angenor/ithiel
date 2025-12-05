@@ -5,9 +5,20 @@ import { useSimpleDarkMode } from '@/composables/useSimpleDarkMode'
 import SearchModal from '@/components/SearchModal.vue'
 
 const { t, locale } = useI18n()
-const { isDark, toggle: toggleDarkMode } = useSimpleDarkMode()
+const { isDark, toggle: originalToggleDarkMode } = useSimpleDarkMode()
 
 const isScrolled = ref(false)
+const showModeToast = ref(false)
+let toastTimeout = null
+
+const toggleDarkMode = () => {
+  originalToggleDarkMode()
+  showModeToast.value = true
+  if (toastTimeout) clearTimeout(toastTimeout)
+  toastTimeout = setTimeout(() => {
+    showModeToast.value = false
+  }, 2000)
+}
 const isMobileMenuOpen = ref(false)
 const activeDropdown = ref(null)
 const expandedMobileMenus = ref([])
@@ -577,5 +588,28 @@ onUnmounted(() => {
 
     <!-- Search Modal Component -->
     <SearchModal :is-open="isSearchOpen" @close="closeSearch" />
+
+    <!-- Dark Mode Toast -->
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 translate-y-4"
+    >
+      <div
+        v-if="showModeToast"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 px-5 py-3 rounded-full shadow-xl backdrop-blur-lg"
+        :class="isDark ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'"
+      >
+        <font-awesome-icon
+          :icon="isDark ? 'fa-solid fa-moon' : 'fa-solid fa-sun'"
+          class="w-5 h-5"
+          :class="isDark ? 'text-indigo-400' : 'text-amber-500'"
+        />
+        <span class="text-sm font-medium">{{ t(isDark ? 'theme.darkMode' : 'theme.lightMode') }}</span>
+      </div>
+    </Transition>
   </nav>
 </template>

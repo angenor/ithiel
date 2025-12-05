@@ -147,6 +147,10 @@
     "home": "Accueil",
     "about": "À propos"
   },
+  "theme": {
+    "darkMode": "Mode sombre activé",
+    "lightMode": "Mode clair activé"
+  },
   "common": {
     "save": "Enregistrer",
     "cancel": "Annuler",
