@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useSimpleDarkMode } from '@/composables/useSimpleDarkMode'
+import SearchModal from '@/components/SearchModal.vue'
 
 const { t, locale } = useI18n()
 const { isDark, toggle: toggleDarkMode } = useSimpleDarkMode()
@@ -101,22 +102,13 @@ const navItems = [
 
 const isMoreMenuOpen = ref(false)
 const isSearchOpen = ref(false)
-const searchQuery = ref('')
 
 const toggleSearch = () => {
   isSearchOpen.value = !isSearchOpen.value
-  if (isSearchOpen.value) {
-    setTimeout(() => {
-      document.getElementById('search-input')?.focus()
-    }, 100)
-  } else {
-    searchQuery.value = ''
-  }
 }
 
 const closeSearch = () => {
   isSearchOpen.value = false
-  searchQuery.value = ''
 }
 
 const handleScroll = () => {
@@ -583,125 +575,7 @@ onUnmounted(() => {
       </div>
     </Transition>
 
-    <!-- Search Modal -->
-    <Transition
-      enter-active-class="transition duration-300 ease-out"
-      enter-from-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-active-class="transition duration-200 ease-in"
-      leave-from-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <div
-        v-if="isSearchOpen"
-        class="fixed inset-0 z-[60] flex items-start justify-center pt-20 sm:pt-32"
-        @click.self="closeSearch"
-      >
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-
-        <!-- Search Container -->
-        <Transition
-          enter-active-class="transition duration-300 ease-out delay-100"
-          enter-from-class="opacity-0 scale-95 -translate-y-4"
-          enter-to-class="opacity-100 scale-100 translate-y-0"
-          leave-active-class="transition duration-200 ease-in"
-          leave-from-class="opacity-100 scale-100 translate-y-0"
-          leave-to-class="opacity-0 scale-95 -translate-y-4"
-        >
-          <div
-            v-if="isSearchOpen"
-            class="relative w-full max-w-2xl mx-4"
-          >
-            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800 overflow-hidden">
-              <!-- Search Input -->
-              <div class="relative">
-                <font-awesome-icon
-                  icon="fa-solid fa-magnifying-glass"
-                  class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
-                />
-                <input
-                  id="search-input"
-                  v-model="searchQuery"
-                  type="text"
-                  :placeholder="t('nav.searchPlaceholder')"
-                  class="w-full pl-14 pr-14 py-5 text-lg bg-transparent text-gray-900 dark:text-white placeholder-gray-400 focus:outline-none"
-                  @keydown.escape="closeSearch"
-                />
-                <button
-                  @click="closeSearch"
-                  class="absolute right-4 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
-                >
-                  <font-awesome-icon icon="fa-solid fa-xmark" class="w-5 h-5" />
-                </button>
-              </div>
-
-              <!-- Quick Links -->
-              <div class="border-t border-gray-100 dark:border-gray-800 p-4">
-                <p class="text-xs font-medium text-gray-400 uppercase tracking-wide mb-3">{{ t('nav.quickLinks') }}</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  <a
-                    href="/formations/masters"
-                    class="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    @click="closeSearch"
-                  >
-                    <font-awesome-icon icon="fa-solid fa-graduation-cap" class="w-4 h-4 text-amber-500" />
-                    <span>Masters</span>
-                  </a>
-                  <a
-                    href="/actualites/appels"
-                    class="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    @click="closeSearch"
-                  >
-                    <font-awesome-icon icon="fa-solid fa-bullhorn" class="w-4 h-4 text-amber-500" />
-                    <span>{{ t('nav.dropdowns.news.callsForApplications') }}</span>
-                  </a>
-                  <a
-                    href="/reseau/alumni"
-                    class="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    @click="closeSearch"
-                  >
-                    <font-awesome-icon icon="fa-solid fa-user-graduate" class="w-4 h-4 text-amber-500" />
-                    <span>Alumni</span>
-                  </a>
-                  <a
-                    href="/inscription"
-                    class="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    @click="closeSearch"
-                  >
-                    <font-awesome-icon icon="fa-solid fa-paper-plane" class="w-4 h-4 text-amber-500" />
-                    <span>{{ t('nav.apply') }}</span>
-                  </a>
-                  <a
-                    href="/a-propos/campus"
-                    class="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    @click="closeSearch"
-                  >
-                    <font-awesome-icon icon="fa-solid fa-map-location-dot" class="w-4 h-4 text-amber-500" />
-                    <span>Campus</span>
-                  </a>
-                  <a
-                    href="/actualites/evenements"
-                    class="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors"
-                    @click="closeSearch"
-                  >
-                    <font-awesome-icon icon="fa-solid fa-calendar-days" class="w-4 h-4 text-amber-500" />
-                    <span>{{ t('nav.dropdowns.news.events') }}</span>
-                  </a>
-                </div>
-              </div>
-
-              <!-- Keyboard Hint -->
-              <div class="border-t border-gray-100 dark:border-gray-800 px-4 py-3 flex items-center justify-end gap-4 text-xs text-gray-400">
-                <span class="flex items-center gap-1">
-                  <kbd class="px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-gray-500 dark:text-gray-400">ESC</kbd>
-                  <span>{{ t('nav.toClose') }}</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </Transition>
-      </div>
-    </Transition>
+    <!-- Search Modal Component -->
+    <SearchModal :is-open="isSearchOpen" @close="closeSearch" />
   </nav>
 </template>

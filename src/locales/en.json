@@ -119,7 +119,12 @@
     },
     "vision": {
       "title": "Our Vision",
-      "description": "Become a major player in the training and capacity building of executives in Africa and for Africa."
+      "description": "Become a major player in the training and capacity building of executives in Africa and for Africa.",
+      "keywords": {
+        "innovation": "Innovation",
+        "excellence": "Excellence",
+        "impact": "Impact"
+      }
     },
     "experience": {
       "badge": "Discover",
@@ -164,23 +169,29 @@
     "search": "Search"
   },
   "search": {
-    "placeholder": "Search for courses, instructors, topics...",
+    "placeholder": "Search programs, news, campus...",
     "searching": "Searching...",
     "suggestions": "Popular searches",
     "resultsFor": "Results for \"{query}\"",
     "noResults": "No results found",
     "noResultsDescription": "Try different keywords or browse our categories.",
+    "noResultsTitle": "No results found",
+    "noResultsDesc": "Try different keywords or browse our suggestions.",
     "students": "students",
-    "popularSearches": "Popular searches",
+    "popularSearches": "Popular suggestions",
+    "recentSearches": "Recent searches",
+    "clearHistory": "Clear",
     "resultsCount": "{count} results for \"{query}\"",
     "sortBy": "Sort by",
+    "navigate": "to navigate",
+    "select": "to select",
+    "close": "to close",
+    "applyNowDesc": "Join our programs",
+    "openCalls": "Open calls",
+    "openCallsDesc": "Active applications",
     "emptyState": {
       "title": "What do you want to learn?",
       "subtitle": "Start typing to search for courses, instructors, and topics."
-    },
-    "noResults": {
-      "title": "No results found",
-      "subtitle": "No results for \"{query}\". Try different search terms."
     },
     "sort": {
       "relevance": "Relevance",

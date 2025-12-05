@@ -119,7 +119,12 @@
     },
     "vision": {
       "title": "Notre Vision",
-      "description": "Devenir un acteur majeur de la formation et du renforcement de capacités des cadres en Afrique et pour l'Afrique."
+      "description": "Devenir un acteur majeur de la formation et du renforcement de capacités des cadres en Afrique et pour l'Afrique.",
+      "keywords": {
+        "innovation": "Innovation",
+        "excellence": "Excellence",
+        "impact": "Impact"
+      }
     },
     "experience": {
       "badge": "Découvrir",
@@ -164,23 +169,29 @@
     "search": "Recherche"
   },
   "search": {
-    "placeholder": "Rechercher des cours, instructeurs, sujets...",
+    "placeholder": "Rechercher formations, actualités, campus...",
     "searching": "Recherche en cours...",
     "suggestions": "Recherches populaires",
     "resultsFor": "Résultats pour \"{query}\"",
     "noResults": "Aucun résultat trouvé",
     "noResultsDescription": "Essayez d'autres mots-clés ou parcourez nos catégories.",
+    "noResultsTitle": "Aucun résultat trouvé",
+    "noResultsDesc": "Essayez d'autres mots-clés ou parcourez nos suggestions.",
     "students": "étudiants",
-    "popularSearches": "Recherches populaires",
+    "popularSearches": "Suggestions populaires",
+    "recentSearches": "Recherches récentes",
+    "clearHistory": "Effacer",
     "resultsCount": "{count} résultats pour \"{query}\"",
     "sortBy": "Trier par",
+    "navigate": "pour naviguer",
+    "select": "pour sélectionner",
+    "close": "pour fermer",
+    "applyNowDesc": "Rejoignez nos formations",
+    "openCalls": "Appels ouverts",
+    "openCallsDesc": "Candidatures en cours",
     "emptyState": {
       "title": "Que voulez-vous apprendre ?",
       "subtitle": "Commencez à taper pour rechercher des cours, instructeurs et sujets."
-    },
-    "noResults": {
-      "title": "Aucun résultat trouvé",
-      "subtitle": "Aucun résultat pour \"{query}\". Essayez d'autres termes de recherche."
     },
     "sort": {
       "relevance": "Pertinence",
