@@ -22,9 +22,9 @@ const navItems = [
       descKey: 'featuredDesc'
     },
     children: [
-      { key: 'callsForApplications', route: '/actualites/appels', icon: 'fa-solid fa-bullhorn', color: 'from-rose-500 to-pink-600' },
-      { key: 'jobOffers', route: '/actualites/emplois', icon: 'fa-solid fa-briefcase', color: 'from-violet-500 to-purple-600' },
-      { key: 'events', route: '/actualites/evenements', icon: 'fa-solid fa-calendar-days', color: 'from-blue-500 to-cyan-600' }
+      { key: 'callsForApplications', route: '/actualites/appels', icon: 'fa-solid fa-bullhorn' },
+      { key: 'jobOffers', route: '/actualites/emplois', icon: 'fa-solid fa-briefcase' },
+      { key: 'events', route: '/actualites/evenements', icon: 'fa-solid fa-calendar-days' }
     ]
   },
   {
@@ -38,12 +38,12 @@ const navItems = [
       descKey: 'featuredDesc'
     },
     children: [
-      { key: 'masters', route: '/formations/masters', icon: 'fa-solid fa-graduation-cap', color: 'from-amber-500 to-orange-600', badge: 'popular' },
-      { key: 'universityDiplomas', route: '/formations/diplomes-universite', icon: 'fa-solid fa-award', color: 'from-emerald-500 to-teal-600' },
-      { key: 'certifications', route: '/formations/certifiantes', icon: 'fa-solid fa-certificate', color: 'from-blue-500 to-indigo-600' },
-      { key: 'doctorate', route: '/formations/doctorat', icon: 'fa-solid fa-book-open', color: 'from-purple-500 to-violet-600' },
-      { key: 'online', route: '/formations/en-ligne', icon: 'fa-solid fa-laptop', color: 'from-cyan-500 to-blue-600', badge: 'new' },
-      { key: 'externalCampus', route: '/formations/campus-externalises', icon: 'fa-solid fa-building', color: 'from-slate-500 to-gray-600' }
+      { key: 'masters', route: '/formations/masters', icon: 'fa-solid fa-graduation-cap', badge: 'popular' },
+      { key: 'universityDiplomas', route: '/formations/diplomes-universite', icon: 'fa-solid fa-award' },
+      { key: 'certifications', route: '/formations/certifiantes', icon: 'fa-solid fa-certificate' },
+      { key: 'doctorate', route: '/formations/doctorat', icon: 'fa-solid fa-book-open' },
+      { key: 'online', route: '/formations/en-ligne', icon: 'fa-solid fa-laptop', badge: 'new' },
+      { key: 'externalCampus', route: '/formations/campus-externalises', icon: 'fa-solid fa-building' }
     ]
   },
   {
@@ -52,10 +52,10 @@ const navItems = [
     hasDropdown: true,
     megaMenu: false,
     children: [
-      { key: 'transformAction', route: '/projets/transformaction', icon: 'fa-solid fa-rocket', color: 'from-orange-500 to-red-600', badge: 'flagship' },
-      { key: 'kreAfrika', route: '/projets/kreafrika', icon: 'fa-solid fa-lightbulb', color: 'from-yellow-500 to-amber-600' },
-      { key: 'projet70', route: '/projets/annees-70', icon: 'fa-solid fa-clock-rotate-left', color: 'from-slate-500 to-gray-600' },
-      { key: 'projetUSenghor', route: '/projets/usenghor', icon: 'fa-solid fa-university', color: 'from-indigo-500 to-blue-600' }
+      { key: 'transformAction', route: '/projets/transformaction', icon: 'fa-solid fa-rocket', badge: 'flagship' },
+      { key: 'kreAfrika', route: '/projets/kreafrika', icon: 'fa-solid fa-lightbulb' },
+      { key: 'projet70', route: '/projets/annees-70', icon: 'fa-solid fa-clock-rotate-left' },
+      { key: 'projetUSenghor', route: '/projets/usenghor', icon: 'fa-solid fa-university' }
     ]
   },
   {
@@ -69,11 +69,11 @@ const navItems = [
       descKey: 'featuredDesc'
     },
     children: [
-      { key: 'strategicPartners', route: '/reseau/partenaires-strategiques', icon: 'fa-solid fa-handshake', color: 'from-blue-500 to-indigo-600' },
-      { key: 'campusPartners', route: '/reseau/partenaires-campus', icon: 'fa-solid fa-building-columns', color: 'from-emerald-500 to-teal-600' },
-      { key: 'teachersNetwork', route: '/reseau/enseignants', icon: 'fa-solid fa-chalkboard-user', color: 'from-amber-500 to-orange-600' },
-      { key: 'alumni', route: '/reseau/alumni', icon: 'fa-solid fa-user-graduate', color: 'from-purple-500 to-violet-600', badge: '5000+' },
-      { key: 'alumniProgram', route: '/reseau/programme-alumni', icon: 'fa-solid fa-users', color: 'from-rose-500 to-pink-600' }
+      { key: 'strategicPartners', route: '/reseau/partenaires-strategiques', icon: 'fa-solid fa-handshake' },
+      { key: 'campusPartners', route: '/reseau/partenaires-campus', icon: 'fa-solid fa-building-columns' },
+      { key: 'teachersNetwork', route: '/reseau/enseignants', icon: 'fa-solid fa-chalkboard-user' },
+      { key: 'alumni', route: '/reseau/alumni', icon: 'fa-solid fa-user-graduate', badge: '5000+' },
+      { key: 'alumniProgram', route: '/reseau/programme-alumni', icon: 'fa-solid fa-users' }
     ]
   },
   {
@@ -82,10 +82,10 @@ const navItems = [
     hasDropdown: true,
     megaMenu: false,
     children: [
-      { key: 'mission', route: '/a-propos/mission', icon: 'fa-solid fa-bullseye', color: 'from-amber-500 to-orange-600' },
-      { key: 'history', route: '/a-propos/historique', icon: 'fa-solid fa-landmark', color: 'from-slate-500 to-gray-600' },
-      { key: 'governance', route: '/a-propos/gouvernance', icon: 'fa-solid fa-sitemap', color: 'from-blue-500 to-indigo-600' },
-      { key: 'campus', route: '/a-propos/campus', icon: 'fa-solid fa-map-location-dot', color: 'from-emerald-500 to-teal-600' }
+      { key: 'mission', route: '/a-propos/mission', icon: 'fa-solid fa-bullseye' },
+      { key: 'history', route: '/a-propos/historique', icon: 'fa-solid fa-landmark' },
+      { key: 'governance', route: '/a-propos/gouvernance', icon: 'fa-solid fa-sitemap' },
+      { key: 'campus', route: '/a-propos/campus', icon: 'fa-solid fa-map-location-dot' }
     ]
   }
 ]
@@ -210,19 +210,19 @@ onUnmounted(() => {
                         :alt="t(`nav.${item.key}`)"
                         class="absolute inset-0 w-full h-full object-cover"
                       />
-                      <div class="absolute inset-0 bg-gradient-to-br from-amber-600/90 via-orange-600/85 to-rose-600/90"></div>
+                      <div class="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/85 to-gray-900/90"></div>
                       <div class="relative p-6 h-full flex flex-col justify-end min-h-[320px]">
                         <div class="mb-4">
-                          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-sm">
-                            <font-awesome-icon icon="fa-solid fa-star" class="w-3 h-3 mr-1.5" />
+                          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/15 text-white backdrop-blur-sm border border-white/10">
+                            <font-awesome-icon icon="fa-solid fa-star" class="w-3 h-3 mr-1.5 text-amber-400" />
                             {{ t(`nav.dropdowns.${item.key}.${item.featured.titleKey}`) }}
                           </span>
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">{{ t(`nav.${item.key}`) }}</h3>
-                        <p class="text-white/80 text-sm leading-relaxed mb-4">{{ t(`nav.dropdowns.${item.key}.${item.featured.descKey}`) }}</p>
+                        <p class="text-white/70 text-sm leading-relaxed mb-4">{{ t(`nav.dropdowns.${item.key}.${item.featured.descKey}`) }}</p>
                         <a
                           :href="item.route"
-                          class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all duration-300"
+                          class="inline-flex items-center gap-2 text-sm font-semibold text-amber-400 hover:text-amber-300 hover:gap-3 transition-all duration-300"
                         >
                           <span>{{ t('nav.exploreAll') }}</span>
                           <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4" />
@@ -232,33 +232,30 @@ onUnmounted(() => {
 
                     <!-- Menu Items -->
                     <div class="flex-1 p-4">
-                      <div class="grid grid-cols-2 gap-2">
+                      <div class="grid grid-cols-2 gap-1">
                         <a
                           v-for="child in item.children"
                           :key="child.key"
                           :href="child.route"
-                          class="group flex items-start gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-gray-50"
+                          class="group flex items-start gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-gray-50"
                         >
-                          <div
-                            class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl"
-                            :class="child.color"
-                          >
-                            <font-awesome-icon :icon="child.icon" class="text-white text-lg" />
+                          <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center transition-all duration-300 group-hover:bg-amber-50">
+                            <font-awesome-icon :icon="child.icon" class="text-gray-400 group-hover:text-amber-500 transition-colors" />
                           </div>
-                          <div class="flex-1 min-w-0">
+                          <div class="flex-1 min-w-0 pt-0.5">
                             <div class="flex items-center gap-2">
-                              <span class="block text-sm font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">
+                              <span class="block text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
                                 {{ t(`nav.dropdowns.${item.key}.${child.key}`) }}
                               </span>
                               <span
                                 v-if="child.badge"
-                                class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full"
-                                :class="child.badge === 'new' ? 'bg-emerald-100 text-emerald-700' : child.badge === 'popular' ? 'bg-amber-100 text-amber-700' : child.badge === 'flagship' ? 'bg-rose-100 text-rose-700' : 'bg-purple-100 text-purple-700'"
+                                class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded"
+                                :class="child.badge === 'new' ? 'bg-emerald-50 text-emerald-600' : child.badge === 'popular' ? 'bg-amber-50 text-amber-600' : child.badge === 'flagship' ? 'bg-gray-100 text-gray-600' : 'bg-gray-100 text-gray-500'"
                               >
                                 {{ child.badge === 'new' ? t('nav.badges.new') : child.badge === 'popular' ? t('nav.badges.popular') : child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
                               </span>
                             </div>
-                            <span class="block text-xs text-gray-500 mt-1 line-clamp-2">
+                            <span class="block text-xs text-gray-400 mt-0.5 line-clamp-1 group-hover:text-gray-500 transition-colors">
                               {{ t(`nav.dropdowns.${item.key}.${child.key}Desc`) }}
                             </span>
                           </div>
@@ -283,28 +280,24 @@ onUnmounted(() => {
                 v-if="item.hasDropdown && !item.megaMenu && activeDropdown === item.key"
                 class="absolute top-full left-0 pt-3"
               >
-                <div class="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 overflow-hidden min-w-[300px] p-2">
+                <div class="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 overflow-hidden min-w-[280px] p-2">
                   <a
                     v-for="child in item.children"
                     :key="child.key"
                     :href="child.route"
-                    class="group flex items-center gap-4 p-3 rounded-xl transition-all duration-200 hover:bg-gradient-to-r hover:from-gray-50 hover:to-amber-50/50"
+                    class="group flex items-center gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-gray-50"
                   >
-                    <div
-                      class="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-                      :class="child.color"
-                    >
-                      <font-awesome-icon :icon="child.icon" class="text-white" />
+                    <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center transition-all duration-300 group-hover:bg-amber-50">
+                      <font-awesome-icon :icon="child.icon" class="text-gray-400 group-hover:text-amber-500 transition-colors text-sm" />
                     </div>
                     <div class="flex-1">
                       <div class="flex items-center gap-2">
-                        <span class="text-sm font-medium text-gray-900 group-hover:text-amber-600 transition-colors">
+                        <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
                           {{ t(`nav.dropdowns.${item.key}.${child.key}`) }}
                         </span>
                         <span
                           v-if="child.badge"
-                          class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full"
-                          :class="child.badge === 'flagship' ? 'bg-rose-100 text-rose-700' : 'bg-gray-100 text-gray-600'"
+                          class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded bg-gray-100 text-gray-500"
                         >
                           {{ child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
                         </span>
@@ -312,7 +305,7 @@ onUnmounted(() => {
                     </div>
                     <font-awesome-icon
                       icon="fa-solid fa-chevron-right"
-                      class="w-3 h-3 text-gray-300 group-hover:text-amber-500 transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                      class="w-3 h-3 text-gray-300 group-hover:text-amber-400 transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
                     />
                   </a>
                 </div>
@@ -343,8 +336,8 @@ onUnmounted(() => {
             class="group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-xl overflow-hidden transition-all duration-300"
             :class="[
               isScrolled
-                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 hover:-translate-y-0.5'
-                : 'bg-white text-gray-900 hover:bg-amber-400 hover:text-white shadow-lg'
+                ? 'bg-gray-900 text-white hover:bg-gray-800 shadow-lg shadow-gray-900/20 hover:shadow-xl hover:shadow-gray-900/30 hover:-translate-y-0.5'
+                : 'bg-white text-gray-900 hover:bg-gray-100 shadow-lg'
             ]"
           >
             <font-awesome-icon icon="fa-solid fa-paper-plane" class="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -387,7 +380,7 @@ onUnmounted(() => {
             <a
               v-if="!item.hasDropdown"
               :href="item.route"
-              class="flex items-center px-4 py-3.5 text-gray-700 font-medium rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 hover:text-amber-600 transition-all duration-200"
+              class="flex items-center px-4 py-3.5 text-gray-700 font-medium rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-all duration-200"
             >
               {{ t(`nav.${item.key}`) }}
             </a>
@@ -397,12 +390,12 @@ onUnmounted(() => {
               <button
                 @click="toggleMobileSubmenu(item.key)"
                 class="flex items-center justify-between w-full px-4 py-3.5 text-gray-700 font-medium transition-all duration-200"
-                :class="isMobileSubmenuExpanded(item.key) ? 'bg-gradient-to-r from-amber-50 to-orange-50 text-amber-700' : 'hover:bg-gray-50'"
+                :class="isMobileSubmenuExpanded(item.key) ? 'bg-gray-50 text-gray-900' : 'hover:bg-gray-50'"
               >
                 <span>{{ t(`nav.${item.key}`) }}</span>
                 <font-awesome-icon
                   icon="fa-solid fa-chevron-down"
-                  class="w-4 h-4 transition-transform duration-300"
+                  class="w-4 h-4 text-gray-400 transition-transform duration-300"
                   :class="{ 'rotate-180': isMobileSubmenuExpanded(item.key) }"
                 />
               </button>
@@ -418,27 +411,24 @@ onUnmounted(() => {
               >
                 <div
                   v-if="isMobileSubmenuExpanded(item.key)"
-                  class="overflow-hidden bg-gray-50/50"
+                  class="overflow-hidden"
                 >
-                  <div class="p-3 space-y-1">
+                  <div class="p-2 space-y-0.5 bg-gray-50/50">
                     <a
                       v-for="child in item.children"
                       :key="child.key"
                       :href="child.route"
-                      class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-white hover:text-amber-700 hover:shadow-sm transition-all duration-200"
+                      class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:text-gray-900 transition-all duration-200"
                     >
-                      <div
-                        class="w-9 h-9 rounded-lg bg-gradient-to-br flex items-center justify-center"
-                        :class="child.color"
-                      >
-                        <font-awesome-icon :icon="child.icon" class="text-white text-sm" />
+                      <div class="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center">
+                        <font-awesome-icon :icon="child.icon" class="text-gray-400 text-sm" />
                       </div>
                       <div class="flex-1">
                         <span class="text-sm font-medium">{{ t(`nav.dropdowns.${item.key}.${child.key}`) }}</span>
                       </div>
                       <span
                         v-if="child.badge"
-                        class="px-2 py-0.5 text-[9px] font-bold uppercase rounded-full bg-amber-100 text-amber-700"
+                        class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded bg-gray-100 text-gray-500"
                       >
                         {{ child.badge === 'new' ? t('nav.badges.new') : child.badge === 'popular' ? t('nav.badges.popular') : child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
                       </span>
@@ -457,16 +447,16 @@ onUnmounted(() => {
             @click="toggleLanguage"
             class="flex items-center justify-center gap-3 w-full px-4 py-3 text-gray-600 font-medium rounded-xl border border-gray-200 hover:bg-gray-50 transition-all duration-200"
           >
-            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4" />
+            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4 text-gray-400" />
             <span>{{ locale === 'fr' ? 'Français' : 'English' }}</span>
           </button>
 
           <!-- CTA Button Mobile -->
           <a
             href="/inscription"
-            class="flex items-center justify-center gap-2 w-full px-4 py-4 mt-3 text-center bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:via-orange-600 hover:to-rose-600 transition-all duration-300 shadow-lg shadow-amber-500/30"
+            class="flex items-center justify-center gap-2 w-full px-4 py-4 mt-3 text-center bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 shadow-lg"
           >
-            <font-awesome-icon icon="fa-solid fa-paper-plane" />
+            <font-awesome-icon icon="fa-solid fa-paper-plane" class="text-gray-400" />
             <span>{{ t('nav.apply') }}</span>
           </a>
         </div>
