@@ -2,6 +2,7 @@
 import AppNavBar from '@/components/AppNavBar.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import MissionSection from '@/components/MissionSection.vue'
+import HistorySection from '@/components/HistorySection.vue'
 </script>
 
 <template>
@@ -9,5 +10,6 @@ import MissionSection from '@/components/MissionSection.vue'
     <AppNavBar />
     <HeroSection />
     <MissionSection />
+    <HistorySection />
   </div>
 </template>
