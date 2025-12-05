@@ -3,6 +3,45 @@
     "title": "Bienvenue",
     "message": "Bienvenue dans votre application Vue.js"
   },
+  "nav": {
+    "home": "Accueil",
+    "news": "Actualités",
+    "projects": "Projets",
+    "network": "Rejoindre notre réseau",
+    "training": "Se former",
+    "apply": "Candidater"
+  },
+  "hero": {
+    "badge": "Université internationale de la Francophonie",
+    "slides": {
+      "slide1": {
+        "title": "Former les leaders de demain pour le développement africain",
+        "subtitle": "L'Université Senghor forme depuis plus de 30 ans les cadres africains de haut niveau dans les domaines du développement durable."
+      },
+      "slide2": {
+        "title": "Une excellence académique au service de l'Afrique",
+        "subtitle": "Des programmes de Master reconnus internationalement, dispensés par des experts de renommée mondiale."
+      },
+      "slide3": {
+        "title": "Un réseau de 5000+ diplômés à travers le monde",
+        "subtitle": "Rejoignez une communauté dynamique de professionnels engagés pour le développement du continent africain."
+      },
+      "slide4": {
+        "title": "Alexandrie, carrefour des cultures et des savoirs",
+        "subtitle": "Étudiez dans un cadre unique, au cœur de l'une des villes les plus emblématiques de la Méditerranée."
+      }
+    },
+    "cta": {
+      "discover": "Découvrir nos formations",
+      "contact": "Nous contacter"
+    },
+    "stats": {
+      "countries": "Pays africains représentés",
+      "years": "Années d'excellence",
+      "graduates": "Diplômés formés",
+      "francophone": "Francophone"
+    }
+  },
   "navigation": {
     "home": "Accueil",
     "about": "À propos"
@@ -64,19 +103,6 @@
       "bestseller": "Bestseller",
       "hot": "Tendance",
       "new": "Nouveau"
-    }
-  },
-  "hero": {
-    "title": "Développez vos compétences avec les experts",
-    "subtitle": "Choisissez parmi plus de 250 000 cours vidéo en ligne avec de nouveaux ajouts publiés chaque mois",
-    "searchPlaceholder": "Que voulez-vous apprendre ?",
-    "popularTopics": "Sujets populaires",
-    "categories": {
-      "technology": "Technologie",
-      "business": "Business",
-      "design": "Design",
-      "marketing": "Marketing",
-      "personalDevelopment": "Développement personnel"
     }
   },
   "featuredCourses": {

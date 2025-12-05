@@ -4,6 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
+**Note**: This is a demonstration project. We are creating template pages to showcase to clients.
+
 This is a Vue 3 application built with Vite, using:
 - Vue Router for routing
 - Pinia for state management
@@ -12,6 +14,8 @@ This is a Vue 3 application built with Vite, using:
 - Vitest for unit testing
 - Playwright for E2E testing
 - Animate.css for CSS animations
+- Fontsource for self-hosted fonts (Inter Variable)
+- Font Awesome for icons
 
 ## Common Commands
 
@@ -101,3 +105,66 @@ Add animation classes directly to elements:
 ### Animation Utilities
 - `animate__delay-1s` to `animate__delay-5s` - Add delays
 - `animate__faster`, `animate__fast`, `animate__slow`, `animate__slower` - Speed modifiers
+
+## Fonts (Fontsource)
+
+This project uses [Fontsource](https://fontsource.org/) for self-hosted fonts. The Inter Variable font is configured and available globally.
+
+### Configuration
+- Font is imported in `src/main.js`
+- Tailwind is configured to use Inter as the default sans-serif font
+- Supports all font weights from 100 to 900 (variable font)
+
+### Usage
+The font is applied automatically via Tailwind's `font-sans` class or through the base CSS. You can use font weight utilities:
+```html
+<p class="font-light">Light text (300)</p>
+<p class="font-normal">Normal text (400)</p>
+<p class="font-medium">Medium text (500)</p>
+<p class="font-semibold">Semibold text (600)</p>
+<p class="font-bold">Bold text (700)</p>
+```
+
+## Icons (Font Awesome)
+
+This project uses [Font Awesome](https://fontawesome.com/) for icons. The `<font-awesome-icon>` component is registered globally.
+
+### Available Icon Sets
+- **Solid** (`fas`) - Filled icons
+- **Regular** (`far`) - Outlined icons
+- **Brands** (`fab`) - Brand logos (GitHub, Twitter, etc.)
+
+### Usage
+Use the `<font-awesome-icon>` component in any Vue template:
+```html
+<!-- Solid icons -->
+<font-awesome-icon icon="fa-solid fa-home" />
+<font-awesome-icon :icon="['fas', 'user']" />
+
+<!-- Regular icons -->
+<font-awesome-icon icon="fa-regular fa-heart" />
+<font-awesome-icon :icon="['far', 'bell']" />
+
+<!-- Brand icons -->
+<font-awesome-icon icon="fa-brands fa-github" />
+<font-awesome-icon :icon="['fab', 'linkedin']" />
+```
+
+### Icon Modifiers
+```html
+<!-- Sizes -->
+<font-awesome-icon icon="fa-solid fa-spinner" size="xs" />
+<font-awesome-icon icon="fa-solid fa-spinner" size="lg" />
+<font-awesome-icon icon="fa-solid fa-spinner" size="2x" />
+
+<!-- Animations -->
+<font-awesome-icon icon="fa-solid fa-spinner" spin />
+<font-awesome-icon icon="fa-solid fa-heart" beat />
+
+<!-- Rotation & Flip -->
+<font-awesome-icon icon="fa-solid fa-arrow-right" rotation="90" />
+<font-awesome-icon icon="fa-solid fa-arrow-right" flip="horizontal" />
+```
+
+### Icon Reference
+Browse available icons at: https://fontawesome.com/icons

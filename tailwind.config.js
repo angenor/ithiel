@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter Variable', 'Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         'udemy-purple': '#A435F0',
         'udemy-dark-purple': '#8710D8',
