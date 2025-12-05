@@ -13,6 +13,10 @@
     "apply": "Candidater",
     "viewAll": "Voir tout",
     "exploreAll": "Tout explorer",
+    "more": "Plus",
+    "searchPlaceholder": "Rechercher formations, actualités, campus...",
+    "quickLinks": "Liens rapides",
+    "toClose": "pour fermer",
     "badges": {
       "new": "Nouveau",
       "popular": "Populaire",

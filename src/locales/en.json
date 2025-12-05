@@ -13,6 +13,10 @@
     "apply": "Apply Now",
     "viewAll": "View all",
     "exploreAll": "Explore all",
+    "more": "More",
+    "searchPlaceholder": "Search programs, news, campus...",
+    "quickLinks": "Quick links",
+    "toClose": "to close",
     "badges": {
       "new": "New",
       "popular": "Popular",
