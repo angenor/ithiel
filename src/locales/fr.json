@@ -9,33 +9,67 @@
     "projects": "Projets",
     "network": "Notre réseau",
     "training": "Se former",
+    "about": "À propos",
     "apply": "Candidater",
     "viewAll": "Voir tout",
+    "exploreAll": "Tout explorer",
+    "badges": {
+      "new": "Nouveau",
+      "popular": "Populaire",
+      "flagship": "Phare"
+    },
     "dropdowns": {
       "news": {
-        "description": "Restez informé de nos dernières actualités",
+        "featured": "À la une",
+        "featuredDesc": "Retrouvez toutes les actualités de l'Université Senghor : appels à candidatures, offres d'emploi et événements à ne pas manquer.",
         "callsForApplications": "Appels à candidatures",
+        "callsForApplicationsDesc": "Postulez aux programmes de formation et bourses disponibles",
         "jobOffers": "Offres d'emploi",
-        "events": "Événements"
-      },
-      "projects": {
-        "description": "Découvrez nos projets phares",
-        "transformAction": "TransformAction",
-        "kreAfrika": "KreAfrika"
-      },
-      "network": {
-        "description": "Rejoignez notre communauté",
-        "campusPartners": "Partenaires campus",
-        "strategicPartners": "Partenaires stratégiques",
-        "teachersNetwork": "Réseau des enseignants",
-        "alumni": "Alumni"
+        "jobOffersDesc": "Opportunités professionnelles au sein de notre réseau",
+        "events": "Événements",
+        "eventsDesc": "Conférences, séminaires et rencontres à venir"
       },
       "training": {
-        "description": "Trouvez la formation qui vous correspond",
+        "featured": "Formations",
+        "featuredDesc": "Des programmes d'excellence reconnus internationalement pour former les leaders africains de demain.",
         "masters": "Masters",
+        "mastersDesc": "Programmes de Master en 2 ans sur le campus d'Alexandrie",
         "universityDiplomas": "Diplômes d'université",
+        "universityDiplomasDesc": "Formations spécialisées d'une année académique",
         "certifications": "Formations certifiantes",
-        "doctorate": "Doctorat"
+        "certificationsDesc": "Certifications professionnelles courtes et intensives",
+        "doctorate": "Doctorat",
+        "doctorateDesc": "Programme doctoral en partenariat avec l'École doctorale",
+        "online": "En ligne",
+        "onlineDesc": "Formations à distance via notre département FAD",
+        "externalCampus": "Campus externalisés",
+        "externalCampusDesc": "Formations délocalisées dans nos campus partenaires"
+      },
+      "projects": {
+        "transformAction": "TransformAction",
+        "kreAfrika": "KreAfrika",
+        "projet70": "Projet des années 70",
+        "projetUSenghor": "Projet USenghor"
+      },
+      "network": {
+        "featured": "Réseau",
+        "featuredDesc": "Rejoignez une communauté de plus de 5000 diplômés et partenaires engagés pour le développement africain.",
+        "strategicPartners": "Partenaires stratégiques",
+        "strategicPartnersDesc": "OIF, AFD, Francophonie et institutions internationales",
+        "campusPartners": "Partenaires campus",
+        "campusPartnersDesc": "Universités et institutions académiques partenaires",
+        "teachersNetwork": "Réseau des enseignants",
+        "teachersNetworkDesc": "Communauté d'experts et professeurs internationaux",
+        "alumni": "Alumni",
+        "alumniDesc": "Réseau des anciens diplômés dans 54 pays africains",
+        "alumniProgram": "Programme Alumni",
+        "alumniProgramDesc": "Activités et services dédiés aux anciens"
+      },
+      "about": {
+        "mission": "Mission et valeurs",
+        "history": "Historique",
+        "governance": "Gouvernance",
+        "campus": "Campus d'Alexandrie"
       }
     }
   },

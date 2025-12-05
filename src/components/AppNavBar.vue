@@ -15,41 +15,77 @@ const navItems = [
     key: 'news',
     route: '/actualites',
     hasDropdown: true,
+    megaMenu: true,
+    featured: {
+      image: '/images/bg/backgroud_senghor1.jpg',
+      titleKey: 'featured',
+      descKey: 'featuredDesc'
+    },
     children: [
-      { key: 'callsForApplications', route: '/actualites/appels', icon: 'fa-solid fa-bullhorn' },
-      { key: 'jobOffers', route: '/actualites/emplois', icon: 'fa-solid fa-briefcase' },
-      { key: 'events', route: '/actualites/evenements', icon: 'fa-solid fa-calendar-days' }
-    ]
-  },
-  {
-    key: 'projects',
-    route: '/projets',
-    hasDropdown: true,
-    children: [
-      { key: 'transformAction', route: '/projets/transformaction', icon: 'fa-solid fa-rocket' },
-      { key: 'kreAfrika', route: '/projets/kreafrika', icon: 'fa-solid fa-lightbulb' }
-    ]
-  },
-  {
-    key: 'network',
-    route: '/reseau',
-    hasDropdown: true,
-    children: [
-      { key: 'campusPartners', route: '/reseau/partenaires-campus', icon: 'fa-solid fa-building-columns' },
-      { key: 'strategicPartners', route: '/reseau/partenaires-strategiques', icon: 'fa-solid fa-handshake' },
-      { key: 'teachersNetwork', route: '/reseau/enseignants', icon: 'fa-solid fa-chalkboard-user' },
-      { key: 'alumni', route: '/reseau/alumni', icon: 'fa-solid fa-user-graduate' }
+      { key: 'callsForApplications', route: '/actualites/appels', icon: 'fa-solid fa-bullhorn', color: 'from-rose-500 to-pink-600' },
+      { key: 'jobOffers', route: '/actualites/emplois', icon: 'fa-solid fa-briefcase', color: 'from-violet-500 to-purple-600' },
+      { key: 'events', route: '/actualites/evenements', icon: 'fa-solid fa-calendar-days', color: 'from-blue-500 to-cyan-600' }
     ]
   },
   {
     key: 'training',
     route: '/formations',
     hasDropdown: true,
+    megaMenu: true,
+    featured: {
+      image: '/images/bg/backgroud_senghor2.jpg',
+      titleKey: 'featured',
+      descKey: 'featuredDesc'
+    },
     children: [
-      { key: 'masters', route: '/formations/masters', icon: 'fa-solid fa-graduation-cap' },
-      { key: 'universityDiplomas', route: '/formations/diplomes-universite', icon: 'fa-solid fa-award' },
-      { key: 'certifications', route: '/formations/certifiantes', icon: 'fa-solid fa-certificate' },
-      { key: 'doctorate', route: '/formations/doctorat', icon: 'fa-solid fa-book-open' }
+      { key: 'masters', route: '/formations/masters', icon: 'fa-solid fa-graduation-cap', color: 'from-amber-500 to-orange-600', badge: 'popular' },
+      { key: 'universityDiplomas', route: '/formations/diplomes-universite', icon: 'fa-solid fa-award', color: 'from-emerald-500 to-teal-600' },
+      { key: 'certifications', route: '/formations/certifiantes', icon: 'fa-solid fa-certificate', color: 'from-blue-500 to-indigo-600' },
+      { key: 'doctorate', route: '/formations/doctorat', icon: 'fa-solid fa-book-open', color: 'from-purple-500 to-violet-600' },
+      { key: 'online', route: '/formations/en-ligne', icon: 'fa-solid fa-laptop', color: 'from-cyan-500 to-blue-600', badge: 'new' },
+      { key: 'externalCampus', route: '/formations/campus-externalises', icon: 'fa-solid fa-building', color: 'from-slate-500 to-gray-600' }
+    ]
+  },
+  {
+    key: 'projects',
+    route: '/projets',
+    hasDropdown: true,
+    megaMenu: false,
+    children: [
+      { key: 'transformAction', route: '/projets/transformaction', icon: 'fa-solid fa-rocket', color: 'from-orange-500 to-red-600', badge: 'flagship' },
+      { key: 'kreAfrika', route: '/projets/kreafrika', icon: 'fa-solid fa-lightbulb', color: 'from-yellow-500 to-amber-600' },
+      { key: 'projet70', route: '/projets/annees-70', icon: 'fa-solid fa-clock-rotate-left', color: 'from-slate-500 to-gray-600' },
+      { key: 'projetUSenghor', route: '/projets/usenghor', icon: 'fa-solid fa-university', color: 'from-indigo-500 to-blue-600' }
+    ]
+  },
+  {
+    key: 'network',
+    route: '/reseau',
+    hasDropdown: true,
+    megaMenu: true,
+    featured: {
+      image: '/images/bg/backgroud_senghor3.jpg',
+      titleKey: 'featured',
+      descKey: 'featuredDesc'
+    },
+    children: [
+      { key: 'strategicPartners', route: '/reseau/partenaires-strategiques', icon: 'fa-solid fa-handshake', color: 'from-blue-500 to-indigo-600' },
+      { key: 'campusPartners', route: '/reseau/partenaires-campus', icon: 'fa-solid fa-building-columns', color: 'from-emerald-500 to-teal-600' },
+      { key: 'teachersNetwork', route: '/reseau/enseignants', icon: 'fa-solid fa-chalkboard-user', color: 'from-amber-500 to-orange-600' },
+      { key: 'alumni', route: '/reseau/alumni', icon: 'fa-solid fa-user-graduate', color: 'from-purple-500 to-violet-600', badge: '5000+' },
+      { key: 'alumniProgram', route: '/reseau/programme-alumni', icon: 'fa-solid fa-users', color: 'from-rose-500 to-pink-600' }
+    ]
+  },
+  {
+    key: 'about',
+    route: '/a-propos',
+    hasDropdown: true,
+    megaMenu: false,
+    children: [
+      { key: 'mission', route: '/a-propos/mission', icon: 'fa-solid fa-bullseye', color: 'from-amber-500 to-orange-600' },
+      { key: 'history', route: '/a-propos/historique', icon: 'fa-solid fa-landmark', color: 'from-slate-500 to-gray-600' },
+      { key: 'governance', route: '/a-propos/gouvernance', icon: 'fa-solid fa-sitemap', color: 'from-blue-500 to-indigo-600' },
+      { key: 'campus', route: '/a-propos/campus', icon: 'fa-solid fa-map-location-dot', color: 'from-emerald-500 to-teal-600' }
     ]
   }
 ]
@@ -104,8 +140,8 @@ onUnmounted(() => {
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out"
     :class="[
       isScrolled
-        ? 'bg-white/95 backdrop-blur-lg shadow-lg shadow-black/5'
-        : 'bg-transparent'
+        ? 'bg-white/98 backdrop-blur-xl shadow-xl shadow-black/5 border-b border-gray-100'
+        : 'bg-gradient-to-b from-black/50 to-transparent'
     ]"
   >
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,14 +152,14 @@ onUnmounted(() => {
             <img
               src="/images/logos/logo-web-noir-petit.png"
               alt="Université Senghor"
-              class="h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+              class="h-12 w-auto transition-all duration-300 group-hover:scale-105"
               :class="{ 'brightness-0 invert': !isScrolled }"
             />
           </a>
         </div>
 
         <!-- Desktop Navigation -->
-        <div class="hidden lg:flex items-center space-x-1">
+        <div class="hidden xl:flex items-center space-x-1">
           <div
             v-for="item in navItems"
             :key="item.key"
@@ -133,12 +169,14 @@ onUnmounted(() => {
           >
             <!-- Menu Item -->
             <a
-              :href="item.route"
-              class="relative flex items-center gap-1.5 px-4 py-2 text-sm font-medium transition-all duration-300 rounded-full group"
+              :href="item.hasDropdown ? '#' : item.route"
+              @click.prevent="item.hasDropdown ? null : null"
+              class="relative flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium transition-all duration-300 rounded-xl group"
               :class="[
                 isScrolled
                   ? 'text-gray-700 hover:text-amber-600'
-                  : 'text-white/90 hover:text-white'
+                  : 'text-white/90 hover:text-white',
+                activeDropdown === item.key ? (isScrolled ? 'text-amber-600 bg-amber-50' : 'text-white bg-white/10') : ''
               ]"
             >
               <span class="relative z-10">{{ t(`nav.${item.key}`) }}</span>
@@ -148,17 +186,91 @@ onUnmounted(() => {
                 class="w-3 h-3 transition-transform duration-300"
                 :class="{ 'rotate-180': activeDropdown === item.key }"
               />
-              <span
-                class="absolute inset-0 rounded-full transition-all duration-300 opacity-0 group-hover:opacity-100"
-                :class="[
-                  isScrolled
-                    ? 'bg-amber-50'
-                    : 'bg-white/10'
-                ]"
-              ></span>
             </a>
 
-            <!-- Dropdown Menu -->
+            <!-- Mega Menu Dropdown -->
+            <Transition
+              enter-active-class="transition duration-300 ease-out"
+              enter-from-class="opacity-0 -translate-y-4"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition duration-200 ease-in"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 -translate-y-4"
+            >
+              <div
+                v-if="item.hasDropdown && item.megaMenu && activeDropdown === item.key"
+                class="absolute top-full left-1/2 -translate-x-1/2 pt-4"
+              >
+                <div class="bg-white rounded-3xl shadow-2xl shadow-black/15 border border-gray-100 overflow-hidden w-[700px]">
+                  <div class="flex">
+                    <!-- Featured Section -->
+                    <div class="w-64 relative overflow-hidden">
+                      <img
+                        :src="item.featured.image"
+                        :alt="t(`nav.${item.key}`)"
+                        class="absolute inset-0 w-full h-full object-cover"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-br from-amber-600/90 via-orange-600/85 to-rose-600/90"></div>
+                      <div class="relative p-6 h-full flex flex-col justify-end min-h-[320px]">
+                        <div class="mb-4">
+                          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/20 text-white backdrop-blur-sm">
+                            <font-awesome-icon icon="fa-solid fa-star" class="w-3 h-3 mr-1.5" />
+                            {{ t(`nav.dropdowns.${item.key}.${item.featured.titleKey}`) }}
+                          </span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">{{ t(`nav.${item.key}`) }}</h3>
+                        <p class="text-white/80 text-sm leading-relaxed mb-4">{{ t(`nav.dropdowns.${item.key}.${item.featured.descKey}`) }}</p>
+                        <a
+                          :href="item.route"
+                          class="inline-flex items-center gap-2 text-sm font-semibold text-white hover:gap-3 transition-all duration-300"
+                        >
+                          <span>{{ t('nav.exploreAll') }}</span>
+                          <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4" />
+                        </a>
+                      </div>
+                    </div>
+
+                    <!-- Menu Items -->
+                    <div class="flex-1 p-4">
+                      <div class="grid grid-cols-2 gap-2">
+                        <a
+                          v-for="child in item.children"
+                          :key="child.key"
+                          :href="child.route"
+                          class="group flex items-start gap-4 p-4 rounded-2xl transition-all duration-300 hover:bg-gray-50"
+                        >
+                          <div
+                            class="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br flex items-center justify-center shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl"
+                            :class="child.color"
+                          >
+                            <font-awesome-icon :icon="child.icon" class="text-white text-lg" />
+                          </div>
+                          <div class="flex-1 min-w-0">
+                            <div class="flex items-center gap-2">
+                              <span class="block text-sm font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">
+                                {{ t(`nav.dropdowns.${item.key}.${child.key}`) }}
+                              </span>
+                              <span
+                                v-if="child.badge"
+                                class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full"
+                                :class="child.badge === 'new' ? 'bg-emerald-100 text-emerald-700' : child.badge === 'popular' ? 'bg-amber-100 text-amber-700' : child.badge === 'flagship' ? 'bg-rose-100 text-rose-700' : 'bg-purple-100 text-purple-700'"
+                              >
+                                {{ child.badge === 'new' ? t('nav.badges.new') : child.badge === 'popular' ? t('nav.badges.popular') : child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
+                              </span>
+                            </div>
+                            <span class="block text-xs text-gray-500 mt-1 line-clamp-2">
+                              {{ t(`nav.dropdowns.${item.key}.${child.key}Desc`) }}
+                            </span>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Transition>
+
+            <!-- Simple Dropdown (non-mega) -->
             <Transition
               enter-active-class="transition duration-200 ease-out"
               enter-from-class="opacity-0 translate-y-2 scale-95"
@@ -168,53 +280,41 @@ onUnmounted(() => {
               leave-to-class="opacity-0 translate-y-2 scale-95"
             >
               <div
-                v-if="item.hasDropdown && activeDropdown === item.key"
-                class="absolute top-full left-0 pt-2"
+                v-if="item.hasDropdown && !item.megaMenu && activeDropdown === item.key"
+                class="absolute top-full left-0 pt-3"
               >
-                <div class="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 overflow-hidden min-w-[280px]">
-                  <!-- Dropdown Header -->
-                  <div class="px-5 py-4 bg-gradient-to-r from-amber-50 to-orange-50 border-b border-amber-100/50">
-                    <h3 class="text-sm font-semibold text-gray-900">{{ t(`nav.${item.key}`) }}</h3>
-                    <p class="text-xs text-gray-500 mt-0.5">{{ t(`nav.dropdowns.${item.key}.description`) }}</p>
-                  </div>
-
-                  <!-- Dropdown Items -->
-                  <div class="p-2">
-                    <a
-                      v-for="(child, index) in item.children"
-                      :key="child.key"
-                      :href="child.route"
-                      class="group flex items-center gap-4 px-4 py-3 rounded-xl transition-all duration-200 hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50"
-                      :style="{ animationDelay: `${index * 50}ms` }"
+                <div class="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 overflow-hidden min-w-[300px] p-2">
+                  <a
+                    v-for="child in item.children"
+                    :key="child.key"
+                    :href="child.route"
+                    class="group flex items-center gap-4 p-3 rounded-xl transition-all duration-200 hover:bg-gradient-to-r hover:from-gray-50 hover:to-amber-50/50"
+                  >
+                    <div
+                      class="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center transition-all duration-300 group-hover:scale-110"
+                      :class="child.color"
                     >
-                      <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center group-hover:from-amber-200 group-hover:to-orange-200 transition-all duration-200 group-hover:scale-110">
-                        <font-awesome-icon
-                          :icon="child.icon"
-                          class="text-amber-600 group-hover:text-amber-700"
-                        />
-                      </div>
-                      <div class="flex-1">
-                        <span class="block text-sm font-medium text-gray-900 group-hover:text-amber-700 transition-colors">
+                      <font-awesome-icon :icon="child.icon" class="text-white" />
+                    </div>
+                    <div class="flex-1">
+                      <div class="flex items-center gap-2">
+                        <span class="text-sm font-medium text-gray-900 group-hover:text-amber-600 transition-colors">
                           {{ t(`nav.dropdowns.${item.key}.${child.key}`) }}
                         </span>
+                        <span
+                          v-if="child.badge"
+                          class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full"
+                          :class="child.badge === 'flagship' ? 'bg-rose-100 text-rose-700' : 'bg-gray-100 text-gray-600'"
+                        >
+                          {{ child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
+                        </span>
                       </div>
-                      <font-awesome-icon
-                        icon="fa-solid fa-arrow-right"
-                        class="w-4 h-4 text-gray-300 group-hover:text-amber-500 transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
-                      />
-                    </a>
-                  </div>
-
-                  <!-- View All Link -->
-                  <div class="px-4 py-3 bg-gray-50 border-t border-gray-100">
-                    <a
-                      :href="item.route"
-                      class="flex items-center justify-center gap-2 text-sm font-medium text-amber-600 hover:text-amber-700 transition-colors"
-                    >
-                      <span>{{ t('nav.viewAll') }}</span>
-                      <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-3 h-3" />
-                    </a>
-                  </div>
+                    </div>
+                    <font-awesome-icon
+                      icon="fa-solid fa-chevron-right"
+                      class="w-3 h-3 text-gray-300 group-hover:text-amber-500 transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                    />
+                  </a>
                 </div>
               </div>
             </Transition>
@@ -222,15 +322,15 @@ onUnmounted(() => {
         </div>
 
         <!-- Right Section -->
-        <div class="hidden lg:flex items-center space-x-4">
+        <div class="hidden xl:flex items-center space-x-3">
           <!-- Language Toggle -->
           <button
             @click="toggleLanguage"
-            class="flex items-center space-x-2 px-3 py-2 text-sm font-medium rounded-full transition-all duration-300"
+            class="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 border"
             :class="[
               isScrolled
-                ? 'text-gray-600 hover:bg-gray-100'
-                : 'text-white/80 hover:bg-white/10'
+                ? 'text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                : 'text-white/90 border-white/20 hover:bg-white/10 hover:border-white/30'
             ]"
           >
             <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4" />
@@ -240,22 +340,22 @@ onUnmounted(() => {
           <!-- CTA Button -->
           <a
             href="/inscription"
-            class="relative overflow-hidden px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 group"
+            class="group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-xl overflow-hidden transition-all duration-300"
             :class="[
               isScrolled
-                ? 'bg-amber-500 text-white hover:bg-amber-600 shadow-lg shadow-amber-500/25'
-                : 'bg-white text-gray-900 hover:bg-amber-400 hover:text-white'
+                ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-lg shadow-amber-500/30 hover:shadow-xl hover:shadow-amber-500/40 hover:-translate-y-0.5'
+                : 'bg-white text-gray-900 hover:bg-amber-400 hover:text-white shadow-lg'
             ]"
           >
-            <span class="relative z-10">{{ t('nav.apply') }}</span>
-            <span class="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <font-awesome-icon icon="fa-solid fa-paper-plane" class="w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <span>{{ t('nav.apply') }}</span>
           </a>
         </div>
 
         <!-- Mobile Menu Button -->
         <button
           @click="toggleMobileMenu"
-          class="lg:hidden p-2 rounded-lg transition-colors duration-300"
+          class="xl:hidden p-2.5 rounded-xl transition-all duration-300"
           :class="[
             isScrolled
               ? 'text-gray-700 hover:bg-gray-100'
@@ -270,29 +370,34 @@ onUnmounted(() => {
 
     <!-- Mobile Menu -->
     <Transition
-      enter-active-class="animate__animated animate__fadeIn animate__faster"
-      leave-active-class="animate__animated animate__fadeOut animate__faster"
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="opacity-0 -translate-y-4"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-4"
     >
       <div
         v-if="isMobileMenuOpen"
-        class="lg:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 max-h-[80vh] overflow-y-auto"
+        class="xl:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 max-h-[85vh] overflow-y-auto"
       >
-        <div class="px-4 py-6 space-y-2">
+        <div class="px-4 py-6 space-y-1">
           <template v-for="item in navItems" :key="item.key">
             <!-- Menu Item without Dropdown -->
             <a
               v-if="!item.hasDropdown"
               :href="item.route"
-              class="flex items-center px-4 py-3 text-gray-700 font-medium rounded-xl hover:bg-amber-50 hover:text-amber-600 transition-all duration-200"
+              class="flex items-center px-4 py-3.5 text-gray-700 font-medium rounded-xl hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 hover:text-amber-600 transition-all duration-200"
             >
               {{ t(`nav.${item.key}`) }}
             </a>
 
             <!-- Menu Item with Dropdown -->
-            <div v-else>
+            <div v-else class="rounded-xl overflow-hidden">
               <button
                 @click="toggleMobileSubmenu(item.key)"
-                class="flex items-center justify-between w-full px-4 py-3 text-gray-700 font-medium rounded-xl hover:bg-amber-50 hover:text-amber-600 transition-all duration-200"
+                class="flex items-center justify-between w-full px-4 py-3.5 text-gray-700 font-medium transition-all duration-200"
+                :class="isMobileSubmenuExpanded(item.key) ? 'bg-gradient-to-r from-amber-50 to-orange-50 text-amber-700' : 'hover:bg-gray-50'"
               >
                 <span>{{ t(`nav.${item.key}`) }}</span>
                 <font-awesome-icon
@@ -306,26 +411,37 @@ onUnmounted(() => {
               <Transition
                 enter-active-class="transition-all duration-300 ease-out"
                 enter-from-class="opacity-0 max-h-0"
-                enter-to-class="opacity-100 max-h-96"
+                enter-to-class="opacity-100 max-h-[500px]"
                 leave-active-class="transition-all duration-200 ease-in"
-                leave-from-class="opacity-100 max-h-96"
+                leave-from-class="opacity-100 max-h-[500px]"
                 leave-to-class="opacity-0 max-h-0"
               >
                 <div
                   v-if="isMobileSubmenuExpanded(item.key)"
-                  class="overflow-hidden"
+                  class="overflow-hidden bg-gray-50/50"
                 >
-                  <div class="pl-4 pr-2 py-2 space-y-1">
+                  <div class="p-3 space-y-1">
                     <a
                       v-for="child in item.children"
                       :key="child.key"
                       :href="child.route"
-                      class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 hover:text-amber-700 transition-all duration-200"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-600 hover:bg-white hover:text-amber-700 hover:shadow-sm transition-all duration-200"
                     >
-                      <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center">
-                        <font-awesome-icon :icon="child.icon" class="text-amber-600 text-sm" />
+                      <div
+                        class="w-9 h-9 rounded-lg bg-gradient-to-br flex items-center justify-center"
+                        :class="child.color"
+                      >
+                        <font-awesome-icon :icon="child.icon" class="text-white text-sm" />
                       </div>
-                      <span class="text-sm font-medium">{{ t(`nav.dropdowns.${item.key}.${child.key}`) }}</span>
+                      <div class="flex-1">
+                        <span class="text-sm font-medium">{{ t(`nav.dropdowns.${item.key}.${child.key}`) }}</span>
+                      </div>
+                      <span
+                        v-if="child.badge"
+                        class="px-2 py-0.5 text-[9px] font-bold uppercase rounded-full bg-amber-100 text-amber-700"
+                      >
+                        {{ child.badge === 'new' ? t('nav.badges.new') : child.badge === 'popular' ? t('nav.badges.popular') : child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
+                      </span>
                     </a>
                   </div>
                 </div>
@@ -333,27 +449,26 @@ onUnmounted(() => {
             </div>
           </template>
 
+          <!-- Divider -->
+          <div class="my-4 border-t border-gray-100"></div>
+
           <!-- Language Toggle Mobile -->
-          <div class="pt-4 mt-4 border-t border-gray-100">
-            <button
-              @click="toggleLanguage"
-              class="flex items-center justify-center gap-2 w-full px-4 py-3 text-gray-600 font-medium rounded-xl hover:bg-gray-50 transition-all duration-200"
-            >
-              <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4" />
-              <span>{{ locale === 'fr' ? 'Français' : 'English' }}</span>
-            </button>
-          </div>
+          <button
+            @click="toggleLanguage"
+            class="flex items-center justify-center gap-3 w-full px-4 py-3 text-gray-600 font-medium rounded-xl border border-gray-200 hover:bg-gray-50 transition-all duration-200"
+          >
+            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4" />
+            <span>{{ locale === 'fr' ? 'Français' : 'English' }}</span>
+          </button>
 
           <!-- CTA Button Mobile -->
-          <div class="pt-2">
-            <a
-              href="/inscription"
-              class="flex items-center justify-center gap-2 w-full px-4 py-3 text-center bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-200 shadow-lg shadow-amber-500/25"
-            >
-              <font-awesome-icon icon="fa-solid fa-paper-plane" />
-              <span>{{ t('nav.apply') }}</span>
-            </a>
-          </div>
+          <a
+            href="/inscription"
+            class="flex items-center justify-center gap-2 w-full px-4 py-4 mt-3 text-center bg-gradient-to-r from-amber-500 via-orange-500 to-rose-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:via-orange-600 hover:to-rose-600 transition-all duration-300 shadow-lg shadow-amber-500/30"
+          >
+            <font-awesome-icon icon="fa-solid fa-paper-plane" />
+            <span>{{ t('nav.apply') }}</span>
+          </a>
         </div>
       </div>
     </Transition>
