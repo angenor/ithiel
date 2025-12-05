@@ -10,6 +10,10 @@ Structure hiérarchique complète du site telle que représentée dans le schém
   - Appels à candidatures
   - Offres d’emploi
 - Se former
+  - Masters, 
+  - Diplômes d'université, 
+  - Formations certifiantes, 
+  - Doctorat
 - Projets
   - TransformAction
   - KreAfrika
