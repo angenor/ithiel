@@ -5,8 +5,32 @@ const { t } = useI18n()
 </script>
 
 <template>
-  <section class="py-20 lg:py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <section class="relative py-20 lg:py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0 overflow-hidden">
+      <!-- Gradient Mesh -->
+      <div class="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-transparent to-blue-50/50 dark:from-amber-900/10 dark:via-transparent dark:to-blue-900/10"></div>
+
+      <!-- Animated Blobs -->
+      <div class="absolute -top-40 -left-40 w-80 h-80 bg-amber-200/30 dark:bg-amber-500/10 rounded-full blur-3xl animate-blob"></div>
+      <div class="absolute top-1/2 -right-20 w-96 h-96 bg-blue-200/30 dark:bg-blue-500/10 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-40 left-1/3 w-72 h-72 bg-purple-200/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+
+      <!-- Grid Pattern -->
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
+
+      <!-- Floating Particles -->
+      <div class="absolute top-20 left-1/4 w-2 h-2 bg-amber-400/40 rounded-full animate-float"></div>
+      <div class="absolute top-40 right-1/4 w-3 h-3 bg-blue-400/40 rounded-full animate-float animation-delay-1000"></div>
+      <div class="absolute bottom-40 left-1/3 w-2 h-2 bg-purple-400/40 rounded-full animate-float animation-delay-3000"></div>
+      <div class="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-amber-400/50 rounded-full animate-float animation-delay-2000"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-2.5 h-2.5 bg-blue-400/30 rounded-full animate-float animation-delay-4000"></div>
+
+      <!-- Subtle Radial Gradient -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-radial-gradient opacity-30 dark:opacity-20"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
       <div class="text-center mb-16 lg:mb-20">
         <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 mb-4">
@@ -152,3 +176,75 @@ const { t } = useI18n()
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Blob Animation */
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(30px, 10px) scale(1.05);
+  }
+}
+
+.animate-blob {
+  animation: blob 12s ease-in-out infinite;
+}
+
+/* Float Animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-10px);
+    opacity: 0.3;
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+    opacity: 0.5;
+  }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* Animation Delays */
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Radial Gradient Background */
+.bg-radial-gradient {
+  background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+}
+
+:root.dark .bg-radial-gradient {
+  background: radial-gradient(ellipse at center, rgba(251, 191, 36, 0.05) 0%, transparent 70%);
+}
+</style>
