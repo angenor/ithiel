@@ -1,8 +1,10 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useSimpleDarkMode } from '@/composables/useSimpleDarkMode'
 
 const { t, locale } = useI18n()
+const { isDark, toggle: toggleDarkMode } = useSimpleDarkMode()
 
 const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
@@ -140,7 +142,7 @@ onUnmounted(() => {
     class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out"
     :class="[
       isScrolled
-        ? 'bg-white/98 backdrop-blur-xl shadow-xl shadow-black/5 border-b border-gray-100'
+        ? 'bg-white/98 dark:bg-gray-900/98 backdrop-blur-xl shadow-xl shadow-black/5 dark:shadow-black/20 border-b border-gray-100 dark:border-gray-800'
         : 'bg-gradient-to-b from-black/50 to-transparent'
     ]"
   >
@@ -153,7 +155,7 @@ onUnmounted(() => {
               src="/images/logos/logo-web-noir-petit.png"
               alt="Université Senghor"
               class="h-12 w-auto transition-all duration-300 group-hover:scale-105"
-              :class="{ 'brightness-0 invert': !isScrolled }"
+              :class="{ 'brightness-0 invert': !isScrolled || isDark }"
             />
           </a>
         </div>
@@ -174,9 +176,9 @@ onUnmounted(() => {
               class="relative flex items-center gap-1.5 px-4 py-2.5 text-sm font-medium transition-all duration-300 rounded-xl group"
               :class="[
                 isScrolled
-                  ? 'text-gray-700 hover:text-amber-600'
+                  ? 'text-gray-700 dark:text-gray-200 hover:text-amber-600 dark:hover:text-amber-400'
                   : 'text-white/90 hover:text-white',
-                activeDropdown === item.key ? (isScrolled ? 'text-amber-600 bg-amber-50' : 'text-white bg-white/10') : ''
+                activeDropdown === item.key ? (isScrolled ? 'text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20' : 'text-white bg-white/10') : ''
               ]"
             >
               <span class="relative z-10">{{ t(`nav.${item.key}`) }}</span>
@@ -201,7 +203,7 @@ onUnmounted(() => {
                 v-if="item.hasDropdown && item.megaMenu && activeDropdown === item.key"
                 class="absolute top-full left-1/2 -translate-x-1/2 pt-4"
               >
-                <div class="bg-white rounded-3xl shadow-2xl shadow-black/15 border border-gray-100 overflow-hidden w-[700px]">
+                <div class="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl shadow-black/15 dark:shadow-black/40 border border-gray-100 dark:border-gray-800 overflow-hidden w-[700px]">
                   <div class="flex">
                     <!-- Featured Section -->
                     <div class="w-64 relative overflow-hidden">
@@ -237,25 +239,25 @@ onUnmounted(() => {
                           v-for="child in item.children"
                           :key="child.key"
                           :href="child.route"
-                          class="group flex items-start gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-gray-50"
+                          class="group flex items-start gap-3 p-3 rounded-xl transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800"
                         >
-                          <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center transition-all duration-300 group-hover:bg-amber-50">
-                            <font-awesome-icon :icon="child.icon" class="text-gray-400 group-hover:text-amber-500 transition-colors" />
+                          <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-900/30">
+                            <font-awesome-icon :icon="child.icon" class="text-gray-400 dark:text-gray-500 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors" />
                           </div>
                           <div class="flex-1 min-w-0 pt-0.5">
                             <div class="flex items-center gap-2">
-                              <span class="block text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+                              <span class="block text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                                 {{ t(`nav.dropdowns.${item.key}.${child.key}`) }}
                               </span>
                               <span
                                 v-if="child.badge"
                                 class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded"
-                                :class="child.badge === 'new' ? 'bg-emerald-50 text-emerald-600' : child.badge === 'popular' ? 'bg-amber-50 text-amber-600' : child.badge === 'flagship' ? 'bg-gray-100 text-gray-600' : 'bg-gray-100 text-gray-500'"
+                                :class="child.badge === 'new' ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400' : child.badge === 'popular' ? 'bg-amber-50 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400' : child.badge === 'flagship' ? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300' : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400'"
                               >
                                 {{ child.badge === 'new' ? t('nav.badges.new') : child.badge === 'popular' ? t('nav.badges.popular') : child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
                               </span>
                             </div>
-                            <span class="block text-xs text-gray-400 mt-0.5 line-clamp-1 group-hover:text-gray-500 transition-colors">
+                            <span class="block text-xs text-gray-400 dark:text-gray-500 mt-0.5 line-clamp-1 group-hover:text-gray-500 dark:group-hover:text-gray-400 transition-colors">
                               {{ t(`nav.dropdowns.${item.key}.${child.key}Desc`) }}
                             </span>
                           </div>
@@ -280,24 +282,24 @@ onUnmounted(() => {
                 v-if="item.hasDropdown && !item.megaMenu && activeDropdown === item.key"
                 class="absolute top-full left-0 pt-3"
               >
-                <div class="bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 overflow-hidden min-w-[280px] p-2">
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl shadow-black/10 dark:shadow-black/40 border border-gray-100 dark:border-gray-800 overflow-hidden min-w-[280px] p-2">
                   <a
                     v-for="child in item.children"
                     :key="child.key"
                     :href="child.route"
-                    class="group flex items-center gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-gray-50"
+                    class="group flex items-center gap-3 p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-800"
                   >
-                    <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center transition-all duration-300 group-hover:bg-amber-50">
-                      <font-awesome-icon :icon="child.icon" class="text-gray-400 group-hover:text-amber-500 transition-colors text-sm" />
+                    <div class="flex-shrink-0 w-9 h-9 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center transition-all duration-300 group-hover:bg-amber-50 dark:group-hover:bg-amber-900/30">
+                      <font-awesome-icon :icon="child.icon" class="text-gray-400 dark:text-gray-500 group-hover:text-amber-500 dark:group-hover:text-amber-400 transition-colors text-sm" />
                     </div>
                     <div class="flex-1">
                       <div class="flex items-center gap-2">
-                        <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+                        <span class="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                           {{ t(`nav.dropdowns.${item.key}.${child.key}`) }}
                         </span>
                         <span
                           v-if="child.badge"
-                          class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded bg-gray-100 text-gray-500"
+                          class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
                         >
                           {{ child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
                         </span>
@@ -305,7 +307,7 @@ onUnmounted(() => {
                     </div>
                     <font-awesome-icon
                       icon="fa-solid fa-chevron-right"
-                      class="w-3 h-3 text-gray-300 group-hover:text-amber-400 transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                      class="w-3 h-3 text-gray-300 dark:text-gray-600 group-hover:text-amber-400 transition-all duration-200 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
                     />
                   </a>
                 </div>
@@ -316,13 +318,27 @@ onUnmounted(() => {
 
         <!-- Right Section -->
         <div class="hidden xl:flex items-center space-x-3">
+          <!-- Dark Mode Toggle -->
+          <button
+            @click="toggleDarkMode"
+            class="flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 border"
+            :class="[
+              isScrolled
+                ? 'text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
+                : 'text-white/90 border-white/20 hover:bg-white/10 hover:border-white/30'
+            ]"
+          >
+            <font-awesome-icon v-if="isDark" icon="fa-solid fa-sun" class="w-4 h-4" />
+            <font-awesome-icon v-else icon="fa-solid fa-moon" class="w-4 h-4" />
+          </button>
+
           <!-- Language Toggle -->
           <button
             @click="toggleLanguage"
             class="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 border"
             :class="[
               isScrolled
-                ? 'text-gray-600 border-gray-200 hover:bg-gray-50 hover:border-gray-300'
+                ? 'text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
                 : 'text-white/90 border-white/20 hover:bg-white/10 hover:border-white/30'
             ]"
           >
@@ -336,7 +352,7 @@ onUnmounted(() => {
             class="group relative inline-flex items-center gap-2 px-6 py-2.5 text-sm font-semibold rounded-xl overflow-hidden transition-all duration-300"
             :class="[
               isScrolled
-                ? 'bg-gray-900 text-white hover:bg-gray-800 shadow-lg shadow-gray-900/20 hover:shadow-xl hover:shadow-gray-900/30 hover:-translate-y-0.5'
+                ? 'bg-gray-900 dark:bg-white text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-100 shadow-lg shadow-gray-900/20 dark:shadow-white/10 hover:shadow-xl hover:shadow-gray-900/30 dark:hover:shadow-white/20 hover:-translate-y-0.5'
                 : 'bg-white text-gray-900 hover:bg-gray-100 shadow-lg'
             ]"
           >
@@ -351,7 +367,7 @@ onUnmounted(() => {
           class="xl:hidden p-2.5 rounded-xl transition-all duration-300"
           :class="[
             isScrolled
-              ? 'text-gray-700 hover:bg-gray-100'
+              ? 'text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'
               : 'text-white hover:bg-white/10'
           ]"
         >
@@ -372,7 +388,7 @@ onUnmounted(() => {
     >
       <div
         v-if="isMobileMenuOpen"
-        class="xl:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-gray-100 max-h-[85vh] overflow-y-auto"
+        class="xl:hidden absolute top-full left-0 right-0 bg-white dark:bg-gray-900 shadow-2xl border-t border-gray-100 dark:border-gray-800 max-h-[85vh] overflow-y-auto"
       >
         <div class="px-4 py-6 space-y-1">
           <template v-for="item in navItems" :key="item.key">
@@ -380,7 +396,7 @@ onUnmounted(() => {
             <a
               v-if="!item.hasDropdown"
               :href="item.route"
-              class="flex items-center px-4 py-3.5 text-gray-700 font-medium rounded-xl hover:bg-gray-50 hover:text-gray-900 transition-all duration-200"
+              class="flex items-center px-4 py-3.5 text-gray-700 dark:text-gray-200 font-medium rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
             >
               {{ t(`nav.${item.key}`) }}
             </a>
@@ -389,13 +405,13 @@ onUnmounted(() => {
             <div v-else class="rounded-xl overflow-hidden">
               <button
                 @click="toggleMobileSubmenu(item.key)"
-                class="flex items-center justify-between w-full px-4 py-3.5 text-gray-700 font-medium transition-all duration-200"
-                :class="isMobileSubmenuExpanded(item.key) ? 'bg-gray-50 text-gray-900' : 'hover:bg-gray-50'"
+                class="flex items-center justify-between w-full px-4 py-3.5 text-gray-700 dark:text-gray-200 font-medium transition-all duration-200"
+                :class="isMobileSubmenuExpanded(item.key) ? 'bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white' : 'hover:bg-gray-50 dark:hover:bg-gray-800'"
               >
                 <span>{{ t(`nav.${item.key}`) }}</span>
                 <font-awesome-icon
                   icon="fa-solid fa-chevron-down"
-                  class="w-4 h-4 text-gray-400 transition-transform duration-300"
+                  class="w-4 h-4 text-gray-400 dark:text-gray-500 transition-transform duration-300"
                   :class="{ 'rotate-180': isMobileSubmenuExpanded(item.key) }"
                 />
               </button>
@@ -413,22 +429,22 @@ onUnmounted(() => {
                   v-if="isMobileSubmenuExpanded(item.key)"
                   class="overflow-hidden"
                 >
-                  <div class="p-2 space-y-0.5 bg-gray-50/50">
+                  <div class="p-2 space-y-0.5 bg-gray-50/50 dark:bg-gray-800/50">
                     <a
                       v-for="child in item.children"
                       :key="child.key"
                       :href="child.route"
-                      class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-white hover:text-gray-900 transition-all duration-200"
+                      class="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
                     >
-                      <div class="w-8 h-8 rounded-md bg-gray-100 flex items-center justify-center">
-                        <font-awesome-icon :icon="child.icon" class="text-gray-400 text-sm" />
+                      <div class="w-8 h-8 rounded-md bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
+                        <font-awesome-icon :icon="child.icon" class="text-gray-400 dark:text-gray-500 text-sm" />
                       </div>
                       <div class="flex-1">
                         <span class="text-sm font-medium">{{ t(`nav.dropdowns.${item.key}.${child.key}`) }}</span>
                       </div>
                       <span
                         v-if="child.badge"
-                        class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded bg-gray-100 text-gray-500"
+                        class="px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400"
                       >
                         {{ child.badge === 'new' ? t('nav.badges.new') : child.badge === 'popular' ? t('nav.badges.popular') : child.badge === 'flagship' ? t('nav.badges.flagship') : child.badge }}
                       </span>
@@ -440,23 +456,33 @@ onUnmounted(() => {
           </template>
 
           <!-- Divider -->
-          <div class="my-4 border-t border-gray-100"></div>
+          <div class="my-4 border-t border-gray-100 dark:border-gray-800"></div>
+
+          <!-- Dark Mode Toggle Mobile -->
+          <button
+            @click="toggleDarkMode"
+            class="flex items-center justify-center gap-3 w-full px-4 py-3 text-gray-600 dark:text-gray-300 font-medium rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
+          >
+            <font-awesome-icon v-if="isDark" icon="fa-solid fa-sun" class="w-4 h-4 text-amber-400" />
+            <font-awesome-icon v-else icon="fa-solid fa-moon" class="w-4 h-4 text-gray-400" />
+            <span>{{ isDark ? 'Light Mode' : 'Dark Mode' }}</span>
+          </button>
 
           <!-- Language Toggle Mobile -->
           <button
             @click="toggleLanguage"
-            class="flex items-center justify-center gap-3 w-full px-4 py-3 text-gray-600 font-medium rounded-xl border border-gray-200 hover:bg-gray-50 transition-all duration-200"
+            class="flex items-center justify-center gap-3 w-full px-4 py-3 mt-2 text-gray-600 dark:text-gray-300 font-medium rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
           >
-            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4 text-gray-400" />
+            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4 text-gray-400 dark:text-gray-500" />
             <span>{{ locale === 'fr' ? 'Français' : 'English' }}</span>
           </button>
 
           <!-- CTA Button Mobile -->
           <a
             href="/inscription"
-            class="flex items-center justify-center gap-2 w-full px-4 py-4 mt-3 text-center bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-all duration-300 shadow-lg"
+            class="flex items-center justify-center gap-2 w-full px-4 py-4 mt-3 text-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-semibold rounded-xl hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 shadow-lg"
           >
-            <font-awesome-icon icon="fa-solid fa-paper-plane" class="text-gray-400" />
+            <font-awesome-icon icon="fa-solid fa-paper-plane" class="text-gray-400 dark:text-gray-500" />
             <span>{{ t('nav.apply') }}</span>
           </a>
         </div>
