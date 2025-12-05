@@ -7,9 +7,37 @@
     "home": "Accueil",
     "news": "Actualités",
     "projects": "Projets",
-    "network": "Rejoindre notre réseau",
+    "network": "Notre réseau",
     "training": "Se former",
-    "apply": "Candidater"
+    "apply": "Candidater",
+    "viewAll": "Voir tout",
+    "dropdowns": {
+      "news": {
+        "description": "Restez informé de nos dernières actualités",
+        "callsForApplications": "Appels à candidatures",
+        "jobOffers": "Offres d'emploi",
+        "events": "Événements"
+      },
+      "projects": {
+        "description": "Découvrez nos projets phares",
+        "transformAction": "TransformAction",
+        "kreAfrika": "KreAfrika"
+      },
+      "network": {
+        "description": "Rejoignez notre communauté",
+        "campusPartners": "Partenaires campus",
+        "strategicPartners": "Partenaires stratégiques",
+        "teachersNetwork": "Réseau des enseignants",
+        "alumni": "Alumni"
+      },
+      "training": {
+        "description": "Trouvez la formation qui vous correspond",
+        "masters": "Masters",
+        "universityDiplomas": "Diplômes d'université",
+        "certifications": "Formations certifiantes",
+        "doctorate": "Doctorat"
+      }
+    }
   },
   "hero": {
     "badge": "Université internationale de la Francophonie",

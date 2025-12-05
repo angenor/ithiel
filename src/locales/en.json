@@ -7,9 +7,37 @@
     "home": "Home",
     "news": "News",
     "projects": "Projects",
-    "network": "Join Our Network",
+    "network": "Our Network",
     "training": "Training",
-    "apply": "Apply Now"
+    "apply": "Apply Now",
+    "viewAll": "View all",
+    "dropdowns": {
+      "news": {
+        "description": "Stay informed about our latest news",
+        "callsForApplications": "Calls for Applications",
+        "jobOffers": "Job Offers",
+        "events": "Events"
+      },
+      "projects": {
+        "description": "Discover our flagship projects",
+        "transformAction": "TransformAction",
+        "kreAfrika": "KreAfrika"
+      },
+      "network": {
+        "description": "Join our community",
+        "campusPartners": "Campus Partners",
+        "strategicPartners": "Strategic Partners",
+        "teachersNetwork": "Teachers Network",
+        "alumni": "Alumni"
+      },
+      "training": {
+        "description": "Find the right program for you",
+        "masters": "Masters",
+        "universityDiplomas": "University Diplomas",
+        "certifications": "Certifications",
+        "doctorate": "Doctorate"
+      }
+    }
   },
   "hero": {
     "badge": "International French-speaking University",
