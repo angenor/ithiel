@@ -133,8 +133,14 @@ const toggleMobileMenu = () => {
   }
 }
 
+const languages = ['fr', 'en', 'ar']
+const languageNames = { fr: 'Français', en: 'English', ar: 'العربية' }
+
 const toggleLanguage = () => {
-  locale.value = locale.value === 'fr' ? 'en' : 'fr'
+  const currentIndex = languages.indexOf(locale.value)
+  const nextIndex = (currentIndex + 1) % languages.length
+  locale.value = languages[nextIndex]
+  document.documentElement.dir = locale.value === 'ar' ? 'rtl' : 'ltr'
 }
 
 const openDropdown = (key) => {
@@ -571,7 +577,7 @@ onUnmounted(() => {
             class="flex items-center justify-center gap-3 w-full px-4 py-3 mt-2 text-gray-600 dark:text-gray-300 font-medium rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
           >
             <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <span>{{ locale === 'fr' ? 'Français' : 'English' }}</span>
+            <span>{{ languageNames[locale] }}</span>
           </button>
 
           <!-- CTA Button Mobile -->

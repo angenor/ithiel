@@ -234,7 +234,7 @@ onUnmounted(() => {
             alt="L'expérience Senghor"
             class="w-full h-full object-cover"
           />
-          <div class="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/80 to-gray-900/60"></div>
+          <div class="absolute inset-0 bg-gradient-to-r rtl:bg-gradient-to-l from-gray-900/95 via-gray-900/80 to-gray-900/60"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-gray-900/40"></div>
         </div>
 
@@ -279,12 +279,12 @@ onUnmounted(() => {
               class="group inline-flex items-center gap-2 px-8 py-4 bg-amber-500 text-white font-semibold rounded-full transition-all duration-300 hover:bg-amber-600 hover:shadow-xl hover:shadow-amber-500/30 hover:-translate-y-1"
             >
               <span>{{ t('mission.experience.cta') }}</span>
-              <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+              <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 rtl:rotate-180 rtl:group-hover:-translate-x-1" />
             </a>
           </div>
 
           <!-- Decorative Stats -->
-          <div ref="statsRef" class="hidden lg:flex absolute right-16 top-1/2 -translate-y-1/2 flex-col gap-6">
+          <div ref="statsRef" class="hidden lg:flex absolute right-16 rtl:right-auto rtl:left-16 top-1/2 -translate-y-1/2 flex-col gap-6">
             <div class="stat-card text-center p-6 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/10 transition-all duration-500" :class="{ 'stat-visible': hasAnimated }">
               <div class="text-4xl font-bold text-amber-400 mb-1 tabular-nums">{{ animatedStats.countries }}+</div>
               <div class="text-sm text-white/70">{{ t('mission.experience.stats.countries') }}</div>
