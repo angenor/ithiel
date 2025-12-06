@@ -84,7 +84,7 @@ const getColorClasses = (color) => {
 </script>
 
 <template>
-  <section class="relative py-20 lg:py-32 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden">
+  <section class="relative py-10 lg:py-10 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden">
     <!-- Animated Background -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/50 via-transparent to-blue-50/50 dark:from-emerald-900/10 dark:via-transparent dark:to-blue-900/10"></div>
@@ -172,21 +172,51 @@ const getColorClasses = (color) => {
           </p>
         </div>
 
-        <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
-          <div
-            v-for="country in donorCountries"
-            :key="country.code"
-            class="group relative bg-white dark:bg-gray-800/50 rounded-xl p-4 border border-gray-200/50 dark:border-gray-700/50 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10 hover:-translate-y-1"
-          >
-            <div class="flex flex-col items-center gap-2">
-              <img
-                :src="`https://flagcdn.com/w80/${country.code.toLowerCase()}.png`"
-                :alt="country.name"
-                class="w-12 h-8 object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-300"
-              />
-              <span class="text-xs font-medium text-gray-600 dark:text-gray-400 text-center">
-                {{ country.name }}
-              </span>
+        <!-- Marquee Container -->
+        <div class="marquee-container overflow-hidden relative">
+          <!-- Gradient overlays for fade effect -->
+          <div class="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white dark:from-gray-950 to-transparent z-10 pointer-events-none"></div>
+          <div class="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-gray-950 to-transparent z-10 pointer-events-none"></div>
+
+          <!-- Scrolling track -->
+          <div class="marquee-track flex">
+            <!-- First set of items -->
+            <div class="marquee-content flex gap-6 animate-marquee">
+              <div
+                v-for="country in donorCountries"
+                :key="'first-' + country.code"
+                class="flex-shrink-0 group relative bg-white dark:bg-gray-800/50 rounded-xl px-6 py-4 border border-gray-200/50 dark:border-gray-700/50 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10"
+              >
+                <div class="flex items-center gap-3">
+                  <img
+                    :src="`https://flagcdn.com/w80/${country.code.toLowerCase()}.png`"
+                    :alt="country.name"
+                    class="w-10 h-7 object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                    {{ country.name }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!-- Duplicate set for seamless loop -->
+            <div class="marquee-content flex gap-6 animate-marquee" aria-hidden="true">
+              <div
+                v-for="country in donorCountries"
+                :key="'second-' + country.code"
+                class="flex-shrink-0 group relative bg-white dark:bg-gray-800/50 rounded-xl px-6 py-4 border border-gray-200/50 dark:border-gray-700/50 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/10"
+              >
+                <div class="flex items-center gap-3">
+                  <img
+                    :src="`https://flagcdn.com/w80/${country.code.toLowerCase()}.png`"
+                    :alt="country.name"
+                    class="w-10 h-7 object-cover rounded shadow-sm group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <span class="text-sm font-medium text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                    {{ country.name }}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -435,6 +465,38 @@ const getColorClasses = (color) => {
 .president-avatar-ring {
   background: linear-gradient(135deg, #10b981, #6366f1, #8b5cf6);
   padding: 3px;
+}
+
+/* Marquee Animation for Donor Countries */
+.marquee-container {
+  padding: 1rem 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-content {
+  padding-right: 1.5rem;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Pause animation on hover */
+.marquee-track:hover .animate-marquee {
+  animation-play-state: paused;
 }
 
 /* Card entrance animation */

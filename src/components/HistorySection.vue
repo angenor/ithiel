@@ -28,7 +28,7 @@ const founders = [
 </script>
 
 <template>
-  <section id="history" class="relative py-20 lg:py-32 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden">
+  <section id="history" class="relative py-10 lg:py-10 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden">
     <!-- Animated Background -->
     <div class="absolute inset-0 overflow-hidden">
       <!-- Gradient Mesh -->

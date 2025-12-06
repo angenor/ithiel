@@ -77,7 +77,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="relative py-20 lg:py-32 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
+  <section class="relative py-10 lg:py-10 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 overflow-hidden">
     <!-- Animated Background -->
     <div class="absolute inset-0 overflow-hidden">
       <!-- Gradient Mesh -->
