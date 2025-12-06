@@ -72,7 +72,7 @@ const founders = [
           <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
             <!-- Left Content -->
             <div class="lg:text-right lg:pr-16">
-              <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-gray-100 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-none">
+              <div class="history-box bg-white dark:bg-gray-800 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-gray-900 dark:border-gray-600">
                 <!-- Mobile Timeline Node -->
                 <div class="lg:hidden flex items-center gap-4 mb-6">
                   <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/30">
@@ -144,7 +144,7 @@ const founders = [
         <!-- Section 2: Projet USenghor -->
         <div class="relative">
           <!-- Timeline Node -->
-          <div class="hidden lg:flex absolute left-1/2 top-8 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 items-center justify-center shadow-lg shadow-blue-500/30 z-10">
+          <div class="hidden lg:flex absolute left-1/2 top-8 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 items-center justify-center shadow-lg shadow-amber-500/30 z-10">
             <font-awesome-icon icon="fa-solid fa-university" class="w-5 h-5 text-white" />
           </div>
 
@@ -154,13 +154,13 @@ const founders = [
 
             <!-- Right Content -->
             <div class="lg:pl-16">
-              <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-gray-100 dark:border-gray-700/50 shadow-xl shadow-gray-200/50 dark:shadow-none">
+              <div class="animated-border-box rounded-3xl p-8 lg:p-10">
                 <!-- Mobile Timeline Node -->
                 <div class="lg:hidden flex items-center gap-4 mb-6">
-                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                  <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg shadow-amber-500/30">
                     <font-awesome-icon icon="fa-solid fa-university" class="w-4 h-4 text-white" />
                   </div>
-                  <span class="text-sm font-semibold text-blue-600 dark:text-blue-400">{{ t('history.usenghor.since') }}</span>
+                  <span class="text-sm font-semibold text-amber-600 dark:text-amber-400">{{ t('history.usenghor.since') }}</span>
                 </div>
 
                 <div class="hidden lg:block mb-4">
@@ -199,30 +199,7 @@ const founders = [
                   </div>
                 </div>
 
-                <!-- Current Leadership -->
-                <div class="border-t border-gray-200 dark:border-gray-700 pt-6">
-                  <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                    <font-awesome-icon icon="fa-solid fa-users-gear" class="w-4 h-4 text-blue-500" />
-                    {{ t('history.leadership.title') }}
-                  </h4>
-                  <div class="grid grid-cols-2 gap-4">
-                    <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-xl">
-                      <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center">
-                        <font-awesome-icon icon="fa-solid fa-user-tie" class="w-5 h-5 text-white" />
-                      </div>
-                      <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ t('history.leadership.rector.name') }}</p>
-                      <p class="text-xs text-gray-500 dark:text-gray-400">{{ t('history.leadership.rector.title') }}</p>
-                      <p class="text-xs text-blue-600 dark:text-blue-400 mt-1">{{ t('history.leadership.rector.since') }}</p>
-                    </div>
-                    <div class="text-center p-4 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl">
-                      <div class="w-12 h-12 mx-auto mb-2 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center">
-                        <font-awesome-icon icon="fa-solid fa-crown" class="w-5 h-5 text-white" />
-                      </div>
-                      <p class="text-sm font-semibold text-gray-900 dark:text-white">{{ t('history.leadership.president.name') }}</p>
-                      <p class="text-xs text-gray-500 dark:text-gray-400">{{ t('history.leadership.president.title') }}</p>
-                    </div>
-                  </div>
-                </div>
+               
               </div>
             </div>
           </div>
@@ -275,5 +252,118 @@ const founders = [
 </template>
 
 <style scoped>
-/* Add any component-specific styles here */
+.history-box {
+  --borderradius: 1.5rem;
+  --bgsize: 0.38rem;
+  position: relative;
+  transform: translateY(-2px);
+  z-index: 2;
+  transition: transform 0.3s ease;
+}
+
+.history-box:hover {
+  transform: translateY(-4px);
+}
+
+.history-box::before,
+.history-box::after {
+  border-radius: var(--borderradius);
+  background-image: linear-gradient(
+    45deg,
+    #fff 33.33%,
+    rgba(0, 0, 0, 0.95) 33.33%,
+    rgba(0, 0, 0, 0.95) 50%,
+    #fff 50%,
+    #fff 83.33%,
+    rgba(0, 0, 0, 0.95) 83.33%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -2;
+  top: 0.75rem;
+  left: 0.75rem;
+  width: 100%;
+  height: 100%;
+  background-size: var(--bgsize) var(--bgsize);
+}
+
+.history-box::before {
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: -1;
+}
+
+:deep(.dark) .history-box::before {
+  background: rgb(31 41 55);
+}
+
+:deep(.dark) .history-box::after {
+  background-image: linear-gradient(
+    45deg,
+    rgb(31 41 55) 33.33%,
+    rgba(255, 255, 255, 0.7) 33.33%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgb(31 41 55) 50%,
+    rgb(31 41 55) 83.33%,
+    rgba(255, 255, 255, 0.7) 83.33%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+}
+
+/* Animated Border Box */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
+}
+
+.animated-border-box {
+  --border-angle: 0turn;
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    #f8fafc,
+    #f1f5f9 5%,
+    #f1f5f9 60%,
+    #f8fafc 95%
+  );
+  --gradient-border: conic-gradient(
+    from var(--border-angle),
+    transparent 25%,
+    #f59e0b,
+    #3b82f6 99%,
+    transparent
+  );
+
+  border: solid 4px transparent;
+  border-radius: 1.5rem;
+  background:
+    var(--main-bg) padding-box,
+    var(--gradient-border) border-box,
+    var(--main-bg) border-box;
+  background-position: center center;
+  animation: bg-spin 3s linear infinite;
+}
+
+.animated-border-box:hover {
+  animation-play-state: paused;
+}
+
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
+  }
+}
+
+:deep(.dark) .animated-border-box {
+  --main-bg: conic-gradient(
+    from var(--border-angle),
+    rgb(31 41 55),
+    rgb(17 24 39) 5%,
+    rgb(17 24 39) 60%,
+    rgb(31 41 55) 95%
+  );
+}
 </style>
