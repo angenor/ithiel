@@ -443,37 +443,72 @@
     }
   },
   "footer": {
-    "business": {
-      "title": "Tombooktou Business",
-      "solutions": "Solutions pour entreprises",
-      "teach": "Enseigner sur Tombooktou",
-      "getApp": "Obtenir l'application",
-      "about": "À propos de nous"
+    "description": "L'Université Senghor forme depuis plus de 30 ans les cadres africains de haut niveau, engagés pour le développement durable du continent.",
+    "newsletter": {
+      "title": "Restez informé",
+      "description": "Recevez nos actualités, appels à candidatures et événements directement dans votre boîte mail.",
+      "placeholder": "Votre adresse email",
+      "subscribe": "S'abonner",
+      "subscribing": "Inscription...",
+      "success": "Merci pour votre inscription !",
+      "error": "Une erreur est survenue. Veuillez réessayer.",
+      "privacy": "En vous inscrivant, vous acceptez notre politique de confidentialité."
     },
-    "teaching": {
-      "title": "Enseignement",
-      "becomeInstructor": "Devenir instructeur",
-      "instructorRules": "Règles des instructeurs",
-      "helpCenter": "Centre d'aide des instructeurs"
+    "programs": {
+      "title": "Formations",
+      "masters": "Masters",
+      "diplomas": "Diplômes d'université",
+      "certifications": "Formations certifiantes",
+      "doctorate": "Doctorat",
+      "online": "Formation à distance"
     },
-    "support": {
-      "title": "Support",
+    "university": {
+      "title": "L'Université",
       "about": "À propos",
-      "careers": "Carrières",
-      "blog": "Blog",
-      "help": "Aide et support",
-      "affiliates": "Partenaires affiliés"
+      "mission": "Mission et valeurs",
+      "governance": "Gouvernance",
+      "campus": "Campus d'Alexandrie",
+      "history": "Notre histoire"
+    },
+    "resources": {
+      "title": "Ressources",
+      "news": "Actualités",
+      "events": "Événements",
+      "jobs": "Offres d'emploi",
+      "library": "Bibliothèque",
+      "faq": "FAQ"
+    },
+    "network": {
+      "title": "Notre réseau",
+      "alumni": "Alumni",
+      "partners": "Partenaires",
+      "externalCampuses": "Campus externalisés",
+      "contact": "Nous contacter"
+    },
+    "social": {
+      "title": "Suivez-nous",
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
     },
     "legal": {
-      "title": "Légal",
-      "terms": "Conditions d'utilisation",
+      "title": "Informations légales",
+      "terms": "Mentions légales",
       "privacy": "Politique de confidentialité",
-      "sitemap": "Plan du site",
-      "accessibility": "Déclaration d'accessibilité"
+      "cookies": "Gestion des cookies",
+      "accessibility": "Accessibilité"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "1, Place Ahmed Orabi, El Mancheya, Alexandrie, Égypte",
+      "phone": "+20 3 484 3504",
+      "email": "info@usenghor.org"
     },
     "bottom": {
-      "copyright": "© {year} Tombooktou, Inc.",
-      "language": "Français"
+      "copyright": "© {year} Université Senghor. Tous droits réservés.",
+      "oif": "Opérateur direct de la Francophonie"
     }
   }
 }

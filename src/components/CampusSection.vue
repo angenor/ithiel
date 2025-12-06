@@ -26,7 +26,7 @@ const campuses = ref([
     programsEn: ['Masters', 'Doctorate', 'University Diplomas'],
     students: 500,
     url: 'https://www.usenghor.org',
-    image: '/images/campus/alexandria.jpg'
+    image: '/images/bg/backgroud_senghor1.jpg'
   },
   {
     id: 'benin',
@@ -41,7 +41,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 150,
     url: 'https://sites.google.com/usenghor.org/campus-benin',
-    image: '/images/campus/benin.jpg'
+    image: '/images/bg/backgroud_senghor2.jpg'
   },
   {
     id: 'burkina',
@@ -56,7 +56,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 120,
     url: 'https://sites.google.com/usenghor.org/campus-burkinafaso',
-    image: '/images/campus/burkina.jpg'
+    image: '/images/bg/backgroud_senghor3.jpg'
   },
   {
     id: 'cameroon',
@@ -71,7 +71,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 180,
     url: 'http://campus-cameroun.usenghor.org/',
-    image: '/images/campus/cameroon.jpg'
+    image: '/images/bg/backgroud_senghor4.jpg'
   },
   {
     id: 'ivorycoast',
@@ -86,7 +86,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 160,
     url: 'http://campus-cotedivoire.usenghor.org/',
-    image: '/images/campus/ivorycoast.jpg'
+    image: '/images/bg/covers_image.jpg'
   },
   {
     id: 'djibouti',
@@ -101,7 +101,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 80,
     url: 'https://sites.google.com/usenghor.org/campus-djibouti/',
-    image: '/images/campus/djibouti.jpg'
+    image: '/images/bg/covers_image.jpg'
   },
   {
     id: 'gabon',
@@ -116,7 +116,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 100,
     url: 'https://sites.google.com/usenghor.org/campus-gabon/',
-    image: '/images/campus/gabon.jpg'
+    image: '/images/bg/backgroud_senghor1.jpg'
   },
   {
     id: 'guinea',
@@ -131,7 +131,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 90,
     url: 'https://sites.google.com/usenghor.org/campus-guinee',
-    image: '/images/campus/guinea.jpg'
+    image: '/images/bg/backgroud_senghor2.jpg'
   },
   {
     id: 'hungary',
@@ -146,7 +146,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 50,
     url: 'http://campus-hongrie.usenghor.org/',
-    image: '/images/campus/hungary.jpg'
+    image: '/images/bg/backgroud_senghor3.jpg'
   },
   {
     id: 'madagascar',
@@ -161,7 +161,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 110,
     url: 'http://campus-madagascar.usenghor.org/',
-    image: '/images/campus/madagascar.jpg'
+    image: '/images/bg/backgroud_senghor4.jpg'
   },
   {
     id: 'morocco',
@@ -176,7 +176,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 140,
     url: 'http://campus-maroc.usenghor.org/',
-    image: '/images/campus/morocco.jpg'
+    image: '/images/bg/covers_image.jpg'
   },
   {
     id: 'drc',
@@ -191,7 +191,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 130,
     url: 'http://campus-rdc.usenghor.org/',
-    image: '/images/campus/drc.jpg'
+    image: '/images/bg/backgroud_senghor4.jpg'
   },
   {
     id: 'senegal',
@@ -206,7 +206,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 200,
     url: 'http://campus-senegal.usenghor.org/',
-    image: '/images/campus/senegal.jpg'
+    image: '/images/bg/backgroud_senghor1.jpg'
   },
   {
     id: 'togo',
@@ -221,7 +221,7 @@ const campuses = ref([
     programsEn: ['Continuing education', 'Certifications'],
     students: 85,
     url: 'http://campus-togo.usenghor.org/',
-    image: '/images/campus/togo.jpg'
+    image: '/images/bg/backgroud_senghor2.jpg'
   }
 ])
 
@@ -392,65 +392,71 @@ const handleImageError = (e) => {
 
         <!-- Campus Card (Notebook style) -->
         <div class="campus-card-wrapper lg:w-[380px] lg:flex-shrink-0 z-20 lg:mt-12">
-          <div class="campus-card">
-            <!-- Image -->
-            <div class="card-image">
-              <img
-                :src="selectedCampus.image"
-                :alt="selectedCampus.name"
-                @error="handleImageError"
-              />
-              <!-- Badge -->
-              <div
-                class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold text-white"
-                :class="selectedCampus.type === 'headquarters' ? 'bg-amber-500' : 'bg-blue-500'"
-              >
-                {{ selectedCampus.type === 'headquarters' ? t('campus.legend.headquarters') : t('campus.legend.campus') }}
-              </div>
-            </div>
-
-            <!-- Content -->
-            <div class="card-content">
-              <h3 class="card-title">{{ selectedCampus.name }}</h3>
-              <p class="card-country">
-                <font-awesome-icon icon="fa-solid fa-location-dot" class="w-3 h-3 mr-1" />
-                {{ locale === 'fr' ? selectedCampus.countryName : selectedCampus.countryNameEn }}
-              </p>
-              <div class="card-text">
-                <p>{{ locale === 'fr' ? selectedCampus.description : selectedCampus.descriptionEn }}</p>
-              </div>
-
-              <!-- Programs -->
-              <div class="card-programs">
-                <span
-                  v-for="program in (locale === 'fr' ? selectedCampus.programs : selectedCampus.programsEn)"
-                  :key="program"
-                  class="program-tag"
+          <Transition
+            mode="out-in"
+            enter-active-class="animate__animated animate__flipInY animate__faster"
+            leave-active-class="animate__animated animate__flipOutY animate__faster"
+          >
+            <div class="campus-card" :key="selectedCampus.id">
+              <!-- Image -->
+              <div class="card-image">
+                <img
+                  :src="selectedCampus.image"
+                  :alt="selectedCampus.name"
+                  @error="handleImageError"
+                />
+                <!-- Badge -->
+                <div
+                  class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold text-white"
+                  :class="selectedCampus.type === 'headquarters' ? 'bg-amber-500' : 'bg-blue-500'"
                 >
-                  {{ program }}
-                </span>
-              </div>
-
-              <!-- Stats -->
-              <div class="card-stats">
-                <div class="stat">
-                  <font-awesome-icon icon="fa-solid fa-users" class="w-4 h-4 text-blue-500" />
-                  <span class="stat-value">{{ selectedCampus.students }}</span>
-                  <span class="stat-label">{{ t('campus.students') }}</span>
+                  {{ selectedCampus.type === 'headquarters' ? t('campus.legend.headquarters') : t('campus.legend.campus') }}
                 </div>
               </div>
 
-              <!-- CTA -->
-              <a
-                :href="selectedCampus.url"
-                target="_blank"
-                class="card-cta"
-              >
-                {{ t('campus.modal.visitWebsite') || 'Visiter le site' }}
-                <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 ml-2" />
-              </a>
+              <!-- Content -->
+              <div class="card-content">
+                <h3 class="card-title">{{ selectedCampus.name }}</h3>
+                <p class="card-country">
+                  <font-awesome-icon icon="fa-solid fa-location-dot" class="w-3 h-3 mr-1" />
+                  {{ locale === 'fr' ? selectedCampus.countryName : selectedCampus.countryNameEn }}
+                </p>
+                <div class="card-text">
+                  <p>{{ locale === 'fr' ? selectedCampus.description : selectedCampus.descriptionEn }}</p>
+                </div>
+
+                <!-- Programs -->
+                <div class="card-programs">
+                  <span
+                    v-for="program in (locale === 'fr' ? selectedCampus.programs : selectedCampus.programsEn)"
+                    :key="program"
+                    class="program-tag"
+                  >
+                    {{ program }}
+                  </span>
+                </div>
+
+                <!-- Stats -->
+                <div class="card-stats">
+                  <div class="stat">
+                    <font-awesome-icon icon="fa-solid fa-users" class="w-4 h-4 text-blue-500" />
+                    <span class="stat-value">{{ selectedCampus.students }}</span>
+                    <span class="stat-label">{{ t('campus.students') }}</span>
+                  </div>
+                </div>
+
+                <!-- CTA -->
+                <a
+                  :href="selectedCampus.url"
+                  target="_blank"
+                  class="card-cta"
+                >
+                  {{ t('campus.modal.visitWebsite') || 'Visiter le site' }}
+                  <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 ml-2" />
+                </a>
+              </div>
             </div>
-          </div>
+          </Transition>
         </div>
       </div>
     </div>
