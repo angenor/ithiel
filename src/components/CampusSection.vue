@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import World from '@svg-maps/world'
 
@@ -313,18 +313,15 @@ const handleCountryClick = (location) => {
   }
 }
 
-// Get tooltip text
-const getTooltipText = computed(() => {
-  if (!hovered.value) return ''
-
-  const campus = getCampusForCountry(hovered.value.id)
-  if (campus) {
-    const countryName = locale.value === 'fr' ? campus.countryName : campus.countryNameEn
-    return `${countryName} - ${campus.name}`
+// Handle tooltip click
+const handleTooltipClick = () => {
+  if (hovered.value) {
+    const campus = getCampusForCountry(hovered.value.id)
+    if (campus) {
+      selectedCampus.value = campus
+    }
   }
-
-  return hovered.value.name
-})
+}
 
 // Fallback image handler
 const handleImageError = (e) => {
@@ -399,12 +396,20 @@ const handleImageError = (e) => {
               <div
                 v-if="hovered"
                 class="tooltip"
+                :class="{ 'tooltip-clickable': getCampusForCountry(hovered.id) }"
                 :style="{
                   left: mousePosition.x + 15 + 'px',
                   top: mousePosition.y - 10 + 'px'
                 }"
+                @click.stop="handleTooltipClick"
               >
-                {{ getTooltipText }}
+                <template v-if="getCampusForCountry(hovered.id)">
+                  <span class="tooltip-campus-name">{{ getCampusForCountry(hovered.id).name }}</span>
+                  <span class="tooltip-hint">Cliquer pour voir</span>
+                </template>
+                <template v-else>
+                  {{ hovered.name }}
+                </template>
               </div>
             </Transition>
           </div>
@@ -479,6 +484,24 @@ const handleImageError = (e) => {
           </Transition>
         </div>
       </div>
+
+      <!-- Campus Name Cards -->
+      <div class="mt-12">
+        <div class="flex flex-wrap justify-center gap-3">
+          <button
+            v-for="campus in campuses"
+            :key="campus.id"
+            class="campus-name-card"
+            :class="{
+              'campus-name-card--active': selectedCampus.id === campus.id,
+              'campus-name-card--headquarters': campus.type === 'headquarters'
+            }"
+            @click="selectedCampus = campus"
+          >
+            {{ campus.name }}
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -517,6 +540,32 @@ const handleImageError = (e) => {
   z-index: 50;
   white-space: nowrap;
   transform: translateY(-50%);
+}
+
+.tooltip-clickable {
+  pointer-events: auto;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 16px;
+  transition: all 0.2s ease;
+}
+
+.tooltip-clickable:hover {
+  background: rgba(59, 130, 246, 0.95);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.tooltip-campus-name {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.tooltip-hint {
+  font-size: 11px;
+  opacity: 0.7;
+  font-weight: 400;
 }
 
 /* Fade transition */
@@ -785,5 +834,96 @@ const handleImageError = (e) => {
 :root.dark .card-cta {
   background: #fefce8;
   color: #1e40af;
+}
+
+/* Campus Name Cards */
+.campus-name-card {
+  padding: 0.5rem 1rem;
+  background: #fffef0;
+  color: #374151;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  transform: rotate(var(--rotation, 0deg));
+}
+
+.campus-name-card:nth-child(odd) {
+  --rotation: -1deg;
+}
+
+.campus-name-card:nth-child(even) {
+  --rotation: 1deg;
+}
+
+.campus-name-card:nth-child(3n) {
+  --rotation: -0.5deg;
+}
+
+.campus-name-card::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 8px;
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 1px;
+}
+
+.campus-name-card:hover {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
+  background: #fefce8;
+}
+
+.campus-name-card--active {
+  background: #dbeafe;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.campus-name-card--active::before {
+  background: rgba(59, 130, 246, 0.6);
+}
+
+.campus-name-card--headquarters {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.campus-name-card--headquarters::before {
+  background: rgba(245, 158, 11, 0.6);
+}
+
+.campus-name-card--headquarters.campus-name-card--active {
+  background: #fde68a;
+}
+
+:root.dark .campus-name-card {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+:root.dark .campus-name-card:hover {
+  background: #4b5563;
+}
+
+:root.dark .campus-name-card--active {
+  background: #1e40af;
+  color: #fff;
+}
+
+:root.dark .campus-name-card--headquarters {
+  background: #78350f;
+  color: #fef3c7;
+}
+
+:root.dark .campus-name-card--headquarters.campus-name-card--active {
+  background: #b45309;
 }
 </style>
