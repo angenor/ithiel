@@ -262,6 +262,9 @@ const coloredCountries = {
 // Default color for non-highlighted countries
 const defaultColor = '#e5e7eb'
 
+// Selected color (green)
+const selectedColor = '#22c55e'
+
 // Get color for a country
 const getColor = (id) => {
   const isHovered = hovered.value?.id === id
@@ -270,7 +273,7 @@ const getColor = (id) => {
 
   if (countryData) {
     if (isSelected) {
-      return adjustBrightness(countryData.color, -25)
+      return isHovered ? adjustBrightness(selectedColor, -15) : selectedColor
     }
     if (isHovered) {
       return adjustBrightness(countryData.color, -15)
