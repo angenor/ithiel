@@ -11,6 +11,19 @@ const map = World
 // Hovered country state
 const hovered = ref(null)
 
+// Mouse position for tooltip
+const mousePosition = ref({ x: 0, y: 0 })
+
+// Handle mouse move on map
+const handleMouseMove = (event) => {
+  const container = event.currentTarget
+  const rect = container.getBoundingClientRect()
+  mousePosition.value = {
+    x: event.clientX - rect.left,
+    y: event.clientY - rect.top
+  }
+}
+
 // Campus data with cover images
 const campuses = ref([
   {
@@ -360,7 +373,7 @@ const handleImageError = (e) => {
         <!-- Map Container -->
         <div class="relative flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-4 lg:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl lg:mr-[-80px] z-10">
           <!-- Map -->
-          <div class="map-container relative">
+          <div class="map-container relative" @mousemove="handleMouseMove">
             <svg
               :viewBox="map.viewBox"
               class="world-map w-full h-auto"
@@ -383,7 +396,14 @@ const handleImageError = (e) => {
 
             <!-- Tooltip -->
             <Transition name="fade">
-              <div v-if="hovered" class="tooltip">
+              <div
+                v-if="hovered"
+                class="tooltip"
+                :style="{
+                  left: mousePosition.x + 15 + 'px',
+                  top: mousePosition.y - 10 + 'px'
+                }"
+              >
                 {{ getTooltipText }}
               </div>
             </Transition>
@@ -487,16 +507,16 @@ const handleImageError = (e) => {
 /* Tooltip */
 .tooltip {
   position: absolute;
-  top: 20px;
-  left: 20px;
   background: rgba(0, 0, 0, 0.85);
   color: #fff;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 13px;
   font-weight: 500;
   pointer-events: none;
-  z-index: 10;
+  z-index: 50;
+  white-space: nowrap;
+  transform: translateY(-50%);
 }
 
 /* Fade transition */
