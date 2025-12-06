@@ -341,7 +341,7 @@ const socialLinks = [
           <div class="flex flex-col md:flex-row items-center justify-between gap-4">
             <!-- Copyright -->
             <div class="flex flex-col sm:flex-row items-center gap-2 text-sm text-gray-400">
-              <span>{{ t('footer.bottom.copyright', { year: currentYear }) }}</span>
+              <span>© {{ t('footer.bottom.copyright', { year: currentYear }) }}</span>
               <span class="hidden sm:inline">•</span>
               <span class="flex items-center gap-2">
                 <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4 text-amber-400" />

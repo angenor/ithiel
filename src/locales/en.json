@@ -507,7 +507,7 @@
       "email": "info@usenghor.org"
     },
     "bottom": {
-      "copyright": "© {year} Senghor University. All rights reserved.",
+      "copyright": "{year} Senghor University. All rights reserved.",
       "oif": "Direct operator of the Francophonie"
     }
   }

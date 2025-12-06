@@ -2,8 +2,14 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import World from '@svg-maps/world'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 const { t, locale } = useI18n()
+
+// Scroll animations
+const { elementRef: headerRef } = useScrollAnimation({ animation: 'fadeInDown' })
+const { elementRef: mapRef } = useScrollAnimation({ animation: 'fadeInLeft', threshold: 0.1 })
+const { elementRef: campusButtonsRef } = useScrollAnimation({ animation: 'fadeInUp', threshold: 0.2 })
 
 // World map data
 const map = World
@@ -343,7 +349,7 @@ const handleImageError = (e) => {
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-12 lg:mb-16">
+      <div ref="headerRef" class="text-center mb-12 lg:mb-16">
         <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 mb-4">
           <font-awesome-icon icon="fa-solid fa-globe-africa" class="w-3.5 h-3.5 mr-2" />
           {{ t('campus.badge') }}
@@ -369,7 +375,7 @@ const handleImageError = (e) => {
       </div>
 
       <!-- Map and Card Container -->
-      <div class="relative flex flex-col lg:flex-row gap-6 lg:gap-0">
+      <div ref="mapRef" class="relative flex flex-col lg:flex-row gap-6 lg:gap-0">
         <!-- Map Container -->
         <div class="relative flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-4 lg:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl lg:mr-[-80px] z-10">
           <!-- Map -->
@@ -489,7 +495,7 @@ const handleImageError = (e) => {
       </div>
 
       <!-- Campus Name Cards -->
-      <div class="mt-12">
+      <div ref="campusButtonsRef" class="mt-12">
         <div class="flex flex-wrap justify-center gap-3">
           <button
             v-for="campus in campuses"

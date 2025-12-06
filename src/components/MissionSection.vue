@@ -1,8 +1,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 const { t } = useI18n()
+
+// Scroll animations
+const { elementRef: headerRef } = useScrollAnimation({ animation: 'fadeInDown' })
+const { elementRef: missionCardRef } = useScrollAnimation({ animation: 'fadeInLeft', threshold: 0.2 })
+const { elementRef: visionCardRef } = useScrollAnimation({ animation: 'fadeInRight', threshold: 0.2 })
+const { elementRef: experienceRef } = useScrollAnimation({ animation: 'fadeInUp', threshold: 0.15 })
 
 // Stats animation
 const statsRef = ref(null)
@@ -104,7 +111,7 @@ onUnmounted(() => {
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16 lg:mb-20">
+      <div ref="headerRef" class="text-center mb-16 lg:mb-20">
         <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 mb-4">
           <font-awesome-icon icon="fa-solid fa-compass" class="w-3.5 h-3.5 mr-2" />
           {{ t('mission.badge') }}
@@ -120,7 +127,7 @@ onUnmounted(() => {
       <!-- Mission & Vision Cards - Glowing 3D Cards -->
       <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 mb-16 lg:mb-20">
         <!-- Mission Card -->
-        <div class="card-wrapper group perspective-1000">
+        <div ref="missionCardRef" class="card-wrapper group perspective-1000">
           <div class="card-3d relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/50 dark:border-gray-700/50 overflow-hidden transition-all duration-500">
             <!-- Animated Glow Border -->
             <div class="absolute -inset-[2px] rounded-3xl bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 -z-10 animate-gradient-x"></div>
@@ -169,7 +176,7 @@ onUnmounted(() => {
         </div>
 
         <!-- Vision Card -->
-        <div class="card-wrapper group perspective-1000">
+        <div ref="visionCardRef" class="card-wrapper group perspective-1000">
           <div class="card-3d relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-white/50 dark:border-gray-700/50 overflow-hidden transition-all duration-500">
             <!-- Animated Glow Border -->
             <div class="absolute -inset-[2px] rounded-3xl bg-gradient-to-r from-blue-400 via-indigo-500 to-blue-400 opacity-0 group-hover:opacity-100 blur-sm transition-opacity duration-500 -z-10 animate-gradient-x"></div>
@@ -219,7 +226,7 @@ onUnmounted(() => {
       </div>
 
       <!-- Experience Senghor Section -->
-      <div class="relative rounded-3xl overflow-hidden">
+      <div ref="experienceRef" class="relative rounded-3xl overflow-hidden">
         <!-- Background Image -->
         <div class="absolute inset-0">
           <img

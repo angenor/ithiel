@@ -1,7 +1,14 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 const { t } = useI18n()
+
+// Scroll animations
+const { elementRef: headerRef } = useScrollAnimation({ animation: 'fadeInDown' })
+const { elementRef: foundingTextsRef } = useScrollAnimation({ animation: 'fadeInUp', threshold: 0.15 })
+const { elementRef: donorCountriesRef } = useScrollAnimation({ animation: 'fadeIn', threshold: 0.2 })
+const { elementRef: boardRef } = useScrollAnimation({ animation: 'fadeInUp', threshold: 0.1 })
 
 // Donor countries data
 const donorCountries = [
@@ -96,7 +103,7 @@ const getColorClasses = (color) => {
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16 lg:mb-20">
+      <div ref="headerRef" class="text-center mb-16 lg:mb-20">
         <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 mb-4">
           <font-awesome-icon icon="fa-solid fa-landmark" class="w-3.5 h-3.5 mr-2" />
           {{ t('governance.badge') }}
@@ -110,7 +117,7 @@ const getColorClasses = (color) => {
       </div>
 
       <!-- Textes Fondateurs Section -->
-      <div class="mb-20">
+      <div ref="foundingTextsRef" class="mb-20">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <!-- Animated Border Image -->
           <div class="relative flex justify-center">
@@ -162,7 +169,7 @@ const getColorClasses = (color) => {
       </div>
 
       <!-- Pays Bailleurs Section -->
-      <div class="mb-20">
+      <div ref="donorCountriesRef" class="mb-20">
         <div class="text-center mb-12">
           <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             {{ t('governance.donorCountries.title') }}
@@ -223,7 +230,7 @@ const getColorClasses = (color) => {
       </div>
 
       <!-- Conseil d'Administration - Organigramme -->
-      <div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 lg:p-12 overflow-x-auto">
+      <div ref="boardRef" class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-3xl p-8 lg:p-12 overflow-x-auto">
         <div class="text-center mb-12">
           <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4">
             {{ t('governance.board.title') }}

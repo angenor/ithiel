@@ -1,7 +1,15 @@
 <script setup>
 import { useI18n } from 'vue-i18n'
+import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
 const { t } = useI18n()
+
+// Scroll animations
+const { elementRef: headerRef } = useScrollAnimation({ animation: 'fadeInDown' })
+const { elementRef: genesisRef } = useScrollAnimation({ animation: 'fadeInLeft', threshold: 0.15 })
+const { elementRef: foundersRef } = useScrollAnimation({ animation: 'fadeInRight', threshold: 0.15 })
+const { elementRef: usenghorRef } = useScrollAnimation({ animation: 'fadeInUp', threshold: 0.15 })
+const { elementRef: legacyRef } = useScrollAnimation({ animation: 'zoomIn', threshold: 0.2 })
 
 const founders = [
   {
@@ -44,7 +52,7 @@ const founders = [
 
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- Section Header -->
-      <div class="text-center mb-16 lg:mb-20">
+      <div ref="headerRef" class="text-center mb-16 lg:mb-20">
         <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 mb-4">
           <font-awesome-icon icon="fa-solid fa-landmark" class="w-3.5 h-3.5 mr-2" />
           {{ t('history.badge') }}
@@ -71,7 +79,7 @@ const founders = [
 
           <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-start">
             <!-- Left Content -->
-            <div class="lg:text-right lg:pr-16">
+            <div ref="genesisRef" class="lg:text-right lg:pr-16">
               <div class="history-box bg-white dark:bg-gray-800 backdrop-blur-xl rounded-3xl p-8 lg:p-10 border border-gray-900 dark:border-gray-600">
                 <!-- Mobile Timeline Node -->
                 <div class="lg:hidden flex items-center gap-4 mb-6">
@@ -114,7 +122,7 @@ const founders = [
             </div>
 
             <!-- Right Content - Founders -->
-            <div class="mt-8 lg:mt-0 lg:pl-16">
+            <div ref="foundersRef" class="mt-8 lg:mt-0 lg:pl-16">
               <div class="mb-6">
                 <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                   {{ t('history.founders.title') }}
@@ -153,7 +161,7 @@ const founders = [
             <div class="hidden lg:block lg:pr-16"></div>
 
             <!-- Right Content -->
-            <div class="lg:pl-16">
+            <div ref="usenghorRef" class="lg:pl-16">
               <div class="animated-border-box rounded-3xl p-8 lg:p-10">
                 <!-- Mobile Timeline Node -->
                 <div class="lg:hidden flex items-center gap-4 mb-6">
@@ -206,7 +214,7 @@ const founders = [
         </div>
 
         <!-- Notable Leader Highlight -->
-        <div class="mt-16 lg:mt-24">
+        <div ref="legacyRef" class="mt-16 lg:mt-24">
           <div class="relative bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-900 rounded-3xl overflow-hidden">
             <!-- Background Pattern -->
             <div class="absolute inset-0 opacity-10">
