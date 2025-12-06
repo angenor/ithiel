@@ -296,23 +296,6 @@ const founders = [
   z-index: -1;
 }
 
-:deep(.dark) .history-box::before {
-  background: rgb(31 41 55);
-}
-
-:deep(.dark) .history-box::after {
-  background-image: linear-gradient(
-    45deg,
-    rgb(31 41 55) 33.33%,
-    rgba(255, 255, 255, 0.7) 33.33%,
-    rgba(255, 255, 255, 0.7) 50%,
-    rgb(31 41 55) 50%,
-    rgb(31 41 55) 83.33%,
-    rgba(255, 255, 255, 0.7) 83.33%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-}
-
 /* Animated Border Box */
 @property --border-angle {
   syntax: "<angle>";
@@ -356,8 +339,28 @@ const founders = [
     --border-angle: 1turn;
   }
 }
+</style>
 
-:deep(.dark) .animated-border-box {
+<!-- Dark mode styles (non-scoped to access .dark on html) -->
+<style>
+.dark .history-box::before {
+  background: rgb(31 41 55) !important;
+}
+
+.dark .history-box::after {
+  background-image: linear-gradient(
+    45deg,
+    rgb(31 41 55) 33.33%,
+    rgba(255, 255, 255, 0.7) 33.33%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgb(31 41 55) 50%,
+    rgb(31 41 55) 83.33%,
+    rgba(255, 255, 255, 0.7) 83.33%,
+    rgba(255, 255, 255, 0.7) 100%
+  ) !important;
+}
+
+.dark .animated-border-box {
   --main-bg: conic-gradient(
     from var(--border-angle),
     rgb(31 41 55),
