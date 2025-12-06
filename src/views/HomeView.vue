@@ -5,6 +5,7 @@ import MissionSection from '@/components/MissionSection.vue'
 import HistorySection from '@/components/HistorySection.vue'
 import GovernanceSection from '@/components/GovernanceSection.vue'
 import CampusSection from '@/components/CampusSection.vue'
+import AppFooter from '@/components/AppFooter.vue'
 </script>
 
 <template>
@@ -15,5 +16,6 @@ import CampusSection from '@/components/CampusSection.vue'
     <HistorySection />
     <GovernanceSection />
     <CampusSection />
+    <AppFooter />
   </div>
 </template>

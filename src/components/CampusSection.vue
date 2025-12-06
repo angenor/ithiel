@@ -709,17 +709,61 @@ const handleImageError = (e) => {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding: 0.875rem;
-  background: linear-gradient(to right, #3b82f6, #6366f1);
-  color: white;
+  padding: 0.875rem 1.25rem;
+  background: #fffef0;
+  color: #1e40af;
   font-weight: 600;
-  border-radius: 0.75rem;
+  font-family: 'Caveat', 'Comic Sans MS', cursive;
+  font-size: 1.1rem;
   text-decoration: none;
-  transition: all 0.3s ease;
+  position: relative;
+  border: none;
+  box-shadow:
+    2px 2px 0 rgba(0, 0, 0, 0.1),
+    inset 0 0 20px rgba(255, 251, 235, 0.5);
+  transition: all 0.2s ease;
+  transform: rotate(-1deg);
+}
+
+.card-cta::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 12px;
+  background: linear-gradient(
+    to bottom,
+    rgba(59, 130, 246, 0.6) 0%,
+    rgba(59, 130, 246, 0.4) 100%
+  );
+  border-radius: 2px;
+}
+
+.card-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.02) 2px,
+    rgba(0, 0, 0, 0.02) 4px
+  );
+  pointer-events: none;
 }
 
 .card-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow:
+    4px 4px 0 rgba(0, 0, 0, 0.15),
+    inset 0 0 20px rgba(255, 251, 235, 0.5);
+}
+
+:root.dark .card-cta {
+  background: #fefce8;
+  color: #1e40af;
 }
 </style>
