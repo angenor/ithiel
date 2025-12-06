@@ -129,6 +129,14 @@ The font is applied automatically via Tailwind's `font-sans` class or through th
 
 This project uses [Font Awesome](https://fontawesome.com/) for icons. The `<font-awesome-icon>` component is registered globally.
 
+### Best Practices
+**IMPORTANT**: Use icons sparingly and intelligently:
+- Only use icons when they add genuine value to the user experience
+- Prefer text labels over icons when the meaning isn't immediately clear
+- Don't add icons purely for decoration - every icon should serve a purpose
+- Avoid icon overload: too many icons create visual noise and reduce clarity
+- When in doubt, leave the icon out
+
 ### Available Icon Sets
 - **Solid** (`fas`) - Filled icons
 - **Regular** (`far`) - Outlined icons
