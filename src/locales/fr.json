@@ -382,7 +382,8 @@
     "modal": {
       "programs": "Programmes proposés",
       "activeStudents": "Étudiants actifs",
-      "close": "Fermer"
+      "close": "Fermer",
+      "visitWebsite": "Visiter le site"
     }
   },
   "governance": {

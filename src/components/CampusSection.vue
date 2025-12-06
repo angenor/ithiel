@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import World from '@svg-maps/world'
 
@@ -11,10 +11,7 @@ const map = World
 // Hovered country state
 const hovered = ref(null)
 
-// Selected campus state
-const selectedCampus = ref(null)
-
-// Campus data
+// Campus data with cover images
 const campuses = ref([
   {
     id: 'headquarters',
@@ -23,12 +20,13 @@ const campuses = ref([
     countryName: 'Égypte',
     countryNameEn: 'Egypt',
     type: 'headquarters',
-    description: 'Siège principal de l\'Université Senghor',
-    descriptionEn: 'Main headquarters of Senghor University',
+    description: 'Siège principal de l\'Université Senghor, situé dans la ville historique d\'Alexandrie. Le campus offre un environnement académique d\'excellence au cœur de la Méditerranée.',
+    descriptionEn: 'Main headquarters of Senghor University, located in the historic city of Alexandria. The campus offers an academic environment of excellence in the heart of the Mediterranean.',
     programs: ['Masters', 'Doctorat', 'Diplômes universitaires'],
     programsEn: ['Masters', 'Doctorate', 'University Diplomas'],
     students: 500,
-    url: 'https://www.usenghor.org'
+    url: 'https://www.usenghor.org',
+    image: '/images/campus/alexandria.jpg'
   },
   {
     id: 'benin',
@@ -37,12 +35,13 @@ const campuses = ref([
     countryName: 'Bénin',
     countryNameEn: 'Benin',
     type: 'campus',
-    description: 'Campus externalisé du Bénin',
-    descriptionEn: 'External campus in Benin',
+    description: 'Campus externalisé du Bénin offrant des formations continues et certifications adaptées aux besoins locaux.',
+    descriptionEn: 'External campus in Benin offering continuing education and certifications adapted to local needs.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 150,
-    url: 'https://sites.google.com/usenghor.org/campus-benin'
+    url: 'https://sites.google.com/usenghor.org/campus-benin',
+    image: '/images/campus/benin.jpg'
   },
   {
     id: 'burkina',
@@ -51,12 +50,13 @@ const campuses = ref([
     countryName: 'Burkina Faso',
     countryNameEn: 'Burkina Faso',
     type: 'campus',
-    description: 'Campus externalisé du Burkina Faso',
-    descriptionEn: 'External campus in Burkina Faso',
+    description: 'Campus externalisé du Burkina Faso, un hub de formation pour l\'Afrique de l\'Ouest.',
+    descriptionEn: 'External campus in Burkina Faso, a training hub for West Africa.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 120,
-    url: 'https://sites.google.com/usenghor.org/campus-burkinafaso'
+    url: 'https://sites.google.com/usenghor.org/campus-burkinafaso',
+    image: '/images/campus/burkina.jpg'
   },
   {
     id: 'cameroon',
@@ -65,12 +65,13 @@ const campuses = ref([
     countryName: 'Cameroun',
     countryNameEn: 'Cameroon',
     type: 'campus',
-    description: 'Campus externalisé du Cameroun',
-    descriptionEn: 'External campus in Cameroon',
+    description: 'Campus externalisé du Cameroun, contribuant au développement des compétences en Afrique centrale.',
+    descriptionEn: 'External campus in Cameroon, contributing to skills development in Central Africa.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 180,
-    url: 'http://campus-cameroun.usenghor.org/'
+    url: 'http://campus-cameroun.usenghor.org/',
+    image: '/images/campus/cameroon.jpg'
   },
   {
     id: 'ivorycoast',
@@ -79,12 +80,13 @@ const campuses = ref([
     countryName: 'Côte d\'Ivoire',
     countryNameEn: 'Ivory Coast',
     type: 'campus',
-    description: 'Campus externalisé de Côte d\'Ivoire',
-    descriptionEn: 'External campus in Ivory Coast',
+    description: 'Campus externalisé de Côte d\'Ivoire, au cœur de la capitale économique ouest-africaine.',
+    descriptionEn: 'External campus in Ivory Coast, at the heart of the West African economic capital.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 160,
-    url: 'http://campus-cotedivoire.usenghor.org/'
+    url: 'http://campus-cotedivoire.usenghor.org/',
+    image: '/images/campus/ivorycoast.jpg'
   },
   {
     id: 'djibouti',
@@ -93,12 +95,13 @@ const campuses = ref([
     countryName: 'Djibouti',
     countryNameEn: 'Djibouti',
     type: 'campus',
-    description: 'Campus externalisé de Djibouti',
-    descriptionEn: 'External campus in Djibouti',
+    description: 'Campus externalisé de Djibouti, porte d\'entrée vers la Corne de l\'Afrique.',
+    descriptionEn: 'External campus in Djibouti, gateway to the Horn of Africa.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 80,
-    url: 'https://sites.google.com/usenghor.org/campus-djibouti/'
+    url: 'https://sites.google.com/usenghor.org/campus-djibouti/',
+    image: '/images/campus/djibouti.jpg'
   },
   {
     id: 'gabon',
@@ -107,12 +110,13 @@ const campuses = ref([
     countryName: 'Gabon',
     countryNameEn: 'Gabon',
     type: 'campus',
-    description: 'Campus externalisé du Gabon',
-    descriptionEn: 'External campus in Gabon',
+    description: 'Campus externalisé du Gabon, au service du développement de l\'Afrique centrale.',
+    descriptionEn: 'External campus in Gabon, serving the development of Central Africa.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 100,
-    url: 'https://sites.google.com/usenghor.org/campus-gabon/accueil/le-campus-senghor-au-gabon'
+    url: 'https://sites.google.com/usenghor.org/campus-gabon/',
+    image: '/images/campus/gabon.jpg'
   },
   {
     id: 'guinea',
@@ -121,12 +125,13 @@ const campuses = ref([
     countryName: 'Guinée',
     countryNameEn: 'Guinea',
     type: 'campus',
-    description: 'Campus externalisé de Guinée',
-    descriptionEn: 'External campus in Guinea',
+    description: 'Campus externalisé de Guinée, formant les cadres de demain en Afrique de l\'Ouest.',
+    descriptionEn: 'External campus in Guinea, training tomorrow\'s executives in West Africa.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 90,
-    url: 'https://sites.google.com/usenghor.org/campus-guinee'
+    url: 'https://sites.google.com/usenghor.org/campus-guinee',
+    image: '/images/campus/guinea.jpg'
   },
   {
     id: 'hungary',
@@ -135,12 +140,13 @@ const campuses = ref([
     countryName: 'Hongrie',
     countryNameEn: 'Hungary',
     type: 'campus',
-    description: 'Campus externalisé de Hongrie',
-    descriptionEn: 'External campus in Hungary',
+    description: 'Campus externalisé de Hongrie, notre présence européenne au cœur de Budapest.',
+    descriptionEn: 'External campus in Hungary, our European presence in the heart of Budapest.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 50,
-    url: 'http://campus-hongrie.usenghor.org/'
+    url: 'http://campus-hongrie.usenghor.org/',
+    image: '/images/campus/hungary.jpg'
   },
   {
     id: 'madagascar',
@@ -149,12 +155,13 @@ const campuses = ref([
     countryName: 'Madagascar',
     countryNameEn: 'Madagascar',
     type: 'campus',
-    description: 'Campus externalisé de Madagascar',
-    descriptionEn: 'External campus in Madagascar',
+    description: 'Campus externalisé de Madagascar, au service de la Grande Île.',
+    descriptionEn: 'External campus in Madagascar, serving the Great Island.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 110,
-    url: 'http://campus-madagascar.usenghor.org/'
+    url: 'http://campus-madagascar.usenghor.org/',
+    image: '/images/campus/madagascar.jpg'
   },
   {
     id: 'morocco',
@@ -163,12 +170,13 @@ const campuses = ref([
     countryName: 'Maroc',
     countryNameEn: 'Morocco',
     type: 'campus',
-    description: 'Campus externalisé du Maroc',
-    descriptionEn: 'External campus in Morocco',
+    description: 'Campus externalisé du Maroc, pont entre l\'Afrique et l\'Europe.',
+    descriptionEn: 'External campus in Morocco, bridge between Africa and Europe.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 140,
-    url: 'http://campus-maroc.usenghor.org/'
+    url: 'http://campus-maroc.usenghor.org/',
+    image: '/images/campus/morocco.jpg'
   },
   {
     id: 'drc',
@@ -177,12 +185,13 @@ const campuses = ref([
     countryName: 'République démocratique du Congo',
     countryNameEn: 'Democratic Republic of the Congo',
     type: 'campus',
-    description: 'Campus externalisé de la RDC',
-    descriptionEn: 'External campus in the DRC',
+    description: 'Campus externalisé de la RDC, contribuant au développement du plus grand pays francophone.',
+    descriptionEn: 'External campus in the DRC, contributing to the development of the largest French-speaking country.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 130,
-    url: 'http://campus-rdc.usenghor.org/'
+    url: 'http://campus-rdc.usenghor.org/',
+    image: '/images/campus/drc.jpg'
   },
   {
     id: 'senegal',
@@ -191,12 +200,13 @@ const campuses = ref([
     countryName: 'Sénégal',
     countryNameEn: 'Senegal',
     type: 'campus',
-    description: 'Campus externalisé du Sénégal',
-    descriptionEn: 'External campus in Senegal',
+    description: 'Campus externalisé du Sénégal à Dakar, berceau de la Francophonie africaine.',
+    descriptionEn: 'External campus in Senegal in Dakar, cradle of African Francophonie.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 200,
-    url: 'http://campus-senegal.usenghor.org/'
+    url: 'http://campus-senegal.usenghor.org/',
+    image: '/images/campus/senegal.jpg'
   },
   {
     id: 'togo',
@@ -205,33 +215,35 @@ const campuses = ref([
     countryName: 'Togo',
     countryNameEn: 'Togo',
     type: 'campus',
-    description: 'Campus externalisé du Togo',
-    descriptionEn: 'External campus in Togo',
+    description: 'Campus externalisé du Togo, formant les leaders de demain.',
+    descriptionEn: 'External campus in Togo, training tomorrow\'s leaders.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
     students: 85,
-    url: 'http://campus-togo.usenghor.org/'
+    url: 'http://campus-togo.usenghor.org/',
+    image: '/images/campus/togo.jpg'
   }
 ])
 
+// Selected campus state - Alexandria by default
+const selectedCampus = ref(campuses.value[0])
+
 // Countries colored by type
 const coloredCountries = {
-  // Headquarters - Amber/Orange
   eg: { color: '#f59e0b', type: 'headquarters' },
-  // External campuses - Blue
-  bj: { color: '#3b82f6', type: 'campus' },  // Bénin
-  bf: { color: '#3b82f6', type: 'campus' },  // Burkina Faso
-  cm: { color: '#3b82f6', type: 'campus' },  // Cameroun
-  ci: { color: '#3b82f6', type: 'campus' },  // Côte d'Ivoire
-  dj: { color: '#3b82f6', type: 'campus' },  // Djibouti
-  ga: { color: '#3b82f6', type: 'campus' },  // Gabon
-  gn: { color: '#3b82f6', type: 'campus' },  // Guinée
-  hu: { color: '#3b82f6', type: 'campus' },  // Hongrie
-  mg: { color: '#3b82f6', type: 'campus' },  // Madagascar
-  ma: { color: '#3b82f6', type: 'campus' },  // Maroc
-  cd: { color: '#3b82f6', type: 'campus' },  // RDC
-  sn: { color: '#3b82f6', type: 'campus' },  // Sénégal
-  tg: { color: '#3b82f6', type: 'campus' }   // Togo
+  bj: { color: '#3b82f6', type: 'campus' },
+  bf: { color: '#3b82f6', type: 'campus' },
+  cm: { color: '#3b82f6', type: 'campus' },
+  ci: { color: '#3b82f6', type: 'campus' },
+  dj: { color: '#3b82f6', type: 'campus' },
+  ga: { color: '#3b82f6', type: 'campus' },
+  gn: { color: '#3b82f6', type: 'campus' },
+  hu: { color: '#3b82f6', type: 'campus' },
+  mg: { color: '#3b82f6', type: 'campus' },
+  ma: { color: '#3b82f6', type: 'campus' },
+  cd: { color: '#3b82f6', type: 'campus' },
+  sn: { color: '#3b82f6', type: 'campus' },
+  tg: { color: '#3b82f6', type: 'campus' }
 }
 
 // Default color for non-highlighted countries
@@ -240,9 +252,13 @@ const defaultColor = '#e5e7eb'
 // Get color for a country
 const getColor = (id) => {
   const isHovered = hovered.value?.id === id
+  const isSelected = selectedCampus.value?.country === id
   const countryData = coloredCountries[id]
 
   if (countryData) {
+    if (isSelected) {
+      return adjustBrightness(countryData.color, -25)
+    }
     if (isHovered) {
       return adjustBrightness(countryData.color, -15)
     }
@@ -284,11 +300,6 @@ const handleCountryClick = (location) => {
   }
 }
 
-// Close campus detail
-const closeCampusDetail = () => {
-  selectedCampus.value = null
-}
-
 // Get tooltip text
 const getTooltipText = computed(() => {
   if (!hovered.value) return ''
@@ -302,88 +313,14 @@ const getTooltipText = computed(() => {
   return hovered.value.name
 })
 
-// Stats animation
-const statsRef = ref(null)
-const hasAnimated = ref(false)
-const animatedStats = ref({
-  campuses: 0,
-  countries: 0,
-  students: 0
-})
-
-const targetStats = {
-  campuses: 14,
-  countries: 14,
-  students: 1995
+// Fallback image handler
+const handleImageError = (e) => {
+  e.target.src = 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop'
 }
-
-const animateValue = (key, target, duration = 2000) => {
-  const startTime = performance.now()
-  const startValue = 0
-
-  const easeOutQuart = (t) => 1 - Math.pow(1 - t, 4)
-
-  const updateValue = (currentTime) => {
-    const elapsed = currentTime - startTime
-    const progress = Math.min(elapsed / duration, 1)
-    const easedProgress = easeOutQuart(progress)
-
-    animatedStats.value[key] = Math.round(startValue + (target - startValue) * easedProgress)
-
-    if (progress < 1) {
-      requestAnimationFrame(updateValue)
-    }
-  }
-
-  requestAnimationFrame(updateValue)
-}
-
-const startAnimation = () => {
-  if (hasAnimated.value) return
-  hasAnimated.value = true
-
-  animateValue('campuses', targetStats.campuses, 1500)
-  setTimeout(() => animateValue('countries', targetStats.countries, 2000), 200)
-  setTimeout(() => animateValue('students', targetStats.students, 2000), 400)
-}
-
-let observer = null
-
-onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          startAnimation()
-        }
-      })
-    },
-    { threshold: 0.3 }
-  )
-
-  if (statsRef.value) {
-    observer.observe(statsRef.value)
-  }
-})
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect()
-  }
-})
-
-// Filter state
-const activeFilter = ref('all')
-const filters = ['all', 'headquarters', 'campus']
-
-const filteredCampuses = computed(() => {
-  if (activeFilter.value === 'all') return campuses.value
-  return campuses.value.filter(c => c.type === activeFilter.value)
-})
 </script>
 
 <template>
-  <section class="relative py-16 lg:py-24 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-hidden">
+  <section class="relative py-16 lg:py-24 bg-white dark:bg-gray-950 transition-colors duration-300 overflow-visible">
     <!-- Background Elements -->
     <div class="absolute inset-0 overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-amber-50/30 dark:from-blue-900/10 dark:via-transparent dark:to-amber-900/10"></div>
@@ -418,115 +355,104 @@ const filteredCampuses = computed(() => {
         </div>
       </div>
 
-      <!-- Map Container -->
-      <div class="relative bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-4 lg:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl">
-        <!-- Map -->
-        <div class="map-container relative">
-          <svg
-            :viewBox="map.viewBox"
-            class="world-map w-full h-auto"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              v-for="location in map.locations"
-              :key="location.id"
-              :d="location.path"
-              :fill="getColor(location.id)"
-              stroke="#fff"
-              stroke-width="0.5"
-              class="map-path"
-              :class="{ 'cursor-pointer': coloredCountries[location.id] }"
-              @mouseenter="hovered = location"
-              @mouseleave="hovered = null"
-              @click="handleCountryClick(location)"
-            />
-          </svg>
-
-          <!-- Tooltip -->
-          <Transition name="fade">
-            <div v-if="hovered" class="tooltip">
-              {{ getTooltipText }}
-            </div>
-          </Transition>
-        </div>
-      </div>
-      
-
-      <!-- Campus Detail Modal -->
-      <Transition name="modal">
-        <div
-          v-if="selectedCampus"
-          class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-          @click.self="closeCampusDetail"
-        >
-          <div class="relative w-full max-w-lg bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden animate__animated animate__fadeInUp animate__faster">
-            <!-- Header -->
-            <div
-              class="relative px-6 py-8 text-white"
-              :class="{
-                'bg-gradient-to-r from-amber-500 to-orange-500': selectedCampus.type === 'headquarters',
-                'bg-gradient-to-r from-blue-500 to-indigo-500': selectedCampus.type === 'campus'
-              }"
+      <!-- Map and Card Container -->
+      <div class="relative flex flex-col lg:flex-row gap-6 lg:gap-0">
+        <!-- Map Container -->
+        <div class="relative flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-4 lg:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl lg:mr-[-80px] z-10">
+          <!-- Map -->
+          <div class="map-container relative">
+            <svg
+              :viewBox="map.viewBox"
+              class="world-map w-full h-auto"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <button
-                @click="closeCampusDetail"
-                class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors"
+              <path
+                v-for="location in map.locations"
+                :key="location.id"
+                :d="location.path"
+                :fill="getColor(location.id)"
+                stroke="#fff"
+                stroke-width="0.5"
+                class="map-path"
+                :class="{ 'cursor-pointer': coloredCountries[location.id] }"
+                @mouseenter="hovered = location"
+                @mouseleave="hovered = null"
+                @click="handleCountryClick(location)"
+              />
+            </svg>
+
+            <!-- Tooltip -->
+            <Transition name="fade">
+              <div v-if="hovered" class="tooltip">
+                {{ getTooltipText }}
+              </div>
+            </Transition>
+          </div>
+        </div>
+
+        <!-- Campus Card (Notebook style) -->
+        <div class="campus-card-wrapper lg:w-[380px] lg:flex-shrink-0 z-20 lg:mt-12">
+          <div class="campus-card">
+            <!-- Image -->
+            <div class="card-image">
+              <img
+                :src="selectedCampus.image"
+                :alt="selectedCampus.name"
+                @error="handleImageError"
+              />
+              <!-- Badge -->
+              <div
+                class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold text-white"
+                :class="selectedCampus.type === 'headquarters' ? 'bg-amber-500' : 'bg-blue-500'"
               >
-                <font-awesome-icon icon="fa-solid fa-times" class="w-4 h-4" />
-              </button>
-              <div class="flex items-center gap-4">
-                <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center">
-                  <font-awesome-icon
-                    :icon="selectedCampus.type === 'headquarters' ? 'fa-solid fa-building-columns' : 'fa-solid fa-graduation-cap'"
-                    class="w-8 h-8"
-                  />
-                </div>
-                <div>
-                  <h3 class="text-2xl font-bold">{{ selectedCampus.name }}</h3>
-                  <p class="text-white/80">{{ locale === 'fr' ? selectedCampus.countryName : selectedCampus.countryNameEn }}</p>
-                </div>
+                {{ selectedCampus.type === 'headquarters' ? t('campus.legend.headquarters') : t('campus.legend.campus') }}
               </div>
             </div>
 
             <!-- Content -->
-            <div class="p-6">
-              <p class="text-gray-600 dark:text-gray-300 mb-6">
-                {{ locale === 'fr' ? selectedCampus.description : selectedCampus.descriptionEn }}
+            <div class="card-content">
+              <h3 class="card-title">{{ selectedCampus.name }}</h3>
+              <p class="card-country">
+                <font-awesome-icon icon="fa-solid fa-location-dot" class="w-3 h-3 mr-1" />
+                {{ locale === 'fr' ? selectedCampus.countryName : selectedCampus.countryNameEn }}
               </p>
+              <div class="card-text">
+                <p>{{ locale === 'fr' ? selectedCampus.description : selectedCampus.descriptionEn }}</p>
+              </div>
 
-              <div class="mb-6">
-                <h4 class="text-sm font-semibold text-gray-900 dark:text-white mb-3">{{ t('campus.modal.programs') }}</h4>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    v-for="program in (locale === 'fr' ? selectedCampus.programs : selectedCampus.programsEn)"
-                    :key="program"
-                    class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full"
-                  >
-                    {{ program }}
-                  </span>
+              <!-- Programs -->
+              <div class="card-programs">
+                <span
+                  v-for="program in (locale === 'fr' ? selectedCampus.programs : selectedCampus.programsEn)"
+                  :key="program"
+                  class="program-tag"
+                >
+                  {{ program }}
+                </span>
+              </div>
+
+              <!-- Stats -->
+              <div class="card-stats">
+                <div class="stat">
+                  <font-awesome-icon icon="fa-solid fa-users" class="w-4 h-4 text-blue-500" />
+                  <span class="stat-value">{{ selectedCampus.students }}</span>
+                  <span class="stat-label">{{ t('campus.students') }}</span>
                 </div>
               </div>
 
-              <div class="flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                <div class="flex items-center gap-2">
-                  <font-awesome-icon icon="fa-solid fa-users" class="w-5 h-5 text-blue-500" />
-                  <div>
-                    <div class="text-xl font-bold text-gray-900 dark:text-white">{{ selectedCampus.students }}</div>
-                    <div class="text-xs text-gray-500 dark:text-gray-400">{{ t('campus.modal.activeStudents') }}</div>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                class="mt-6 w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors"
-                @click="closeCampusDetail"
+              <!-- CTA -->
+              <a
+                :href="selectedCampus.url"
+                target="_blank"
+                class="card-cta"
               >
-                {{ t('campus.modal.close') }}
-              </button>
+                {{ t('campus.modal.visitWebsite') || 'Visiter le site' }}
+                <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 ml-2" />
+              </a>
             </div>
           </div>
         </div>
-      </Transition>
+      </div>
     </div>
   </section>
 </template>
@@ -578,17 +504,6 @@ const filteredCampuses = computed(() => {
   opacity: 0;
 }
 
-/* Modal transition */
-.modal-enter-active,
-.modal-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.modal-enter-from,
-.modal-leave-to {
-  opacity: 0;
-}
-
 /* Blob Animation */
 @keyframes blob {
   0%, 100% {
@@ -613,27 +528,192 @@ const filteredCampuses = computed(() => {
   animation-delay: 2s;
 }
 
-/* Stats Animation */
-.stat-card {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.6s ease;
+/* Campus Card - Notebook Style */
+.campus-card-wrapper {
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
 }
 
-.stat-card.stat-visible {
-  opacity: 1;
-  transform: translateY(0);
+.campus-card {
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-left: 30px;
+  background:
+    repeating-linear-gradient(#0000 0 calc(1.4rem - 1px), #e5e7eb 0 1.4rem) right bottom / 100% 100%,
+    linear-gradient(#3b82f6 0 0) 30px 0 / 2px 100% #fff;
+  background-repeat: no-repeat;
+  line-height: 1.4rem;
+  -webkit-mask: radial-gradient(circle 0.8rem at 2px 50%, #0000 98%, #000) 0 0 / 100% 2.8rem;
+  mask: radial-gradient(circle 0.8rem at 2px 50%, #0000 98%, #000) 0 0 / 100% 2.8rem;
 }
 
-.stat-card:nth-child(2) {
-  transition-delay: 0.1s;
+:root.dark .campus-card {
+  background:
+    repeating-linear-gradient(#0000 0 calc(1.4rem - 1px), #374151 0 1.4rem) right bottom / 100% 100%,
+    linear-gradient(#3b82f6 0 0) 30px 0 / 2px 100% #1f2937;
+  background-repeat: no-repeat;
 }
 
-.stat-card:nth-child(3) {
-  transition-delay: 0.2s;
+.card-image {
+  height: 200px;
+  padding: 1.4rem 1.4rem 0;
+  position: relative;
 }
 
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+.card-image::before,
+.card-image::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  left: 60%;
+  top: 0;
+  height: 45px;
+  background: rgba(230, 230, 230, 0.72);
+  transform: rotate(45deg);
+}
+
+.card-image::after {
+  transform: rotate(-45deg);
+  top: auto;
+  bottom: -22px;
+  left: 40%;
+}
+
+:root.dark .card-image::before,
+:root.dark .card-image::after {
+  background: rgba(55, 65, 81, 0.72);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.card-content {
+  padding: 1.4rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4rem;
+  padding-top: 0.7rem;
+}
+
+:root.dark .card-title {
+  color: #f9fafb;
+}
+
+.card-country {
+  font-size: 0.875rem;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+  margin: 0 0 1.4rem 0;
+  line-height: 1.4rem;
+}
+
+:root.dark .card-country {
+  color: #9ca3af;
+}
+
+.card-text {
+  margin: 0 0 1.4rem 0;
+}
+
+.card-text p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.4rem;
+}
+
+:root.dark .card-text p {
+  color: #d1d5db;
+}
+
+.card-programs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.4rem 0;
+}
+
+.program-tag {
+  padding: 0.25rem 0.75rem;
+  background: #eff6ff;
+  color: #3b82f6;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+:root.dark .program-tag {
+  background: rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.card-stats {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.7rem;
+  background: #f9fafb;
+  border-radius: 0.75rem;
+  margin: 0 0 1.4rem 0;
+}
+
+:root.dark .card-stats {
+  background: rgba(55, 65, 81, 0.5);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+:root.dark .stat-value {
+  color: #f9fafb;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+:root.dark .stat-label {
+  color: #9ca3af;
+}
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.875rem;
+  background: linear-gradient(to right, #3b82f6, #6366f1);
+  color: white;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.card-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
 }
 </style>
