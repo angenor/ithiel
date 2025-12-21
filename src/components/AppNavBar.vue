@@ -133,14 +133,31 @@ const toggleMobileMenu = () => {
   }
 }
 
-const languages = ['fr', 'en', 'ar']
-const languageNames = { fr: 'Français', en: 'English', ar: 'العربية' }
+const languages = [
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'en', name: 'English', flag: '🇬🇧' },
+  { code: 'ar', name: 'العربية', flag: '🇪🇬' }
+]
 
-const toggleLanguage = () => {
-  const currentIndex = languages.indexOf(locale.value)
-  const nextIndex = (currentIndex + 1) % languages.length
-  locale.value = languages[nextIndex]
-  document.documentElement.dir = locale.value === 'ar' ? 'rtl' : 'ltr'
+const isLanguageDropdownOpen = ref(false)
+
+const setLanguage = (langCode) => {
+  locale.value = langCode
+  document.documentElement.dir = langCode === 'ar' ? 'rtl' : 'ltr'
+  localStorage.setItem('locale', langCode)
+  isLanguageDropdownOpen.value = false
+}
+
+const toggleLanguageDropdown = () => {
+  isLanguageDropdownOpen.value = !isLanguageDropdownOpen.value
+}
+
+const closeLanguageDropdown = () => {
+  isLanguageDropdownOpen.value = false
+}
+
+const currentLanguage = () => {
+  return languages.find(l => l.code === locale.value) || languages[0]
 }
 
 const openDropdown = (key) => {
@@ -435,19 +452,69 @@ onUnmounted(() => {
             <font-awesome-icon v-else icon="fa-solid fa-moon" class="w-4 h-4" />
           </button>
 
-          <!-- Language Toggle -->
-          <button
-            @click="toggleLanguage"
-            class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-300"
-            :class="[
-              isScrolled
-                ? 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
-                : 'text-white/90 hover:bg-white/10'
-            ]"
+          <!-- Language Dropdown -->
+          <div
+            class="relative"
+            @mouseenter="isLanguageDropdownOpen = true"
+            @mouseleave="closeLanguageDropdown"
           >
-            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4" />
-            <span>{{ locale.toUpperCase() }}</span>
-          </button>
+            <button
+              @click="toggleLanguageDropdown"
+              class="flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-xl transition-all duration-300"
+              :class="[
+                isScrolled
+                  ? isLanguageDropdownOpen
+                    ? 'bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                  : isLanguageDropdownOpen
+                    ? 'bg-white/20 text-white'
+                    : 'text-white/90 hover:bg-white/10'
+              ]"
+            >
+              <span class="text-base">{{ currentLanguage().flag }}</span>
+              <span>{{ locale.toUpperCase() }}</span>
+              <font-awesome-icon
+                icon="fa-solid fa-chevron-down"
+                class="w-3 h-3 transition-transform duration-300 opacity-60"
+                :class="{ 'rotate-180': isLanguageDropdownOpen }"
+              />
+            </button>
+
+            <!-- Language Dropdown Menu -->
+            <Transition
+              enter-active-class="transition duration-200 ease-out"
+              enter-from-class="opacity-0 -translate-y-2"
+              enter-to-class="opacity-100 translate-y-0"
+              leave-active-class="transition duration-150 ease-in"
+              leave-from-class="opacity-100 translate-y-0"
+              leave-to-class="opacity-0 -translate-y-2"
+            >
+              <div
+                v-if="isLanguageDropdownOpen"
+                class="absolute top-full ltr:right-0 rtl:left-0 mt-2 w-40 bg-white dark:bg-gray-900 rounded-xl shadow-xl shadow-black/10 dark:shadow-black/30 border border-gray-100 dark:border-gray-800 overflow-hidden py-1"
+              >
+                <button
+                  v-for="lang in languages"
+                  :key="lang.code"
+                  @click="setLanguage(lang.code)"
+                  class="flex items-center gap-3 w-full px-4 py-2.5 text-sm transition-colors duration-200"
+                  :class="[
+                    locale === lang.code
+                      ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 font-medium'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  ]"
+                >
+                  <span class="text-lg">{{ lang.flag }}</span>
+                  <span>{{ lang.name }}</span>
+                  <font-awesome-icon
+                    v-if="locale === lang.code"
+                    icon="fa-solid fa-check"
+                    class="w-3 h-3 ltr:ml-auto rtl:mr-auto text-amber-500"
+                  />
+                </button>
+              </div>
+            </Transition>
+          </div>
 
           <!-- CTA Button -->
           <a
@@ -571,14 +638,29 @@ onUnmounted(() => {
             <span>{{ isDark ? 'Light Mode' : 'Dark Mode' }}</span>
           </button>
 
-          <!-- Language Toggle Mobile -->
-          <button
-            @click="toggleLanguage"
-            class="flex items-center justify-center gap-3 w-full px-4 py-3 mt-2 text-gray-600 dark:text-gray-300 font-medium rounded-xl border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all duration-200"
-          >
-            <font-awesome-icon icon="fa-solid fa-globe" class="w-4 h-4 text-gray-400 dark:text-gray-500" />
-            <span>{{ languageNames[locale] }}</span>
-          </button>
+          <!-- Language Selection Mobile -->
+          <div class="mt-2 p-2 rounded-xl border border-gray-200 dark:border-gray-700">
+            <p class="text-xs text-gray-500 dark:text-gray-400 px-2 mb-2 font-medium uppercase tracking-wide">
+              <font-awesome-icon icon="fa-solid fa-globe" class="w-3 h-3 mr-1" />
+              Language
+            </p>
+            <div class="grid grid-cols-3 gap-2">
+              <button
+                v-for="lang in languages"
+                :key="lang.code"
+                @click="setLanguage(lang.code)"
+                class="flex flex-col items-center gap-1 py-2 px-3 rounded-lg transition-all duration-200"
+                :class="[
+                  locale === lang.code
+                    ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 ring-2 ring-amber-500/50'
+                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
+                ]"
+              >
+                <span class="text-xl">{{ lang.flag }}</span>
+                <span class="text-xs font-medium">{{ lang.code.toUpperCase() }}</span>
+              </button>
+            </div>
+          </div>
 
           <!-- CTA Button Mobile -->
           <a

@@ -35,14 +35,18 @@ const campuses = ref([
   {
     id: 'headquarters',
     name: 'Alexandrie',
+    nameAr: 'الإسكندرية',
     country: 'eg',
     countryName: 'Égypte',
     countryNameEn: 'Egypt',
+    countryNameAr: 'مصر',
     type: 'headquarters',
     description: 'Siège principal de l\'Université Senghor, situé dans la ville historique d\'Alexandrie. Le campus offre un environnement académique d\'excellence au cœur de la Méditerranée.',
     descriptionEn: 'Main headquarters of Senghor University, located in the historic city of Alexandria. The campus offers an academic environment of excellence in the heart of the Mediterranean.',
+    descriptionAr: 'المقر الرئيسي لجامعة سنغور، يقع في مدينة الإسكندرية التاريخية. يوفر الحرم الجامعي بيئة أكاديمية متميزة في قلب البحر الأبيض المتوسط.',
     programs: ['Masters', 'Doctorat', 'Diplômes universitaires'],
     programsEn: ['Masters', 'Doctorate', 'University Diplomas'],
+    programsAr: ['الماجستير', 'الدكتوراه', 'الدبلومات الجامعية'],
     students: 500,
     url: 'https://www.usenghor.org',
     image: '/images/bg/backgroud_senghor1.jpg'
@@ -50,14 +54,18 @@ const campuses = ref([
   {
     id: 'benin',
     name: 'Campus Bénin',
+    nameAr: 'حرم بنين',
     country: 'bj',
     countryName: 'Bénin',
     countryNameEn: 'Benin',
+    countryNameAr: 'بنين',
     type: 'campus',
     description: 'Campus externalisé du Bénin offrant des formations continues et certifications adaptées aux besoins locaux.',
     descriptionEn: 'External campus in Benin offering continuing education and certifications adapted to local needs.',
+    descriptionAr: 'حرم جامعي خارجي في بنين يقدم تكوينات مستمرة وشهادات مهنية تتناسب مع الاحتياجات المحلية.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 150,
     url: 'https://sites.google.com/usenghor.org/campus-benin',
     image: '/images/bg/backgroud_senghor2.jpg'
@@ -65,14 +73,18 @@ const campuses = ref([
   {
     id: 'burkina',
     name: 'Campus Burkina Faso',
+    nameAr: 'حرم بوركينا فاسو',
     country: 'bf',
     countryName: 'Burkina Faso',
     countryNameEn: 'Burkina Faso',
+    countryNameAr: 'بوركينا فاسو',
     type: 'campus',
     description: 'Campus externalisé du Burkina Faso, un hub de formation pour l\'Afrique de l\'Ouest.',
     descriptionEn: 'External campus in Burkina Faso, a training hub for West Africa.',
+    descriptionAr: 'حرم جامعي خارجي في بوركينا فاسو، مركز تكوين لغرب أفريقيا.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 120,
     url: 'https://sites.google.com/usenghor.org/campus-burkinafaso',
     image: '/images/bg/backgroud_senghor3.jpg'
@@ -80,14 +92,18 @@ const campuses = ref([
   {
     id: 'cameroon',
     name: 'Campus Cameroun',
+    nameAr: 'حرم الكاميرون',
     country: 'cm',
     countryName: 'Cameroun',
     countryNameEn: 'Cameroon',
+    countryNameAr: 'الكاميرون',
     type: 'campus',
     description: 'Campus externalisé du Cameroun, contribuant au développement des compétences en Afrique centrale.',
     descriptionEn: 'External campus in Cameroon, contributing to skills development in Central Africa.',
+    descriptionAr: 'حرم جامعي خارجي في الكاميرون، يساهم في تطوير الكفاءات في وسط أفريقيا.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 180,
     url: 'http://campus-cameroun.usenghor.org/',
     image: '/images/bg/backgroud_senghor4.jpg'
@@ -95,14 +111,18 @@ const campuses = ref([
   {
     id: 'ivorycoast',
     name: 'Campus Côte d\'Ivoire',
+    nameAr: 'حرم ساحل العاج',
     country: 'ci',
     countryName: 'Côte d\'Ivoire',
     countryNameEn: 'Ivory Coast',
+    countryNameAr: 'ساحل العاج',
     type: 'campus',
     description: 'Campus externalisé de Côte d\'Ivoire, au cœur de la capitale économique ouest-africaine.',
     descriptionEn: 'External campus in Ivory Coast, at the heart of the West African economic capital.',
+    descriptionAr: 'حرم جامعي خارجي في ساحل العاج، في قلب العاصمة الاقتصادية لغرب أفريقيا.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 160,
     url: 'http://campus-cotedivoire.usenghor.org/',
     image: '/images/bg/covers_image.jpg'
@@ -110,14 +130,18 @@ const campuses = ref([
   {
     id: 'djibouti',
     name: 'Campus Djibouti',
+    nameAr: 'حرم جيبوتي',
     country: 'dj',
     countryName: 'Djibouti',
     countryNameEn: 'Djibouti',
+    countryNameAr: 'جيبوتي',
     type: 'campus',
     description: 'Campus externalisé de Djibouti, porte d\'entrée vers la Corne de l\'Afrique.',
     descriptionEn: 'External campus in Djibouti, gateway to the Horn of Africa.',
+    descriptionAr: 'حرم جامعي خارجي في جيبوتي، بوابة القرن الأفريقي.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 80,
     url: 'https://sites.google.com/usenghor.org/campus-djibouti/',
     image: '/images/bg/covers_image.jpg'
@@ -125,14 +149,18 @@ const campuses = ref([
   {
     id: 'gabon',
     name: 'Campus Gabon',
+    nameAr: 'حرم الغابون',
     country: 'ga',
     countryName: 'Gabon',
     countryNameEn: 'Gabon',
+    countryNameAr: 'الغابون',
     type: 'campus',
     description: 'Campus externalisé du Gabon, au service du développement de l\'Afrique centrale.',
     descriptionEn: 'External campus in Gabon, serving the development of Central Africa.',
+    descriptionAr: 'حرم جامعي خارجي في الغابون، في خدمة تنمية وسط أفريقيا.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 100,
     url: 'https://sites.google.com/usenghor.org/campus-gabon/',
     image: '/images/bg/backgroud_senghor1.jpg'
@@ -140,14 +168,18 @@ const campuses = ref([
   {
     id: 'guinea',
     name: 'Campus Guinée',
+    nameAr: 'حرم غينيا',
     country: 'gn',
     countryName: 'Guinée',
     countryNameEn: 'Guinea',
+    countryNameAr: 'غينيا',
     type: 'campus',
     description: 'Campus externalisé de Guinée, formant les cadres de demain en Afrique de l\'Ouest.',
     descriptionEn: 'External campus in Guinea, training tomorrow\'s executives in West Africa.',
+    descriptionAr: 'حرم جامعي خارجي في غينيا، يكوّن كوادر المستقبل في غرب أفريقيا.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 90,
     url: 'https://sites.google.com/usenghor.org/campus-guinee',
     image: '/images/bg/backgroud_senghor2.jpg'
@@ -155,14 +187,18 @@ const campuses = ref([
   {
     id: 'hungary',
     name: 'Campus Hongrie',
+    nameAr: 'حرم المجر',
     country: 'hu',
     countryName: 'Hongrie',
     countryNameEn: 'Hungary',
+    countryNameAr: 'المجر',
     type: 'campus',
     description: 'Campus externalisé de Hongrie, notre présence européenne au cœur de Budapest.',
     descriptionEn: 'External campus in Hungary, our European presence in the heart of Budapest.',
+    descriptionAr: 'حرم جامعي خارجي في المجر، حضورنا الأوروبي في قلب بودابست.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 50,
     url: 'http://campus-hongrie.usenghor.org/',
     image: '/images/bg/backgroud_senghor3.jpg'
@@ -170,14 +206,18 @@ const campuses = ref([
   {
     id: 'madagascar',
     name: 'Campus Madagascar',
+    nameAr: 'حرم مدغشقر',
     country: 'mg',
     countryName: 'Madagascar',
     countryNameEn: 'Madagascar',
+    countryNameAr: 'مدغشقر',
     type: 'campus',
     description: 'Campus externalisé de Madagascar, au service de la Grande Île.',
     descriptionEn: 'External campus in Madagascar, serving the Great Island.',
+    descriptionAr: 'حرم جامعي خارجي في مدغشقر، في خدمة الجزيرة الكبرى.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 110,
     url: 'http://campus-madagascar.usenghor.org/',
     image: '/images/bg/backgroud_senghor4.jpg'
@@ -185,14 +225,18 @@ const campuses = ref([
   {
     id: 'morocco',
     name: 'Campus Maroc',
+    nameAr: 'حرم المغرب',
     country: 'ma',
     countryName: 'Maroc',
     countryNameEn: 'Morocco',
+    countryNameAr: 'المغرب',
     type: 'campus',
     description: 'Campus externalisé du Maroc, pont entre l\'Afrique et l\'Europe.',
     descriptionEn: 'External campus in Morocco, bridge between Africa and Europe.',
+    descriptionAr: 'حرم جامعي خارجي في المغرب، جسر بين أفريقيا وأوروبا.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 140,
     url: 'http://campus-maroc.usenghor.org/',
     image: '/images/bg/covers_image.jpg'
@@ -200,14 +244,18 @@ const campuses = ref([
   {
     id: 'drc',
     name: 'Campus RDC',
+    nameAr: 'حرم الكونغو الديمقراطية',
     country: 'cd',
     countryName: 'République démocratique du Congo',
     countryNameEn: 'Democratic Republic of the Congo',
+    countryNameAr: 'جمهورية الكونغو الديمقراطية',
     type: 'campus',
     description: 'Campus externalisé de la RDC, contribuant au développement du plus grand pays francophone.',
     descriptionEn: 'External campus in the DRC, contributing to the development of the largest French-speaking country.',
+    descriptionAr: 'حرم جامعي خارجي في الكونغو الديمقراطية، يساهم في تنمية أكبر دولة فرنكوفونية.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 130,
     url: 'http://campus-rdc.usenghor.org/',
     image: '/images/bg/backgroud_senghor4.jpg'
@@ -215,14 +263,18 @@ const campuses = ref([
   {
     id: 'senegal',
     name: 'Campus Sénégal',
+    nameAr: 'حرم السنغال',
     country: 'sn',
     countryName: 'Sénégal',
     countryNameEn: 'Senegal',
+    countryNameAr: 'السنغال',
     type: 'campus',
     description: 'Campus externalisé du Sénégal à Dakar, berceau de la Francophonie africaine.',
     descriptionEn: 'External campus in Senegal in Dakar, cradle of African Francophonie.',
+    descriptionAr: 'حرم جامعي خارجي في السنغال بداكار، مهد الفرنكوفونية الأفريقية.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 200,
     url: 'http://campus-senegal.usenghor.org/',
     image: '/images/bg/backgroud_senghor1.jpg'
@@ -230,14 +282,18 @@ const campuses = ref([
   {
     id: 'togo',
     name: 'Campus Togo',
+    nameAr: 'حرم توغو',
     country: 'tg',
     countryName: 'Togo',
     countryNameEn: 'Togo',
+    countryNameAr: 'توغو',
     type: 'campus',
     description: 'Campus externalisé du Togo, formant les leaders de demain.',
     descriptionEn: 'External campus in Togo, training tomorrow\'s leaders.',
+    descriptionAr: 'حرم جامعي خارجي في توغو، يكوّن قادة المستقبل.',
     programs: ['Formation continue', 'Certifications'],
     programsEn: ['Continuing education', 'Certifications'],
+    programsAr: ['التكوين المستمر', 'الشهادات المهنية'],
     students: 85,
     url: 'http://campus-togo.usenghor.org/',
     image: '/images/bg/backgroud_senghor2.jpg'
@@ -314,6 +370,17 @@ const getCampusForCountry = (countryId) => {
   return campuses.value.find(c => c.country === countryId)
 }
 
+// Get localized content helper
+const getLocalizedField = (campus, field) => {
+  if (locale.value === 'ar') {
+    return campus[`${field}Ar`] || campus[`${field}En`] || campus[field]
+  }
+  if (locale.value === 'en') {
+    return campus[`${field}En`] || campus[field]
+  }
+  return campus[field]
+}
+
 // Handle country click
 const handleCountryClick = (location) => {
   const campus = getCampusForCountry(location.id)
@@ -377,7 +444,7 @@ const handleImageError = (e) => {
       <!-- Map and Card Container -->
       <div ref="mapRef" class="relative flex flex-col lg:flex-row gap-6 lg:gap-0">
         <!-- Map Container -->
-        <div class="relative flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-4 lg:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl lg:mr-[-80px] z-10">
+        <div class="relative flex-1 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-3xl p-4 lg:p-8 border border-gray-200/50 dark:border-gray-700/50 shadow-xl ltr:lg:mr-[-80px] rtl:lg:ml-[-80px] z-10">
           <!-- Map -->
           <div class="map-container relative" @mousemove="handleMouseMove">
             <svg
@@ -413,8 +480,8 @@ const handleImageError = (e) => {
                 @click.stop="handleTooltipClick"
               >
                 <template v-if="getCampusForCountry(hovered.id)">
-                  <span class="tooltip-campus-name">{{ getCampusForCountry(hovered.id).name }}</span>
-                  <span class="tooltip-hint">Cliquer pour voir</span>
+                  <span class="tooltip-campus-name">{{ getLocalizedField(getCampusForCountry(hovered.id), 'name') }}</span>
+                  <span class="tooltip-hint">{{ locale === 'ar' ? 'انقر للعرض' : locale === 'en' ? 'Click to view' : 'Cliquer pour voir' }}</span>
                 </template>
                 <template v-else>
                   {{ hovered.name }}
@@ -441,7 +508,7 @@ const handleImageError = (e) => {
                 />
                 <!-- Badge -->
                 <div
-                  class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold text-white"
+                  class="absolute top-4 ltr:left-4 rtl:right-4 px-3 py-1 rounded-full text-xs font-semibold text-white"
                   :class="selectedCampus.type === 'headquarters' ? 'bg-amber-500' : 'bg-blue-500'"
                 >
                   {{ selectedCampus.type === 'headquarters' ? t('campus.legend.headquarters') : t('campus.legend.campus') }}
@@ -450,19 +517,19 @@ const handleImageError = (e) => {
 
               <!-- Content -->
               <div class="card-content">
-                <h3 class="card-title">{{ selectedCampus.name }}</h3>
+                <h3 class="card-title">{{ getLocalizedField(selectedCampus, 'name') }}</h3>
                 <p class="card-country">
-                  <font-awesome-icon icon="fa-solid fa-location-dot" class="w-3 h-3 mr-1" />
-                  {{ locale === 'fr' ? selectedCampus.countryName : selectedCampus.countryNameEn }}
+                  <font-awesome-icon icon="fa-solid fa-location-dot" class="w-3 h-3 ltr:mr-1 rtl:ml-1" />
+                  {{ getLocalizedField(selectedCampus, 'countryName') }}
                 </p>
                 <div class="card-text">
-                  <p>{{ locale === 'fr' ? selectedCampus.description : selectedCampus.descriptionEn }}</p>
+                  <p>{{ getLocalizedField(selectedCampus, 'description') }}</p>
                 </div>
 
                 <!-- Programs -->
                 <div class="card-programs">
                   <span
-                    v-for="program in (locale === 'fr' ? selectedCampus.programs : selectedCampus.programsEn)"
+                    v-for="program in getLocalizedField(selectedCampus, 'programs')"
                     :key="program"
                     class="program-tag"
                   >
@@ -486,7 +553,7 @@ const handleImageError = (e) => {
                   class="card-cta"
                 >
                   {{ t('campus.modal.visitWebsite') || 'Visiter le site' }}
-                  <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 ml-2" />
+                  <font-awesome-icon icon="fa-solid fa-arrow-right" class="w-4 h-4 ltr:ml-2 rtl:mr-2 rtl:rotate-180" />
                 </a>
               </div>
             </div>
@@ -507,7 +574,7 @@ const handleImageError = (e) => {
             }"
             @click="selectedCampus = campus"
           >
-            {{ campus.name }}
+            {{ getLocalizedField(campus, 'name') }}
           </button>
         </div>
       </div>
@@ -633,10 +700,29 @@ const handleImageError = (e) => {
   mask: radial-gradient(circle 0.8rem at 2px 50%, #0000 98%, #000) 0 0 / 100% 2.8rem;
 }
 
+/* RTL styles for notebook card */
+:root[dir="rtl"] .campus-card {
+  padding-left: 0;
+  padding-right: 30px;
+  background:
+    repeating-linear-gradient(#0000 0 calc(1.4rem - 1px), #e5e7eb 0 1.4rem) left bottom / 100% 100%,
+    linear-gradient(#3b82f6 0 0) calc(100% - 30px) 0 / 2px 100% #fff;
+  background-repeat: no-repeat;
+  -webkit-mask: radial-gradient(circle 0.8rem at calc(100% - 2px) 50%, #0000 98%, #000) 0 0 / 100% 2.8rem;
+  mask: radial-gradient(circle 0.8rem at calc(100% - 2px) 50%, #0000 98%, #000) 0 0 / 100% 2.8rem;
+}
+
 :root.dark .campus-card {
   background:
     repeating-linear-gradient(#0000 0 calc(1.4rem - 1px), #374151 0 1.4rem) right bottom / 100% 100%,
     linear-gradient(#3b82f6 0 0) 30px 0 / 2px 100% #1f2937;
+  background-repeat: no-repeat;
+}
+
+:root.dark[dir="rtl"] .campus-card {
+  background:
+    repeating-linear-gradient(#0000 0 calc(1.4rem - 1px), #374151 0 1.4rem) left bottom / 100% 100%,
+    linear-gradient(#3b82f6 0 0) calc(100% - 30px) 0 / 2px 100% #1f2937;
   background-repeat: no-repeat;
 }
 
@@ -663,6 +749,19 @@ const handleImageError = (e) => {
   top: auto;
   bottom: -22px;
   left: 40%;
+}
+
+/* RTL tape decorations */
+:root[dir="rtl"] .card-image::before {
+  left: auto;
+  right: 60%;
+  transform: rotate(-45deg);
+}
+
+:root[dir="rtl"] .card-image::after {
+  left: auto;
+  right: 40%;
+  transform: rotate(45deg);
 }
 
 :root.dark .card-image::before,

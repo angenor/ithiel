@@ -504,7 +504,7 @@
       "title": "Contact",
       "address": "1, Place Ahmed Orabi, El Mancheya, Alexandria, Egypt",
       "phone": "+20 3 484 3504",
-      "email": "info@usenghor.org"
+      "email": "info{'@'}usenghor.org"
     },
     "bottom": {
       "copyright": "{year} Senghor University. All rights reserved.",
